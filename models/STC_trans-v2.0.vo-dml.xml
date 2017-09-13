@@ -1,0 +1,1548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1.0 http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/xsd/vo-dml-v1.0.xsd">
+  <name>stc2_transforms</name>
+  <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+  <uri>http://ivoa.net/vodml/stc2_trans.vo-dml</uri>
+  <title>STC2 Transforms</title>
+  <author>ahr</author>
+  <version>2.0</version>
+  <lastModified>2017-09-08T16:05:32</lastModified>
+  <import>
+    <name>stc2_coordinates</name>
+    <url>file:///data/vao/staff/mcd/docs/models/dm/STC-2.0/vo-dml/xml/STC_coords-v2.0.vo-dml.xml</url>
+    <documentationURL/>
+  </import>
+  <import>
+    <name>ivoa</name>
+    <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/xml/IVOA-v1.0.vo-dml.xml</url>
+    <documentationURL>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA.html</documentationURL>
+  </import>
+
+  <package>
+    <vodml-id>frametransforms</vodml-id>
+    <name>frametransforms</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <enumeration>
+      <vodml-id>frametransforms.Projection</vodml-id>
+      <name>Projection</name>
+      <description>This is th enumerated list of allowed standard mapping (transformation) projections.</description>
+      <literal>
+        <vodml-id>frametransforms.Projection.LIN</vodml-id>
+        <name>LIN</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.LOG</vodml-id>
+        <name>LOG</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.TAN</vodml-id>
+        <name>TAN</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.SIN</vodml-id>
+        <name>SIN</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.STG</vodml-id>
+        <name>STG</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.ARC</vodml-id>
+        <name>ARC</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.AIR</vodml-id>
+        <name>AIR</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.ZEA</vodml-id>
+        <name>ZEA</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.CEA</vodml-id>
+        <name>CEA</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.CAR</vodml-id>
+        <name>CAR</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.MER</vodml-id>
+        <name>MER</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.SFL</vodml-id>
+        <name>SFL</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.PAR</vodml-id>
+        <name>PAR</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.MOL</vodml-id>
+        <name>MOL</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.AIT</vodml-id>
+        <name>AIT</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.COE</vodml-id>
+        <name>COE</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.COD</vodml-id>
+        <name>COD</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.COO</vodml-id>
+        <name>COO</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.BON</vodml-id>
+        <name>BON</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.PCO</vodml-id>
+        <name>PCO</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.TSC</vodml-id>
+        <name>TSC</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.CSC</vodml-id>
+        <name>CSC</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+      <literal>
+        <vodml-id>frametransforms.Projection.QSC</vodml-id>
+        <name>QSC</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      </literal>
+    </enumeration>
+
+    <dataType>
+      <vodml-id>frametransforms.Matrix3x3</vodml-id>
+      <name>Matrix3x3</name>
+      <description>Matrix3x3 is data type for 3-D transformation matrices. It inherits an optional unit from Matrix that allows for a change in units between native and target values. If unit is absent targetValue SHALL retain the units of the nativeValue.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Matrix</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m11</vodml-id>
+        <name>m11</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m12</vodml-id>
+        <name>m12</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m21</vodml-id>
+        <name>m21</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m22</vodml-id>
+        <name>m22</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m13</vodml-id>
+        <name>m13</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m31</vodml-id>
+        <name>m31</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m23</vodml-id>
+        <name>m23</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m32</vodml-id>
+        <name>m32</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix3x3.m33</vodml-id>
+        <name>m33</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+    <dataType>
+      <vodml-id>frametransforms.Matrix2x2</vodml-id>
+      <name>Matrix2x2</name>
+      <description>Matrix2x2 is data type for 2-D transformation matrices. It inherits an optional unit from Matrix that allows for a change in units between native and target values. If unit is absent targetValue SHALL retain the units of the nativeValue.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Matrix</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Matrix2x2.m11</vodml-id>
+        <name>m11</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix2x2.m12</vodml-id>
+        <name>m12</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix2x2.m21</vodml-id>
+        <name>m21</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.Matrix2x2.m22</vodml-id>
+        <name>m22</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+    <dataType abstract="true">
+      <vodml-id>frametransforms.Matrix</vodml-id>
+      <name>Matrix</name>
+      <description>Matrix is the abstract parent data type for 2-D and 3-D transformation matrices. It contains an optional unit that allows for a change in units between native and target values. If unit is absent targetValue SHALL retain the units of the nativeValue.</description>
+      <attribute>
+        <vodml-id>frametransforms.Matrix.unit</vodml-id>
+        <name>unit</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:Unit</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </dataType>
+
+    <objectType>
+      <vodml-id>frametransforms.TransformMatrix2D</vodml-id>
+      <name>TransformMatrix2D</name>
+      <description>CD-matrix transformation: targetVector = cdMatrix . nativeVector (scale and rotate)</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform2D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.TransformMatrix2D.cdMatrix</vodml-id>
+        <name>cdMatrix</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.Matrix2x2</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.FrameTransform</vodml-id>
+      <name>FrameTransform</name>
+      <description>This mapping class provides a transformation from the nativeFrame to the targetFrame. The transform is specified by one or more Xform objects. The Xform objects specify atomic transform operations and may be chained together (in a specific order) to define more complicated transformations. naxes specifies the dimensionality of the transformation and should reflect the dimensionality of the native and target frames.</description>
+      <constraint>
+        <description>0&lt;naxes&lt;4</description>
+      </constraint>
+      <attribute>
+        <vodml-id>frametransforms.FrameTransform.naxes</vodml-id>
+        <name>naxes</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:nonnegativeInteger</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <composition>
+        <vodml-id>frametransforms.FrameTransform.transform</vodml-id>
+        <name>transform</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.Xform</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+        <isOrdered>true</isOrdered>
+      </composition>
+      <reference>
+        <vodml-id>frametransforms.FrameTransform.nativeFrame</vodml-id>
+        <name>nativeFrame</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:coordsystem.CoordFrame</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+      <reference>
+        <vodml-id>frametransforms.FrameTransform.targetFrame</vodml-id>
+        <name>targetFrame</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:coordsystem.CoordFrame</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </reference>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Scale2D</vodml-id>
+      <name>Scale2D</name>
+      <description>Simple 2-dimensional scaling: vector elements targetValue[i] = scale[i] * nativeValue[i]</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform2D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Scale2D.scale</vodml-id>
+        <name>scale</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>2</minOccurs>
+          <maxOccurs>2</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Xlate1D</vodml-id>
+      <name>Xlate1D</name>
+      <description>Simple 1-dimensional translation: targetValue = nativeValue - nativeRefVal.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform1D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Xlate1D.nativeRefVal</vodml-id>
+        <name>nativeRefVal</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Xlate2D</vodml-id>
+      <name>Xlate2D</name>
+      <description>Simple 2-dimensional translation: vector targetValue = nativeValue - nativeRefVal.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform2D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Xlate2D.nativeRefVal</vodml-id>
+        <name>nativeRefVal</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>2</minOccurs>
+          <maxOccurs>2</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Xlate3D</vodml-id>
+      <name>Xlate3D</name>
+      <description>Simple 3-dimensional translation: vector targetValue = nativeValue - nativeRefVal.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform3D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Xlate3D.nativeRefVal</vodml-id>
+        <name>nativeRefVal</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>3</minOccurs>
+          <maxOccurs>3</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Scale3D</vodml-id>
+      <name>Scale3D</name>
+      <description>Simple 3-dimensional scaling: vector elements targetValue[i] = scale[i] * nativeValue[i]</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform3D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Scale3D.scale</vodml-id>
+        <name>scale</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>3</minOccurs>
+          <maxOccurs>3</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.TransformMatrix3D</vodml-id>
+      <name>TransformMatrix3D</name>
+      <description>CD-matrix transformation: targetVector = cdMatrix . nativeVector (scale and rotate)</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform3D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.TransformMatrix3D.cdMatrix</vodml-id>
+        <name>cdMatrix</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.Matrix3x3</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.PolStokes</vodml-id>
+      <name>PolStokes</name>
+      <description>The enumerated mapping from pixels to Stokes polarization coordinates.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.PolFrameTransform</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.PolStokes.pixel1Type</vodml-id>
+        <name>pixel1Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolStokesEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolStokes.pixel2Type</vodml-id>
+        <name>pixel2Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolStokesEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolStokes.pixel3Type</vodml-id>
+        <name>pixel3Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolStokesEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolStokes.pixel4Type</vodml-id>
+        <name>pixel4Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolStokesEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.PolCircular</vodml-id>
+      <name>PolCircular</name>
+      <description>The enumerated mapping from pixels to circular polarization coordinates.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.PolFrameTransform</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.PolCircular.pixel1Type</vodml-id>
+        <name>pixel1Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolCircularEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolCircular.pixel2Type</vodml-id>
+        <name>pixel2Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolCircularEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolCircular.pixel3Type</vodml-id>
+        <name>pixel3Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolCircularEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolCircular.pixel4Type</vodml-id>
+        <name>pixel4Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolCircularEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.PolLinear</vodml-id>
+      <name>PolLinear</name>
+      <description>The enumerated mapping from pixels to linear polarization coordinates.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.PolFrameTransform</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.PolLinear.pixel1Type</vodml-id>
+        <name>pixel1Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolLinearEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolLinear.pixel2Type</vodml-id>
+        <name>pixel2Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolLinearEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolLinear.pixel3Type</vodml-id>
+        <name>pixel3Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolLinearEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolLinear.pixel4Type</vodml-id>
+        <name>pixel4Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolLinearEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.PolVector</vodml-id>
+      <name>PolVector</name>
+      <description>The enumerated mapping from pixels to polarization vector coordinates.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.PolFrameTransform</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.PolVector.pixel1Type</vodml-id>
+        <name>pixel1Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolVectorEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolVector.pixel2Type</vodml-id>
+        <name>pixel2Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolVectorEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolVector.pixel3Type</vodml-id>
+        <name>pixel3Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolVectorEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolVector.pixel4Type</vodml-id>
+        <name>pixel4Type</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolVectorEnum</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.EnumScalar</vodml-id>
+      <name>EnumScalar</name>
+      <description>For enumerated coordinates EnumScalar contains the list of enumerated values in EnumElement1 that provide the target values for each of the native values. The number of EnumElement1 in the composition needs to equal the number of native elements.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform1D</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>frametransforms.EnumScalar.enum</vodml-id>
+        <name>enum</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.EnumElement1</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Enum2D</vodml-id>
+      <name>Enum2D</name>
+      <description>For enumerated coordinates Enum2D contains the list of enumerated values in EnumElement2 that provide the target values for each of the native values. The number of EnumElement2 in the composition needs to equal the number of native elements.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform2D</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>frametransforms.Enum2D.enum</vodml-id>
+        <name>enum</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.EnumElement2</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Enum3D</vodml-id>
+      <name>Enum3D</name>
+      <description>For enumerated coordinates Enum3D contains the list of enumerated values in EnumElement3 that provide the target values for each of the native values. The number of EnumElement3 in the composition needs to equal the number of native elements.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform3D</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>frametransforms.Enum3D.enum</vodml-id>
+        <name>enum</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.EnumElement3</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>frametransforms.PolFrameTransform</vodml-id>
+      <name>PolFrameTransform</name>
+      <description>Polarization mappings are a special case of enumerated transformations, since Polarization is by definition an enumerated (scalar) coordinate. This is the abstract class.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform1D</vodml-ref>
+      </extends>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Polynomial2D</vodml-id>
+      <name>Polynomial2D</name>
+      <description>2-dimensional to 1-dimensional polynomial transformation:  targetValue = sum (value[i] * nativeValue[1]**order1[i] * nativeValue[2]**order2[i]), where the scalars and exponents are provided by the PolyCoeff2D objects.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform2D</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>frametransforms.Polynomial2D.coeff</vodml-id>
+        <name>coeff</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.PolyCoeff2D</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Polynomial1D</vodml-id>
+      <name>Polynomial1D</name>
+      <description>1-dimensional polynomial transformation: targetValue = sum (value[i] * nativeValue**order[i]), where the scalars and exponents are provided by the PolyCoeff1D objects.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform1D</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>frametransforms.Polynomial1D.coeff</vodml-id>
+        <name>coeff</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.PolyCoeff1D</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Scale1D</vodml-id>
+      <name>Scale1D</name>
+      <description>Simple 1-dimensional scaling: targetValue = scale * nativeValue</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform1D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Scale1D.scale</vodml-id>
+        <name>scale</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>frametransforms.Xform</vodml-id>
+      <name>Xform</name>
+      <description>The abstract Xform class. At the next level it is split into subclasses for 1-, 2-, and 3-dimensional transforms.</description>
+      <constraint>
+        <description>self.naxes=container.naxes</description>
+      </constraint>
+      <attribute>
+        <vodml-id>frametransforms.Xform.naxes</vodml-id>
+        <name>naxes</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:nonnegativeInteger</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>frametransforms.Xform1D</vodml-id>
+      <name>Xform1D</name>
+      <description>The abstract class for atomic 1-dimensional transformations.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform</vodml-ref>
+      </extends>
+      <constraint>
+        <description>self.naxes=1</description>
+      </constraint>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>frametransforms.Xform2D</vodml-id>
+      <name>Xform2D</name>
+      <description>The abstract class for atomic 2-dimensional transformations.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform</vodml-ref>
+      </extends>
+      <constraint>
+        <description>self.naxes=2</description>
+      </constraint>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Rotate2D</vodml-id>
+      <name>Rotate2D</name>
+      <description>Simple 2-dimensional rotation in degrees CCW.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform2D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Rotate2D.rotationAngle</vodml-id>
+        <name>rotationAngle</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType abstract="true">
+      <vodml-id>frametransforms.Xform3D</vodml-id>
+      <name>Xform3D</name>
+      <description>The abstract class for atomic 3-dimensional transformations.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform</vodml-ref>
+      </extends>
+      <constraint>
+        <description>self.naxes=3</description>
+      </constraint>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Rotate3D</vodml-id>
+      <name>Rotate3D</name>
+      <description>Simple 3-dimensional rotation in degrees. The first rotation angle indicates CCW rotation along the Z-axis, the second CCW rotation around the X-axis.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform3D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Rotate3D.rotationAngles</vodml-id>
+        <name>rotationAngles</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>2</minOccurs>
+          <maxOccurs>2</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Projection1D</vodml-id>
+      <name>Projection1D</name>
+      <description>The attribute projection specifies a specific standard projection transformation. One should keep in mind that most of the values of the enumeration literal Projection are intended for 2-dimensional spherical coordinate frames.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform1D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Projection1D.projection</vodml-id>
+        <name>projection</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.Projection</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Projection3D</vodml-id>
+      <name>Projection3D</name>
+      <description>The attribute projection specifies a specific standard projection transformation taken from the list of values in the enumeration type Projection.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform3D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Projection3D.projection</vodml-id>
+        <name>projection</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.Projection</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Projection2D</vodml-id>
+      <name>Projection2D</name>
+      <description>The attribute projection specifies a specific standard projection transformation taken from the list of values in the enumeration type Projection.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform2D</vodml-ref>
+      </extends>
+      <attribute>
+        <vodml-id>frametransforms.Projection2D.projection</vodml-id>
+        <name>projection</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.Projection</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.PolyCoeff1D</vodml-id>
+      <name>PolyCoeff1D</name>
+      <description>PolyCoeff1D contains the parameters for one individual term in a 1-dimensional polynomial transformation.</description>
+      <constraint>
+        <description>0&lt;targetAxis&lt;4</description>
+      </constraint>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff1D.order</vodml-id>
+        <name>order</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff1D.value</vodml-id>
+        <name>value</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff1D.targetAxis</vodml-id>
+        <name>targetAxis</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:nonnegativeInteger</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.PolyCoeff2D</vodml-id>
+      <name>PolyCoeff2D</name>
+      <description>PolyCoeff2D contains the parameters for one individual term in a 2-dimensional polynomial transformation.</description>
+      <constraint>
+        <description>0&lt;targetAxis&lt;4</description>
+      </constraint>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff2D.order1</vodml-id>
+        <name>order1</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff2D.order2</vodml-id>
+        <name>order2</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff2D.value</vodml-id>
+        <name>value</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff2D.targetAxis</vodml-id>
+        <name>targetAxis</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:nonnegativeInteger</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.PolyCoeff3D</vodml-id>
+      <name>PolyCoeff3D</name>
+      <description>PolyCoeff3D contains the parameters for one individual term in a 3-dimensional polynomial transformation.</description>
+      <constraint>
+        <description>0&lt;targetAxis&lt;4</description>
+      </constraint>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff3D.order1</vodml-id>
+        <name>order1</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff3D.order2</vodml-id>
+        <name>order2</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff3D.order3</vodml-id>
+        <name>order3</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:integer</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff3D.value</vodml-id>
+        <name>value</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:real</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.PolyCoeff3D.targetAxis</vodml-id>
+        <name>targetAxis</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:nonnegativeInteger</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.Polynomial3D</vodml-id>
+      <name>Polynomial3D</name>
+      <description>3-dimensional to 1-dimensional polynomial transformation:  targetValue = sum (value[i] * nativeValue[1]**order1[i] * nativeValue[2]**order2[i] * nativeValue[3]**order3[i]), where the scalars and exponents are provided by the PolyCoeff3D objects.</description>
+      <extends>
+        <vodml-ref>stc2_transforms:frametransforms.Xform3D</vodml-ref>
+      </extends>
+      <composition>
+        <vodml-id>frametransforms.Polynomial3D.coeff</vodml-id>
+        <name>coeff</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>stc2_transforms:frametransforms.PolyCoeff3D</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>-1</maxOccurs>
+        </multiplicity>
+      </composition>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.EnumElement1</vodml-id>
+      <name>EnumElement1</name>
+      <description>The enumerated targetValue for the enumerated nativeValue is eval.</description>
+      <attribute>
+        <vodml-id>frametransforms.EnumElement1.nativeval</vodml-id>
+        <name>nativeval</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.EnumElement1.eval</vodml-id>
+        <name>eval</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.EnumElement2</vodml-id>
+      <name>EnumElement2</name>
+      <description>The enumerated targetValue vector for the enumerated nativeValue vector is the vector eval.</description>
+      <attribute>
+        <vodml-id>frametransforms.EnumElement2.nativeval</vodml-id>
+        <name>nativeval</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>2</minOccurs>
+          <maxOccurs>2</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.EnumElement2.eval</vodml-id>
+        <name>eval</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>2</minOccurs>
+          <maxOccurs>2</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+    <objectType>
+      <vodml-id>frametransforms.EnumElement3</vodml-id>
+      <name>EnumElement3</name>
+      <description>The enumerated targetValue vector for the enumerated nativeValue vector is the vector eval.</description>
+      <attribute>
+        <vodml-id>frametransforms.EnumElement3.nativeval</vodml-id>
+        <name>nativeval</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>3</minOccurs>
+          <maxOccurs>3</maxOccurs>
+        </multiplicity>
+      </attribute>
+      <attribute>
+        <vodml-id>frametransforms.EnumElement3.eval</vodml-id>
+        <name>eval</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <datatype>
+          <vodml-ref>ivoa:RealQuantity</vodml-ref>
+        </datatype>
+        <multiplicity>
+          <minOccurs>3</minOccurs>
+          <maxOccurs>3</maxOccurs>
+        </multiplicity>
+      </attribute>
+    </objectType>
+
+  </package>
+
+</vo-dml:model>
