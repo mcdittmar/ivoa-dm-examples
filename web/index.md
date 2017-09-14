@@ -1,6 +1,10 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
+
+Description
+============
+
+There are currently two main proposals for the Space Time Coordinate Data Model.
+While they share many similarities, they are different in significant ways.
+Each page below provides many examples with code snippetsa and links to the standard documents.

@@ -9,7 +9,7 @@
       <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/xml/IVOA-v1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
-      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame" ID="FK4_FRAME">
+      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame" ID="FK4_B1950_FRAME">
         <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame.spaceRefFrame">
           <LITERAL value="FK4" dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceStdRefFrame"/>
         </ATTRIBUTE>
@@ -38,6 +38,39 @@
                 </ATTRIBUTE>
               </INSTANCE>
               <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="FK4_B1950_DEC_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="dec" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="-90.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="90.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame" ID="ICRS_FRAME">
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame.spaceRefFrame">
+          <LITERAL value="ICRS" dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceStdRefFrame"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.Spherical">
+            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="ICRS_RA_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="ra" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="0.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="360.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="ICRS_DEC_AXIS">
                 <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
                   <LITERAL value="dec" dmtype="ivoa:string"/>
                 </ATTRIBUTE>
