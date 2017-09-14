@@ -3,49 +3,26 @@ def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/
 
 def coordsLocation = new URL("$modelsFolder/STC_coords-v2.0.vo-dml.xml")
 def measLocation = new URL("$modelsFolder/STC_meas-v2.0.vo-dml.xml")
-def transLocation = new URL("$modelsFolder/STC_trans-v2.0.vo-dml.xml")
 def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/xml/IVOA-v1.0.vo-dml.xml")
 
 dmInstance {
     model(vodmlURL: coordsLocation)
     model(vodmlURL: measLocation)
-    model(vodmlURL: transLocation)
     model(vodmlURL: ivoaLocation)
-
-    globals(id: "Std_Frames") {
-        instance(id: "_FK4_FRAME", type: "stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame") {
-            instance role: "spaceRefFrame", value: "FK4"
-            instance(role: "equinox") {
-                instance role: "type", value: "B"
-                instance role: "year", value: "1950.0"
-            }
-            instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.spatialDomain.Spherical") {
-                instance(role: "coordAxis", id: "_RA_AXIS", type: "stc2_coordinates:coordsystem.CoordAxis") {
-                    instance role: "name", value: "ra"
-                    instance role: "domainMin", value: 0.0, unit: "deg"
-                    instance role: "domainMax", value: 360.0, unit: "deg"
-                }
-                instance(role: "coordAxis", id: "_DEC_AXIS", type: "stc2_coordinates:coordsystem.CoordAxis") {
-                    instance role: "name", value: "dec"
-                    instance role: "domainMin", value: -90.0, unit: "deg"
-                    instance role: "domainMax", value: 90.0, unit: "deg"
-                }
-            }
-        }
-    }
 
     instance(type: "stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D") {
         instance (role: "coord") {
             instance(role: "cmpt") {
                 instance(role: "cval", value: 12.9768538031, unit: "deg")
                 reference(role: "coordAxis") {
-                    idref "_RA_AXIS"
+                    // This is not very portable or convenient. There should be a URI
+                    remote "file://./standard-frames.vot#FK4_B1950_RA_AXIS"
                 }
             }
             instance(role: "cmpt") {
                 instance(role: "cval", value: -72.9580158133, unit:"deg")
                 reference(role: "coordAxis") {
-                    idref "_DEC_AXIS"
+                    remote "file://./standard-frames.vot#FK4_B1950_DEC_AXIS"
                 }
             }
         }
