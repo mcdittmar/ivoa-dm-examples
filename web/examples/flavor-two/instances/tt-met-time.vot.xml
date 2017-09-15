@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>stc2_coordinates</NAME>
+      <URL>file:../models/STC_coords-v2.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>stc2_measurements</NAME>
+      <URL>file:../models/STC_meas-v2.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/xml/IVOA-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame" ID="MJD_FRAME">
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame.timeScale">
+          <LITERAL value="TT" dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeScale"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame.timeOrigin">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset">
+            <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
+              <LITERAL value="50814.02" dmtype="ivoa:RealQuantity"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
+              <IDREF>file://./standard-frames.vot#MJD_TT_AXIS</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace">
+            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="_MET_TIME_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="time" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="0" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="+Inf" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.timeMDomain.TimeMeasure">
+        <ATTRIBUTE dmrole="stc2_measurements:CoordinateMDomains.timeMDomain.TimeMeasure.coord">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeStamp">
+            <ATTRIBUTE dmrole="cmpt">
+              <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset">
+                <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
+                  <LITERAL value="84244214.7547" dmtype="ivoa:RealQuantity" unit="s"/>
+                </ATTRIBUTE>
+                <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
+                  <IDREF>_MET_TIME_AXIS</IDREF>
+                </REFERENCE>
+              </INSTANCE>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </ATTRIBUTE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+</VOTABLE>
