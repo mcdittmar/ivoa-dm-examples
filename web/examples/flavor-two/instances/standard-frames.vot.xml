@@ -85,6 +85,50 @@
           </INSTANCE>
         </COMPOSITION>
       </INSTANCE>
+      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame" ID="TT_FRAME">
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame.timeScale">
+          <LITERAL value="TT" dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeScale"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace">
+            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="TT_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="time" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="0" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="+Inf" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame" ID="JD_FRAME">
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame.timeScale">
+          <LITERAL value="TT" dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeScale"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace">
+            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="JD_TT_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="jd" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="0" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="+Inf" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
     </GLOBALS>
   </VODML>
 </VOTABLE>
