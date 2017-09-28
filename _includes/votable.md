@@ -1,5 +1,5 @@
 
-{% capture filename %}/examples/{{page.flavor}}/instances/{{include.name}}.vot.xml{% endcapture %}
+{% capture filename %}/examples/{{page.model}}/{{page.flavor}}/instances/{{include.name}}.vot.xml{% endcapture %}
 
 File: [{{ filename }} ]({{ filename }})
 
