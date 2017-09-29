@@ -14,7 +14,7 @@
     </MODEL>
     <GLOBALS>
       <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D">
-        <ATTRIBUTE dmrole="stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D.coord">
+        <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
           <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue2D">
             <ATTRIBUTE dmrole="stc2_coordinates:coords.MultiCoordValue.cmpt">
               <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue">
@@ -38,7 +38,7 @@
             </ATTRIBUTE>
           </INSTANCE>
         </ATTRIBUTE>
-        <COMPOSITION dmrole="stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D.error">
+        <COMPOSITION dmrole="stc2_measurements:uncertainty.CoordMeasure.error">
           <INSTANCE dmtype="stc2_measurements:uncertainty.Error2D">
             <ATTRIBUTE dmrole="stc2_measurements:uncertainty.Error2D.statError">
               <INSTANCE dmtype="stc2_measurements:stctypes.Symmetrical2D">
