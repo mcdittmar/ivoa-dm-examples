@@ -6,7 +6,7 @@
     </MODEL>
     <MODEL>
       <NAME>ivoa</NAME>
-      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/xml/IVOA-v1.0.vo-dml.xml</URL>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
       <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame" ID="FK4_B1950_FRAME">
@@ -38,6 +38,49 @@
                 </ATTRIBUTE>
               </INSTANCE>
               <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="FK4_B1950_DEC_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="dec" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="-90.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="90.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame" ID="FK4_J2000_FRAME">
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame.spaceRefFrame">
+          <LITERAL value="FK4" dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceStdRefFrame"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame.equinox">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.Epoch">
+            <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.spatialDomain.Epoch.type">
+              <LITERAL value="J" dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.EpochType"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.spatialDomain.Epoch.year">
+              <LITERAL value="2000.0" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.Spherical">
+            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="FK4_J2000_RA_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="ra" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="0.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="360.0" dmtype="ivoa:Quantity" unit="deg"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="FK4_J2000_DEC_AXIS">
                 <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
                   <LITERAL value="dec" dmtype="ivoa:string"/>
                 </ATTRIBUTE>
@@ -117,6 +160,38 @@
               <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="JD_TT_AXIS">
                 <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
                   <LITERAL value="jd" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
+                  <LITERAL value="0" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMax">
+                  <LITERAL value="+Inf" dmtype="ivoa:Quantity"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame" ID="MJD_FRAME">
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame.timeScale">
+          <LITERAL value="TT" dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeScale"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame.timeOrigin">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset">
+            <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
+              <LITERAL value="2400000.5" dmtype="ivoa:RealQuantity"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
+              <IDREF>JD_TT_AXIS</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
+          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace">
+            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
+              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="MJD_TT_AXIS">
+                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
+                  <LITERAL value="mjd" dmtype="ivoa:string"/>
                 </ATTRIBUTE>
                 <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.CoordAxis.domainMin">
                   <LITERAL value="0" dmtype="ivoa:Quantity"/>

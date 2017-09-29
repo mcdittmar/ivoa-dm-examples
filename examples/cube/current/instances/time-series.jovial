@@ -1,0 +1,51 @@
+def modelsFolder = "file:../models"
+def stcModelsFolder = "file:../../../stc2/current/models"
+def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"
+
+def coordsLocation = new URL("$stcModelsFolder/STC_coords-v2.0.vo-dml.xml")
+def measLocation = new URL("$stcModelsFolder/STC_meas-v2.0.vo-dml.xml")
+def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml")
+def cubeLocation =  new URL("$modelsFolder/Cube-1.0.vo-dml.xml")
+def datasetLocation = new URL("$modelsFolder/DatasetMetadata-1.0.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: measLocation)
+    model(vodmlURL: ivoaLocation)
+    model(vodmlURL: cubeLocation)
+    model(vodmlURL: datasetLocation)
+
+    instance(id: "_FLUX_FRAME", type: "stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame") {
+        instance(role: "coordSpace") {
+            instance(role: "coordAxis") {
+                instance role: "name", value: "flux"
+            }
+        }
+    }
+
+    instance(id: "_MAG_FRAME", type: "stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame") {
+        instance(role: "coordSpace") {
+            instance(role: "coordAxis") {
+                instance role: "name", value: "magnitude"
+            }
+        }
+    }
+
+    instance(type: "cube:SparseCube") {
+        instance(role: "coordSys", type: "stc2_coordinates:coordsystem.AstroCoordSystem") {
+            instance(role: "refPosition", value: "TOPOCENTER")
+            reference(role: "timeFrame") {
+                remote "file:../../../stc2/current/instances/standard-frames.vot#TT_FRAME"
+            }
+            reference(role: "spaceFrame") {
+                remote "file:../../../stc2/current/instances/standard-frames.vot#FK4_J2000_FRAME"
+            }
+            reference(role: "genericFrame") {
+                idref "_FLUX_FRAME"
+            }
+            reference(role: "genericFrame") {
+                idref "_MAG_FRAME"
+            }
+        }
+    }
+}
