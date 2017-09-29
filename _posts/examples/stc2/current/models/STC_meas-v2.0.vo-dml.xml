@@ -4,20 +4,21 @@
               xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1.0 http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/xsd/vo-dml-v1.0.xsd">
   <name>stc2_measurements</name>
   <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+    TODO : Missing description : please, update your UML model asap.
+  </description>
+  <uri>http://ivoa.net/vodml/stc2_meas.vo-dml</uri>
   <title>STC2 Measures</title>
   <author>ahr</author>
   <version>2.0</version>
-  <lastModified>2017-09-12T14:31:09</lastModified>
+  <lastModified>2017-09-21T15:11:49</lastModified>
   <import>
     <name>ivoa</name>
-    <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/xml/IVOA-v1.0.vo-dml.xml</url>
+    <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>
     <documentationURL>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA.html</documentationURL>
   </import>
   <import>
     <name>stc2_coordinates</name>
-    <url>file:///data/vao/staff/mcd/docs/models/dm/STC-2.0/vo-dml/xml/STC_coords-v2.0.vo-dml.xml</url>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_coords-v2.0.vo-dml.xml</url>
     <documentationURL/>
   </import>
 
@@ -25,14 +26,12 @@
     <vodml-id>stctypes</vodml-id>
     <name>stctypes</name>
     <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      TODO : Missing description : please, update your UML model asap.
+    </description>
     <dataType>
       <vodml-id>stctypes.Matrix2x2</vodml-id>
       <name>Matrix2x2</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>2x2 matrix data type, with a unit.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Matrix</vodml-ref>
       </extends>
@@ -111,9 +110,7 @@
     <dataType>
       <vodml-id>stctypes.Matrix3x3</vodml-id>
       <name>Matrix3x3</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>3x3 matrix data type, with a unit.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Matrix</vodml-ref>
       </extends>
@@ -262,17 +259,13 @@
     <dataType abstract="true">
       <vodml-id>stctypes.Matrix</vodml-id>
       <name>Matrix</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Abstract Matrix data type.</description>
     </dataType>
 
     <dataType abstract="true">
       <vodml-id>stctypes.Uncertainty1D</vodml-id>
       <name>Uncertainty1D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Abstract 1-D Uncertainty data type, from which actual instance types are derived. It is used for errors and resolutions and is meant to be extensible. Note that Uncertainty defines the SHAPE of the function, not the meaning in terms of the level represented by its values: it may indicate 1-sigma, FWHM, 90% or 95% confidence, etc. This interpretation is left to the definition of the attribute of type Uncertainty in the Error class.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty</vodml-ref>
       </extends>
@@ -281,9 +274,7 @@
     <dataType>
       <vodml-id>stctypes.Symmetrical1D</vodml-id>
       <name>Symmetrical1D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Simple symmetrical Uncertainty.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty1D</vodml-ref>
       </extends>
@@ -306,9 +297,7 @@
     <dataType>
       <vodml-id>stctypes.Bounds1D</vodml-id>
       <name>Bounds1D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Lower limit/upper limit bounds.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty1D</vodml-ref>
       </extends>
@@ -345,9 +334,7 @@
     <dataType>
       <vodml-id>stctypes.Asymmetrical1D</vodml-id>
       <name>Asymmetrical1D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Asymmetric Uncertainty.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty1D</vodml-ref>
       </extends>
@@ -384,9 +371,7 @@
     <dataType abstract="true">
       <vodml-id>stctypes.Uncertainty2D</vodml-id>
       <name>Uncertainty2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Abstract 2-D Uncertainty data type, from which actual instance types are derived. It is used for errors and resolutions and is meant to be extensible. Note that Uncertainty defines the SHAPE of the function, not the meaning in terms of the level represented by its values: it may indicate 1-sigma, FWHM, 90% or 95% confidence, etc. This interpretation is left to the definition of the attribute of type Uncertainty in the Error class.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty</vodml-ref>
       </extends>
@@ -395,9 +380,7 @@
     <dataType>
       <vodml-id>stctypes.Symmetrical2D</vodml-id>
       <name>Symmetrical2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Simple circular Uncertainty.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty2D</vodml-ref>
       </extends>
@@ -420,9 +403,7 @@
     <dataType>
       <vodml-id>stctypes.Bounds2D</vodml-id>
       <name>Bounds2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Rectangular lower limit/upper limit bounds.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty2D</vodml-ref>
       </extends>
@@ -459,9 +440,7 @@
     <dataType>
       <vodml-id>stctypes.Asymmetrical2D</vodml-id>
       <name>Asymmetrical2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>2-D asymmetric Uncertainty (offset rectangle).</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty2D</vodml-ref>
       </extends>
@@ -498,9 +477,7 @@
     <dataType abstract="true">
       <vodml-id>stctypes.Uncertainty3D</vodml-id>
       <name>Uncertainty3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Abstract 3-D Uncertainty data type, from which actual instance types are derived. It is used for errors and resolutions and is meant to be extensible. Note that Uncertainty defines the SHAPE of the function, not the meaning in terms of the level represented by its values: it may indicate 1-sigma, FWHM, 90% or 95% confidence, etc. This interpretation is left to the definition of the attribute of type Uncertainty in the Error class.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty</vodml-ref>
       </extends>
@@ -509,9 +486,7 @@
     <dataType>
       <vodml-id>stctypes.Symmetrical3D</vodml-id>
       <name>Symmetrical3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Simple spherical Uncertainty.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty3D</vodml-ref>
       </extends>
@@ -534,9 +509,7 @@
     <dataType>
       <vodml-id>stctypes.Bounds3D</vodml-id>
       <name>Bounds3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Rectangular lower limit/upper limit bounds.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty3D</vodml-ref>
       </extends>
@@ -573,9 +546,7 @@
     <dataType>
       <vodml-id>stctypes.Asymmetrical3D</vodml-id>
       <name>Asymmetrical3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>3-D asymmetric Uncertainty (offset rectangle).</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty3D</vodml-ref>
       </extends>
@@ -612,9 +583,7 @@
     <dataType>
       <vodml-id>stctypes.Ellipse</vodml-id>
       <name>Ellipse</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Elliptical Uncertainty function: semi-major and -minor axes, and position angle (CCW from true north in astronomical spherical coordinates, CCW from positive X axis otherwise).</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty2D</vodml-ref>
       </extends>
@@ -651,9 +620,7 @@
     <dataType>
       <vodml-id>stctypes.CovarianceMatrix2D</vodml-id>
       <name>CovarianceMatrix2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>2-D Covariance matrix.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty2D</vodml-ref>
       </extends>
@@ -676,9 +643,7 @@
     <dataType>
       <vodml-id>stctypes.Ellipsoid</vodml-id>
       <name>Ellipsoid</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Ellipsoidal Uncertainty function (Cartesian coordinates only): semi axes, and position angles of first semi axis (CCW from positive X axis in X-Y plane, and angle "above" the X-Y plane).</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty3D</vodml-ref>
       </extends>
@@ -715,9 +680,7 @@
     <dataType>
       <vodml-id>stctypes.CovarianceMatrix3D</vodml-id>
       <name>CovarianceMatrix3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>3-D Covariance matrix.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty3D</vodml-ref>
       </extends>
@@ -740,9 +703,7 @@
     <dataType>
       <vodml-id>stctypes.PDF1D</vodml-id>
       <name>PDF1D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Stubbed entry for a Probability Density Function (PDF); for future specification.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty1D</vodml-ref>
       </extends>
@@ -751,9 +712,7 @@
     <dataType>
       <vodml-id>stctypes.PDF2D</vodml-id>
       <name>PDF2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Stubbed entry for a Probability Density Function (PDF); for future specification.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty2D</vodml-ref>
       </extends>
@@ -762,9 +721,7 @@
     <dataType>
       <vodml-id>stctypes.PDF3D</vodml-id>
       <name>PDF3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Stubbed entry for a Probability Density Function (PDF); for future specification.</description>
       <extends>
         <vodml-ref>stc2_measurements:stctypes.Uncertainty3D</vodml-ref>
       </extends>
@@ -773,9 +730,7 @@
     <dataType abstract="true">
       <vodml-id>stctypes.Uncertainty</vodml-id>
       <name>Uncertainty</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>Uncertainty data type, from which 1-, 2-, and 3-dimensional types are derived. It is used for errors and resolutions and is meant to be extensible. Note that Uncertainty defines the SHAPE of the function, not the meaning in terms of the level represented by its values: it may indicate 1-sigma, FWHM, 90% or 95% confidence, etc. This interpretation is left to the definition of the attribute of type Uncertainty in the Error class.</description>
     </dataType>
 
   </package>
@@ -786,14 +741,12 @@
     <vodml-id>uncertainty</vodml-id>
     <name>uncertainty</name>
     <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      TODO : Missing description : please, update your UML model asap.
+    </description>
     <objectType abstract="true">
       <vodml-id>uncertainty.CoordMeasure</vodml-id>
       <name>CoordMeasure</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The absract coordinate measure class contains a measured coordinate value, an error (uncertainty) associated with that coordinate and the resolution of the measurement. Individual domain versions are derived from this abstract class.</description>
       <attribute>
         <vodml-id>uncertainty.CoordMeasure.coord</vodml-id>
         <name>coord</name>
@@ -841,17 +794,13 @@
     <objectType abstract="true">
       <vodml-id>uncertainty.Error</vodml-id>
       <name>Error</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The error (uncertainty) of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension. There are 1-, 2, and 3-dimensional versions of the Error.</description>
     </objectType>
 
     <objectType>
       <vodml-id>uncertainty.Error1D</vodml-id>
       <name>Error1D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The 1-D version of the error of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension.</description>
       <extends>
         <vodml-ref>stc2_measurements:uncertainty.Error</vodml-ref>
       </extends>
@@ -902,9 +851,7 @@
     <objectType abstract="true">
       <vodml-id>uncertainty.Error2D</vodml-id>
       <name>Error2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The 2-D version of the error of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension.</description>
       <extends>
         <vodml-ref>stc2_measurements:uncertainty.Error</vodml-ref>
       </extends>
@@ -955,9 +902,7 @@
     <objectType abstract="true">
       <vodml-id>uncertainty.Error3D</vodml-id>
       <name>Error3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The 3-D version of the error of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension.</description>
       <extends>
         <vodml-ref>stc2_measurements:uncertainty.Error</vodml-ref>
       </extends>
@@ -1008,17 +953,13 @@
     <objectType abstract="true">
       <vodml-id>uncertainty.Resolution</vodml-id>
       <name>Resolution</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The resolution of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension. There are 1-, 2, and 3-dimensional versions of the Resolution.</description>
     </objectType>
 
     <objectType>
       <vodml-id>uncertainty.Resolution1D</vodml-id>
       <name>Resolution1D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The 1-D version of the resolution of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension.</description>
       <extends>
         <vodml-ref>stc2_measurements:uncertainty.Resolution</vodml-ref>
       </extends>
@@ -1055,9 +996,7 @@
     <objectType abstract="true">
       <vodml-id>uncertainty.Resolution2D</vodml-id>
       <name>Resolution2D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The 2-D version of the resolution of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension.</description>
       <extends>
         <vodml-ref>stc2_measurements:uncertainty.Resolution</vodml-ref>
       </extends>
@@ -1094,9 +1033,7 @@
     <objectType abstract="true">
       <vodml-id>uncertainty.Resolution3D</vodml-id>
       <name>Resolution3D</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      <description>The 3-D version of the resolution of a measured coordinate value may be expressed by an Uncertainty attribute as a sigma or a FWHM, or any other future extension.</description>
       <extends>
         <vodml-ref>stc2_measurements:uncertainty.Resolution</vodml-ref>
       </extends>
@@ -1138,16 +1075,16 @@
     <vodml-id>CoordinateMDomains</vodml-id>
     <name>CoordinateMDomains</name>
     <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+      TODO : Missing description : please, update your UML model asap.
+    </description>
 
 
     <package>
       <vodml-id>CoordinateMDomains.genericMDomain</vodml-id>
       <name>genericMDomain</name>
       <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
       <objectType>
         <vodml-id>CoordinateMDomains.genericMDomain.GenericCoordMeasure</vodml-id>
         <name>GenericCoordMeasure</name>
@@ -1155,57 +1092,30 @@
         <extends>
           <vodml-ref>stc2_measurements:uncertainty.CoordMeasure</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.genericMDomain.GenericCoordMeasure.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordValue</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.genericMDomain.GenericCoordMeasure.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.genericMDomain.GenericCoordMeasure.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
     </package>
@@ -1216,8 +1126,8 @@
       <vodml-id>CoordinateMDomains.pixelMDomain</vodml-id>
       <name>pixelMDomain</name>
       <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
       <objectType>
         <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure1D</vodml-id>
         <name>PixelCoordinateMeasure1D</name>
@@ -1225,57 +1135,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure1D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.pixelDomain.PixelCoord1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure1D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure1D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
       <objectType>
@@ -1285,57 +1168,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure2D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.pixelDomain.PixelCoord2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure2D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure2D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
       <objectType>
@@ -1345,57 +1201,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure3D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.pixelDomain.PixelCoord3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure3D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure3D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
       <objectType abstract="true">
@@ -1415,29 +1244,20 @@
       <vodml-id>CoordinateMDomains.polarizationMDomain</vodml-id>
       <name>polarizationMDomain</name>
       <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
       <objectType>
         <vodml-id>CoordinateMDomains.polarizationMDomain.PolCoord</vodml-id>
         <name>PolCoord</name>
-        <description>The Polarization coordinate object contains the coordinate value and the Polarization Tyoe.</description>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.polarizationMDomain.PolCoord.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <description>The Polarization coordinate object contains the coordinate value and the Polarization Type. The polarization coordinates are not measured coordinate values, as they are enumerated. Consequently, there are no errors, uncertainties, or resolutions associated with them.</description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolCoordValue</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>1</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
     </package>
@@ -1448,8 +1268,8 @@
       <vodml-id>CoordinateMDomains.redshiftMDomain</vodml-id>
       <name>redshiftMDomain</name>
       <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
       <objectType>
         <vodml-id>CoordinateMDomains.redshiftMDomain.RedshiftCoordMeasure</vodml-id>
         <name>RedshiftCoordMeasure</name>
@@ -1457,57 +1277,30 @@
         <extends>
           <vodml-ref>stc2_measurements:uncertainty.CoordMeasure</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.redshiftMDomain.RedshiftCoordMeasure.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.redshiftDomain.RedshiftValue</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.redshiftMDomain.RedshiftCoordMeasure.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.redshiftMDomain.RedshiftCoordMeasure.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
     </package>
@@ -1518,8 +1311,8 @@
       <vodml-id>CoordinateMDomains.spatialMDomain</vodml-id>
       <name>spatialMDomain</name>
       <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
       <objectType abstract="true">
         <vodml-id>CoordinateMDomains.spatialMDomain.Position</vodml-id>
         <name>Position</name>
@@ -1536,57 +1329,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Position</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position1D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <composition>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position1D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </composition>
-        <composition>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position1D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </composition>
+        </constraint>
       </objectType>
 
       <objectType>
@@ -1596,57 +1362,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Position</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position2D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <composition>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position2D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </composition>
-        <composition>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position2D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </composition>
+        </constraint>
       </objectType>
 
       <objectType>
@@ -1656,57 +1395,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Position</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position3D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <composition>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position3D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </composition>
-        <composition>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Position3D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </composition>
+        </constraint>
       </objectType>
 
       <objectType abstract="true">
@@ -1725,57 +1437,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Velocity</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity1D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity1D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity1D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
       <objectType>
@@ -1785,57 +1470,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Velocity</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity2D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity2D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity2D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution2D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
       <objectType>
@@ -1845,57 +1503,30 @@
         <extends>
           <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Velocity</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity3D.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity3D.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spatialMDomain.Velocity3D.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution3D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
     </package>
@@ -1906,8 +1537,8 @@
       <vodml-id>CoordinateMDomains.spectralMDomain</vodml-id>
       <name>spectralMDomain</name>
       <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
       <objectType>
         <vodml-id>CoordinateMDomains.spectralMDomain.SpectralCoordMeasure</vodml-id>
         <name>SpectralCoordMeasure</name>
@@ -1915,57 +1546,30 @@
         <extends>
           <vodml-ref>stc2_measurements:uncertainty.CoordMeasure</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spectralMDomain.SpectralCoordMeasure.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.spectralDomain.SpectralValue</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spectralMDomain.SpectralCoordMeasure.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.spectralMDomain.SpectralCoordMeasure.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
     </package>
@@ -1976,8 +1580,8 @@
       <vodml-id>CoordinateMDomains.timeMDomain</vodml-id>
       <name>timeMDomain</name>
       <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
       <objectType>
         <vodml-id>CoordinateMDomains.timeMDomain.TimeMeasure</vodml-id>
         <name>TimeMeasure</name>
@@ -1985,57 +1589,30 @@
         <extends>
           <vodml-ref>stc2_measurements:uncertainty.CoordMeasure</vodml-ref>
         </extends>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.coord</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.error</description>
-        </constraint>
-        <constraint>
-          <description>stc2_measurements:uncertainty.CoordMeasure.resolution</description>
-        </constraint>
-        <attribute>
-          <vodml-id>CoordinateMDomains.timeMDomain.TimeMeasure.coord</vodml-id>
-          <name>coord</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_coordinates:CoordinateDomains.timeDomain.TimeStamp</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.timeMDomain.TimeMeasure.error</vodml-id>
-          <name>error</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.error</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Error1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>CoordinateMDomains.timeMDomain.TimeMeasure.resolution</vodml-id>
-          <name>resolution</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
+        </constraint>
+        <constraint xsi:type="vo-dml:SubsettedRole">
+          <role>
+            <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.resolution</vodml-ref>
+          </role>
           <datatype>
             <vodml-ref>stc2_measurements:uncertainty.Resolution1D</vodml-ref>
           </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
+        </constraint>
       </objectType>
 
     </package>
