@@ -1,0 +1,24 @@
+def modelsFolder = "file:../models"
+def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"
+
+def coordsLocation = new URL("$modelsFolder/STC_coords-v2.0.vo-dml.xml")
+def measLocation = new URL("$modelsFolder/STC_meas-v2.0.vo-dml.xml")
+def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: measLocation)
+    model(vodmlURL: ivoaLocation)
+
+    // RA/DEC position in ICRS
+    instance(type: "meas:SkyPosition") {
+        instance (role: "coord", type: "coords:domain.spatial.CelestialCoord") {
+            instance(role: "ra", value: 12.9768538031, unit: "deg")
+            instance(role: "dec", value: -72.9580158133, unit:"deg")
+            reference(role: "frame") {
+                // Eventually, this should be a URI
+                remote "file://./standard-frames.vot#ICRS_FRAME"
+            }
+        }
+    }
+}

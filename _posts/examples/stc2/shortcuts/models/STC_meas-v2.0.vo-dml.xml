@@ -1,0 +1,1233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 ../xsd/vo-dml-v1.0.xsd">
+  <name>meas</name>
+  <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+  <uri/>
+  <title>Astronomical Measurements Model</title>
+  <author>Arnold Rots, Mark Cresitello-Dittmar</author>
+  <version>2.0</version>
+  <previousVersion>0.x</previousVersion>
+  <lastModified>2017-10-05T14:59:09</lastModified>
+  <import>
+    <name>ivoa</name>
+    <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>
+    <documentationURL>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA.html</documentationURL>
+  </import>
+  <import>
+    <name>coords</name>
+    <url>file:///data/vao/staff/mcd/docs/models/dm/STC/vo-dml/STC_coords_alt2-v2.0.vo-dml.xml</url>
+    <documentationURL>file:///data/vao/staff/mcd/docs/models/dm/STC/vo-dml/STC_coords_alt2-v2.0.html</documentationURL>
+  </import>
+  <dataType abstract="true">
+    <vodml-id>Uncertainty</vodml-id>
+    <name>Uncertainty</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+  </dataType>
+
+  <dataType abstract="true">
+    <vodml-id>Uncertainty1D</vodml-id>
+    <name>Uncertainty1D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty</vodml-ref>
+    </extends>
+  </dataType>
+
+  <dataType abstract="true">
+    <vodml-id>Uncertainty2D</vodml-id>
+    <name>Uncertainty2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty</vodml-ref>
+    </extends>
+  </dataType>
+
+  <dataType abstract="true">
+    <vodml-id>Uncertainty3D</vodml-id>
+    <name>Uncertainty3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty</vodml-ref>
+    </extends>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Symmetrical1D</vodml-id>
+    <name>Symmetrical1D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty1D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Symmetrical1D.radius</vodml-id>
+      <name>radius</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Asymmetrical1D</vodml-id>
+    <name>Asymmetrical1D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty1D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Asymmetrical1D.plus</vodml-id>
+      <name>plus</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Asymmetrical1D.minus</vodml-id>
+      <name>minus</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Bounds1D</vodml-id>
+    <name>Bounds1D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty1D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Bounds1D.loLimit</vodml-id>
+      <name>loLimit</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Bounds1D.hiLimit</vodml-id>
+      <name>hiLimit</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Symmetrical2D</vodml-id>
+    <name>Symmetrical2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty2D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Symmetrical2D.radius</vodml-id>
+      <name>radius</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Asymmetrical2D</vodml-id>
+    <name>Asymmetrical2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty2D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Asymmetrical2D.plus</vodml-id>
+      <name>plus</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>2</minOccurs>
+        <maxOccurs>2</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Asymmetrical2D.minus</vodml-id>
+      <name>minus</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>2</minOccurs>
+        <maxOccurs>2</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Bounds2D</vodml-id>
+    <name>Bounds2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty2D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Bounds2D.loLimit</vodml-id>
+      <name>loLimit</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>2</minOccurs>
+        <maxOccurs>2</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Bounds2D.hiLimit</vodml-id>
+      <name>hiLimit</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>2</minOccurs>
+        <maxOccurs>2</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Symmetrical3D</vodml-id>
+    <name>Symmetrical3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty3D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Symmetrical3D.radius</vodml-id>
+      <name>radius</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Asymmetrical3D</vodml-id>
+    <name>Asymmetrical3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty3D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Asymmetrical3D.plus</vodml-id>
+      <name>plus</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>3</minOccurs>
+        <maxOccurs>3</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Asymmetrical3D.minus</vodml-id>
+      <name>minus</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>3</minOccurs>
+        <maxOccurs>3</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Bounds3D</vodml-id>
+    <name>Bounds3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty3D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Bounds3D.loLimit</vodml-id>
+      <name>loLimit</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>3</minOccurs>
+        <maxOccurs>3</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Bounds3D.hiLimit</vodml-id>
+      <name>hiLimit</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>3</minOccurs>
+        <maxOccurs>3</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Ellipse</vodml-id>
+    <name>Ellipse</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty2D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Ellipse.semiAxis</vodml-id>
+      <name>semiAxis</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>2</minOccurs>
+        <maxOccurs>2</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Ellipse.posAngle</vodml-id>
+      <name>posAngle</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Ellipsoid</vodml-id>
+    <name>Ellipsoid</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty3D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Ellipsoid.semiAxis</vodml-id>
+      <name>semiAxis</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>3</minOccurs>
+        <maxOccurs>3</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Ellipsoid.posAngle</vodml-id>
+      <name>posAngle</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:RealQuantity</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>2</minOccurs>
+        <maxOccurs>2</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType abstract="true">
+    <vodml-id>Matrix</vodml-id>
+    <name>Matrix</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Matrix2x2</vodml-id>
+    <name>Matrix2x2</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Matrix</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Matrix2x2.m11</vodml-id>
+      <name>m11</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix2x2.m12</vodml-id>
+      <name>m12</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix2x2.m21</vodml-id>
+      <name>m21</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix2x2.m22</vodml-id>
+      <name>m22</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>Matrix3x3</vodml-id>
+    <name>Matrix3x3</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Matrix</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>Matrix3x3.m11</vodml-id>
+      <name>m11</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m12</vodml-id>
+      <name>m12</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m13</vodml-id>
+      <name>m13</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m21</vodml-id>
+      <name>m21</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m22</vodml-id>
+      <name>m22</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m23</vodml-id>
+      <name>m23</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m31</vodml-id>
+      <name>m31</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m32</vodml-id>
+      <name>m32</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>Matrix3x3.m33</vodml-id>
+      <name>m33</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:real</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>CovarianceMatrix2D</vodml-id>
+    <name>CovarianceMatrix2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty2D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>CovarianceMatrix2D.matrix</vodml-id>
+      <name>matrix</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Matrix2x2</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <dataType>
+    <vodml-id>CovarianceMatrix3D</vodml-id>
+    <name>CovarianceMatrix3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Uncertainty3D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>CovarianceMatrix3D.matrix</vodml-id>
+      <name>matrix</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Matrix3x3</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </dataType>
+
+  <objectType abstract="true">
+    <vodml-id>CoordMeasure</vodml-id>
+    <name>CoordMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <attribute>
+      <vodml-id>CoordMeasure.coord</vodml-id>
+      <name>coord</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>coords:Coordinate</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <composition>
+      <vodml-id>CoordMeasure.error</vodml-id>
+      <name>error</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Error</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </composition>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>Error</vodml-id>
+    <name>Error</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>Error1D</vodml-id>
+    <name>Error1D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Error</vodml-ref>
+    </extends>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>Error2D</vodml-id>
+    <name>Error2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Error</vodml-ref>
+    </extends>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>Error3D</vodml-id>
+    <name>Error3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Error</vodml-ref>
+    </extends>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>BasicError1D</vodml-id>
+    <name>BasicError1D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Error1D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>BasicError1D.statError</vodml-id>
+      <name>statError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty1D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>BasicError1D.sysError</vodml-id>
+      <name>sysError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty1D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>BasicError1D.ranError</vodml-id>
+      <name>ranError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty1D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>BasicError2D</vodml-id>
+    <name>BasicError2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Error2D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>BasicError2D.statError</vodml-id>
+      <name>statError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty2D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>BasicError2D.sysError</vodml-id>
+      <name>sysError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty2D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>BasicError2D.ranError</vodml-id>
+      <name>ranError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty2D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>BasicError3D</vodml-id>
+    <name>BasicError3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Error3D</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>BasicError3D.statError</vodml-id>
+      <name>statError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty3D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>BasicError3D.sysError</vodml-id>
+      <name>sysError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty3D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <attribute>
+      <vodml-id>BasicError3D.ranError</vodml-id>
+      <name>ranError</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Uncertainty3D</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </objectType>
+
+  <objectType>
+    <vodml-id>GenericCoordMeasure</vodml-id>
+    <name>GenericCoordMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:CoordMeasure</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:GenericCoordValue</vodml-ref>
+      </datatype>
+    </constraint>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.error</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>meas:Error1D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>Position</vodml-id>
+    <name>Position</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:CoordMeasure</vodml-ref>
+    </extends>
+  </objectType>
+
+  <objectType>
+    <vodml-id>Position1D</vodml-id>
+    <name>Position1D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Position</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.spatial.SpatialCoordValue</vodml-ref>
+      </datatype>
+    </constraint>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.error</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>meas:Error1D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>Position2D</vodml-id>
+    <name>Position2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Position</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.error</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>meas:Error2D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>Position3D</vodml-id>
+    <name>Position3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Position</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.spatial.SpatialCoord3D</vodml-ref>
+      </datatype>
+    </constraint>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.error</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>meas:Error3D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>SpectralCoordMeasure</vodml-id>
+    <name>SpectralCoordMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:CoordMeasure</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.spectral.SpectralValue</vodml-ref>
+      </datatype>
+    </constraint>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.error</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>meas:Error1D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>TimeMeasure</vodml-id>
+    <name>TimeMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:CoordMeasure</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.error</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>meas:Error1D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>Polarization</vodml-id>
+    <name>Polarization</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <attribute>
+      <vodml-id>Polarization.coord</vodml-id>
+      <name>coord</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>coords:domain.polarization.PolCoordValue</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+  </objectType>
+
+  <objectType>
+    <vodml-id>RedshiftCoordMeasure</vodml-id>
+    <name>RedshiftCoordMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:CoordMeasure</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.redshift.RedshiftValue</vodml-ref>
+      </datatype>
+    </constraint>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.error</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>meas:Error1D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>GenPosition2D</vodml-id>
+    <name>GenPosition2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Position2D</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.spatial.SpatialCoord2D</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>SkyPosition</vodml-id>
+    <name>SkyPosition</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Position2D</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.spatial.SkyCoord</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>GenTimeMeasure</vodml-id>
+    <name>GenTimeMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:TimeMeasure</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.temporal.TimeOffset</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>StdTimeMeasure</vodml-id>
+    <name>StdTimeMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:TimeMeasure</vodml-ref>
+    </extends>
+    <constraint xsi:type="vo-dml:SubsettedRole">
+      <role>
+        <vodml-ref>meas:CoordMeasure.coord</vodml-ref>
+      </role>
+      <datatype>
+        <vodml-ref>coords:domain.temporal.TimeStamp</vodml-ref>
+      </datatype>
+    </constraint>
+  </objectType>
+
+</vo-dml:model>

@@ -1,0 +1,40 @@
+def modelsFolder = "file:../models"
+def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"
+
+def coordsLocation = new URL("$modelsFolder/STC_coords-v2.0.vo-dml.xml")
+def measLocation = new URL("$modelsFolder/STC_meas-v2.0.vo-dml.xml")
+def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: measLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "coords:CoordSpace") {
+        // NOTE: In this case there is no reference to a frame, as the frame would be empty
+        // Maybe it should optionally point to a standard frame instance?
+        instance(role: "axisGroup") {
+            instance(id: "_MAG_AXIS", role: "axis", type: "coords:ContinuousAxis") {
+                instance role: "name", value: "mag"
+                instance role: "domainMin", value: "-Inf", type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: "+Inf", type: "ivoa:RealQuantity"
+                instance role: "cyclic", value: "false"
+            }
+        }
+    }
+
+    instance(type: "meas:GenericCoordMeasure") {
+        instance(role: "coord", type: "coords:PhysicalCoordValue") {
+            instance role: "cval", value: "-0.28", type: "ivoa:RealQuantity"
+            reference(role: "axis") {
+                idref "_MAG_AXIS"
+            }
+        }
+        instance(role: "error", type: "meas:BasicError1D") {
+            instance(role: "statError", type: "meas:Asymmetrical1D") {
+                instance role: "plus", value: 9.85e-05
+                instance role: "minus", value: 0.0001752
+            }
+        }
+    }
+}
