@@ -9,101 +9,101 @@ dmInstance {
     model(vodmlURL: coordsLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(id: "FK4_B1950_FRAME", type: "stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame") {
+    instance(id: "FK4_B1950_FRAME", type: "stc2_coordinates:domain.space.SpaceFrame") {
         instance role: "spaceRefFrame", value: "FK4"
         instance(role: "equinox") {
             instance role: "type", value: "B"
             instance role: "year", value: "1950.0"
         }
-        instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.spatialDomain.Spherical") {
+        instance(role: "coordSpace", type: "stc2_coordinates:domain.space.Spherical") {
             instance(role: "coordAxis", id: "FK4_B1950_RA_AXIS") {
                 instance role: "name", value: "ra"
-                instance role: "domainMin", value: 0.0, unit: "deg"
-                instance role: "domainMax", value: 360.0, unit: "deg"
+                instance role: "domainMin", value: 0.0, unit: "deg", type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: 360.0, unit: "deg", type: "ivoa:RealQuantity"
             }
             instance(role: "coordAxis", id: "FK4_B1950_DEC_AXIS") {
                 instance role: "name", value: "dec"
-                instance role: "domainMin", value: -90.0, unit: "deg"
-                instance role: "domainMax", value: 90.0, unit: "deg"
+                instance role: "domainMin", value: -90.0, unit: "deg", type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: 90.0, unit: "deg", type: "ivoa:RealQuantity"
             }
         }
     }
 
-    instance(id: "FK4_J2000_FRAME", type: "stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame") {
+    instance(id: "FK4_J2000_FRAME", type: "stc2_coordinates:domain.space.SpaceFrame") {
         instance role: "spaceRefFrame", value: "FK4"
         instance(role: "equinox") {
             instance role: "type", value: "J"
             instance role: "year", value: "2000.0"
         }
-        instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.spatialDomain.Spherical") {
+        instance(role: "coordSpace", type: "stc2_coordinates:domain.space.Spherical") {
             instance(role: "coordAxis", id: "FK4_J2000_RA_AXIS") {
                 instance role: "name", value: "ra"
-                instance role: "domainMin", value: 0.0, unit: "deg"
-                instance role: "domainMax", value: 360.0, unit: "deg"
+                instance role: "domainMin", value: 0.0, unit: "deg", type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: 360.0, unit: "deg", type: "ivoa:RealQuantity"
             }
             instance(role: "coordAxis", id: "FK4_J2000_DEC_AXIS") {
                 instance role: "name", value: "dec"
-                instance role: "domainMin", value: -90.0, unit: "deg"
-                instance role: "domainMax", value: 90.0, unit: "deg"
+                instance role: "domainMin", value: -90.0, unit: "deg", type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: 90.0, unit: "deg", type: "ivoa:RealQuantity"
             }
         }
     }
 
-    instance(id: "ICRS_FRAME", type: "stc2_coordinates:CoordinateDomains.spatialDomain.SpaceFrame") {
+    instance(id: "ICRS_FRAME", type: "stc2_coordinates:domain.space.SpaceFrame") {
         instance role: "spaceRefFrame", value: "ICRS"
 
-        instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.spatialDomain.Spherical") {
+        instance(role: "coordSpace", type: "stc2_coordinates:domain.space.Spherical") {
             instance(role: "coordAxis", id: "ICRS_RA_AXIS") {
                 instance role: "name", value: "ra"
-                instance role: "domainMin", value: 0.0, unit: "deg"
-                instance role: "domainMax", value: 360.0, unit: "deg"
+                instance role: "domainMin", value: 0.0, unit: "deg", type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: 360.0, unit: "deg", type: "ivoa:RealQuantity"
             }
             instance(role: "coordAxis", id: "ICRS_DEC_AXIS") {
                 instance role: "name", value: "dec"
-                instance role: "domainMin", value: -90.0, unit: "deg"
-                instance role: "domainMax", value: 90.0, unit: "deg"
+                instance role: "domainMin", value: -90.0, unit: "deg", type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: 90.0, unit: "deg", type: "ivoa:RealQuantity"
             }
         }
     }
 
-    instance(id: "TT_FRAME", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame") {
+    instance(id: "TT_FRAME", type: "stc2_coordinates:domain.time.TimeFrame") {
         instance role: "timeScale", value: "TT"
 
-        instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace") {
+        instance(role: "coordSpace", type: "stc2_coordinates:domain.time.TimeSpace") {
             instance(role: "coordAxis", id: "TT_AXIS") {
                 instance role: "name", value: "time"
-                instance role: "domainMin", value: 0
-                instance role: "domainMax", value: "+Inf"
+                instance role: "domainMin", value: 0, type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: "+Inf", type: "ivoa:RealQuantity"
             }
         }
     }
 
-    instance(id: "JD_FRAME", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame") {
+    instance(id: "JD_FRAME", type: "stc2_coordinates:domain.time.TimeFrame") {
         instance role: "timeScale", value: "TT"
 
-        instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace") {
+        instance(role: "coordSpace", type: "stc2_coordinates:domain.time.TimeSpace") {
             instance(role: "coordAxis", id: "JD_TT_AXIS") {
                 instance role: "name", value: "jd"
-                instance role: "domainMin", value: 0
-                instance role: "domainMax", value: "+Inf"
+                instance role: "domainMin", value: 0, type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: "+Inf", type: "ivoa:RealQuantity"
             }
         }
     }
 
-    instance(id: "MJD_FRAME", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame") {
+    instance(id: "MJD_FRAME", type: "stc2_coordinates:domain.time.TimeFrame") {
         instance role: "timeScale", value: "TT"
-        instance(role: "timeOrigin", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset") {
+        instance(role: "timeOrigin", type: "stc2_coordinates:domain.time.TimeOffset") {
             instance role: "cval", value: 2400000.5
             reference(role: "coordAxis") {
                 idref("JD_TT_AXIS")
             }
         }
 
-        instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace") {
+        instance(role: "coordSpace", type: "stc2_coordinates:domain.time.TimeSpace") {
             instance(role: "coordAxis", id: "MJD_TT_AXIS") {
                 instance role: "name", value: "mjd"
-                instance role: "domainMin", value: 0
-                instance role: "domainMax", value: "+Inf"
+                instance role: "domainMin", value: 0, type: "ivoa:RealQuantity"
+                instance role: "domainMax", value: "+Inf", type: "ivoa:RealQuantity"
             }
         }
     }

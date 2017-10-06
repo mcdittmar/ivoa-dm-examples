@@ -13,11 +13,11 @@
       <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
-      <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D">
+      <INSTANCE dmtype="stc2_measurements:domain.space.Position2D">
         <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue2D">
+          <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialValue2D">
             <ATTRIBUTE dmrole="stc2_coordinates:coords.MultiCoordValue.cmpt">
-              <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue">
+              <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialCoordValue">
                 <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
                   <LITERAL value="12.9768538031" dmtype="ivoa:RealQuantity" unit="deg"/>
                 </ATTRIBUTE>
@@ -27,7 +27,7 @@
               </INSTANCE>
             </ATTRIBUTE>
             <ATTRIBUTE dmrole="stc2_coordinates:coords.MultiCoordValue.cmpt">
-              <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue">
+              <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialCoordValue">
                 <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
                   <LITERAL value="-72.9580158133" dmtype="ivoa:RealQuantity" unit="deg"/>
                 </ATTRIBUTE>

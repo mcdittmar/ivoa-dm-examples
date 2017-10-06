@@ -10,7 +10,7 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(type: "stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D") {
+    instance(type: "stc2_measurements:domain.space.Position2D") {
         instance (role: "coord") {
             instance(role: "cmpt") {
                 instance(role: "cval", value: 12.9768538031, unit: "deg")

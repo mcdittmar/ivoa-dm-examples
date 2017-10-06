@@ -13,22 +13,22 @@
       <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
-      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame">
-        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
-          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordSpace">
-            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
-              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="MAG_AXIS">
-                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
-                  <LITERAL value="mag" dmtype="ivoa:string"/>
+      <INSTANCE dmtype="stc2_coordinates:dmain.generic.GenericFrame">
+        <ATTRIBUTE dmrole="coordSpace">
+          <INSTANCE dmtype="null">
+            <ATTRIBUTE dmrole="coordAxis">
+              <INSTANCE dmtype="null" ID="MAG_AXIS">
+                <ATTRIBUTE dmrole="name">
+                  <LITERAL value="mag" dmtype="null"/>
                 </ATTRIBUTE>
               </INSTANCE>
-            </COMPOSITION>
+            </ATTRIBUTE>
           </INSTANCE>
-        </COMPOSITION>
+        </ATTRIBUTE>
       </INSTANCE>
-      <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.genericMDomain.GenericCoordMeasure">
+      <INSTANCE dmtype="stc2_measurements:domain.generic.GenericCoordMeasure">
         <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordValue">
+          <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordValue">
             <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
               <LITERAL value="-0.28" dmtype="ivoa:RealQuantity"/>
             </ATTRIBUTE>

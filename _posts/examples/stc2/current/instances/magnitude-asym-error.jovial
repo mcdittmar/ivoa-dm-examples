@@ -10,7 +10,7 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(type: "stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame") {
+    instance(type: "stc2_coordinates:dmain.generic.GenericFrame") {
         instance(role: "coordSpace") {
             instance(role: "coordAxis", id: "MAG_AXIS") {
                 instance role: "name", value: "mag"
@@ -18,7 +18,7 @@ dmInstance {
         }
     }
 
-    instance(type: "stc2_measurements:CoordinateMDomains.genericMDomain.GenericCoordMeasure") {
+    instance(type: "stc2_measurements:domain.generic.GenericCoordMeasure") {
         instance(role: "coord") {
             instance role: "cval", value: "-0.28"
             reference(role: "coordAxis") {

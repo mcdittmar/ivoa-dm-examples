@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1.0"
+<vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1.0 http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/xsd/vo-dml-v1.0.xsd">
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 ../xsd/vo-dml-v1.0.xsd">
   <name>stc2_measurements</name>
   <description>
-    TODO : Missing description : please, update your UML model asap.
-  </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
   <uri>http://ivoa.net/vodml/stc2_meas.vo-dml</uri>
   <title>STC2 Measures</title>
   <author>ahr</author>
   <version>2.0</version>
-  <lastModified>2017-09-21T15:11:49</lastModified>
+  <lastModified>2017-10-06T08:38:24</lastModified>
   <import>
     <name>ivoa</name>
     <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>
@@ -26,8 +26,8 @@
     <vodml-id>stctypes</vodml-id>
     <name>stctypes</name>
     <description>
-      TODO : Missing description : please, update your UML model asap.
-    </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
     <dataType>
       <vodml-id>stctypes.Matrix2x2</vodml-id>
       <name>Matrix2x2</name>
@@ -741,8 +741,8 @@
     <vodml-id>uncertainty</vodml-id>
     <name>uncertainty</name>
     <description>
-      TODO : Missing description : please, update your UML model asap.
-    </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
     <objectType abstract="true">
       <vodml-id>uncertainty.CoordMeasure</vodml-id>
       <name>CoordMeasure</name>
@@ -754,7 +754,7 @@
           TODO : Missing description : please, update your UML model asap.
         </description>
         <datatype>
-          <vodml-ref>stc2_coordinates:coords.CoordValue</vodml-ref>
+          <vodml-ref>stc2_coordinates:coords.BasicCoordValue</vodml-ref>
         </datatype>
         <multiplicity>
           <minOccurs>0</minOccurs>
@@ -1072,21 +1072,21 @@
 
 
   <package>
-    <vodml-id>CoordinateMDomains</vodml-id>
-    <name>CoordinateMDomains</name>
+    <vodml-id>domain</vodml-id>
+    <name>domain</name>
     <description>
-      TODO : Missing description : please, update your UML model asap.
-    </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
 
 
     <package>
-      <vodml-id>CoordinateMDomains.genericMDomain</vodml-id>
-      <name>genericMDomain</name>
+      <vodml-id>domain.generic</vodml-id>
+      <name>generic</name>
       <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <objectType>
-        <vodml-id>CoordinateMDomains.genericMDomain.GenericCoordMeasure</vodml-id>
+        <vodml-id>domain.generic.GenericCoordMeasure</vodml-id>
         <name>GenericCoordMeasure</name>
         <description>The GenericCoordMeasure object provides a full description of a measured instant in the generic coordinate space, optionally adding the known error and/or resolution to the generic coordinate value.</description>
         <extends>
@@ -1097,7 +1097,7 @@
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordValue</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.generic.GenericCoordValue</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1123,24 +1123,24 @@
 
 
     <package>
-      <vodml-id>CoordinateMDomains.pixelMDomain</vodml-id>
-      <name>pixelMDomain</name>
+      <vodml-id>domain.pixel</vodml-id>
+      <name>pixel</name>
       <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <objectType>
-        <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure1D</vodml-id>
+        <vodml-id>domain.pixel.PixelCoordinateMeasure1D</vodml-id>
         <name>PixelCoordinateMeasure1D</name>
         <description>The 1-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.pixel.PixelCoordinateMeasure</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.pixelDomain.PixelCoord1D</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.pixel.PixelCoord1D</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1162,18 +1162,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure2D</vodml-id>
+        <vodml-id>domain.pixel.PixelCoordinateMeasure2D</vodml-id>
         <name>PixelCoordinateMeasure2D</name>
         <description>The 2-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.pixel.PixelCoordinateMeasure</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.pixelDomain.PixelCoord2D</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.pixel.PixelCoord2D</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1195,18 +1195,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure3D</vodml-id>
+        <vodml-id>domain.pixel.PixelCoordinateMeasure3D</vodml-id>
         <name>PixelCoordinateMeasure3D</name>
         <description>The 3-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.pixel.PixelCoordinateMeasure</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.pixelDomain.PixelCoord3D</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.pixel.PixelCoord3D</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1228,7 +1228,7 @@
       </objectType>
 
       <objectType abstract="true">
-        <vodml-id>CoordinateMDomains.pixelMDomain.PixelCoordinateMeasure</vodml-id>
+        <vodml-id>domain.pixel.PixelCoordinateMeasure</vodml-id>
         <name>PixelCoordinateMeasure</name>
         <description>The SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
@@ -1241,13 +1241,13 @@
 
 
     <package>
-      <vodml-id>CoordinateMDomains.polarizationMDomain</vodml-id>
-      <name>polarizationMDomain</name>
+      <vodml-id>domain.polarization</vodml-id>
+      <name>polarization</name>
       <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <objectType>
-        <vodml-id>CoordinateMDomains.polarizationMDomain.PolCoord</vodml-id>
+        <vodml-id>domain.polarization.PolCoord</vodml-id>
         <name>PolCoord</name>
         <description>The Polarization coordinate object contains the coordinate value and the Polarization Type. The polarization coordinates are not measured coordinate values, as they are enumerated. Consequently, there are no errors, uncertainties, or resolutions associated with them.</description>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1255,7 +1255,7 @@
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.polarizationDomain.PolCoordValue</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.polarization.PolCoordValue</vodml-ref>
           </datatype>
         </constraint>
       </objectType>
@@ -1265,13 +1265,13 @@
 
 
     <package>
-      <vodml-id>CoordinateMDomains.redshiftMDomain</vodml-id>
-      <name>redshiftMDomain</name>
+      <vodml-id>domain.redshift</vodml-id>
+      <name>redshift</name>
       <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <objectType>
-        <vodml-id>CoordinateMDomains.redshiftMDomain.RedshiftCoordMeasure</vodml-id>
+        <vodml-id>domain.redshift.RedshiftCoordMeasure</vodml-id>
         <name>RedshiftCoordMeasure</name>
         <description>The RedshiftCoordMeasure object provides a full description of a measured instant in redshift space, optionally adding the known error and/or resolution to the redshift coordinate value.</description>
         <extends>
@@ -1282,7 +1282,7 @@
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.redshiftDomain.RedshiftValue</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.redshift.RedshiftValue</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1308,13 +1308,13 @@
 
 
     <package>
-      <vodml-id>CoordinateMDomains.spatialMDomain</vodml-id>
-      <name>spatialMDomain</name>
+      <vodml-id>domain.space</vodml-id>
+      <name>space</name>
       <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <objectType abstract="true">
-        <vodml-id>CoordinateMDomains.spatialMDomain.Position</vodml-id>
+        <vodml-id>domain.space.Position</vodml-id>
         <name>Position</name>
         <description>The SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
@@ -1323,18 +1323,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.spatialMDomain.Position1D</vodml-id>
+        <vodml-id>domain.space.Position1D</vodml-id>
         <name>Position1D</name>
         <description>The 1-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Position</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.space.Position</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.space.SpatialCoordValue</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1356,18 +1356,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.spatialMDomain.Position2D</vodml-id>
+        <vodml-id>domain.space.Position2D</vodml-id>
         <name>Position2D</name>
         <description>The 2-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Position</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.space.Position</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue2D</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.space.SpatialValue2D</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1389,18 +1389,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.spatialMDomain.Position3D</vodml-id>
+        <vodml-id>domain.space.Position3D</vodml-id>
         <name>Position3D</name>
         <description>The 3-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Position</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.space.Position</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue3D</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.space.SpatialValue3D</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1422,7 +1422,7 @@
       </objectType>
 
       <objectType abstract="true">
-        <vodml-id>CoordinateMDomains.spatialMDomain.Velocity</vodml-id>
+        <vodml-id>domain.space.Velocity</vodml-id>
         <name>Velocity</name>
         <description>The SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
@@ -1431,18 +1431,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.spatialMDomain.Velocity1D</vodml-id>
+        <vodml-id>domain.space.Velocity1D</vodml-id>
         <name>Velocity1D</name>
         <description>The 1-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Velocity</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.space.Velocity</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.space.SpatialCoordValue</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1464,18 +1464,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.spatialMDomain.Velocity2D</vodml-id>
+        <vodml-id>domain.space.Velocity2D</vodml-id>
         <name>Velocity2D</name>
         <description>The 2-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Velocity</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.space.Velocity</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue2D</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.space.SpatialValue2D</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1497,18 +1497,18 @@
       </objectType>
 
       <objectType>
-        <vodml-id>CoordinateMDomains.spatialMDomain.Velocity3D</vodml-id>
+        <vodml-id>domain.space.Velocity3D</vodml-id>
         <name>Velocity3D</name>
         <description>The 3-dimensional SpatialCoordMeasure object provides a full description of a measured instant in the spatial coordinate space, optionally adding the known error (uncertainty) and/or resolution to the spatial coordinate value.</description>
         <extends>
-          <vodml-ref>stc2_measurements:CoordinateMDomains.spatialMDomain.Velocity</vodml-ref>
+          <vodml-ref>stc2_measurements:domain.space.Velocity</vodml-ref>
         </extends>
         <constraint xsi:type="vo-dml:SubsettedRole">
           <role>
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue3D</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.space.SpatialValue3D</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1534,13 +1534,13 @@
 
 
     <package>
-      <vodml-id>CoordinateMDomains.spectralMDomain</vodml-id>
-      <name>spectralMDomain</name>
+      <vodml-id>domain.spectral</vodml-id>
+      <name>spectral</name>
       <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <objectType>
-        <vodml-id>CoordinateMDomains.spectralMDomain.SpectralCoordMeasure</vodml-id>
+        <vodml-id>domain.spectral.SpectralCoordMeasure</vodml-id>
         <name>SpectralCoordMeasure</name>
         <description>The SpectralCoordMeasure object provides a full description of a measured instant in spectral space, optionally adding the known error and/or resolution to the spectral coordinate value.</description>
         <extends>
@@ -1551,7 +1551,7 @@
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.spectralDomain.SpectralValue</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.spectral.SpectralValue</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
@@ -1577,13 +1577,13 @@
 
 
     <package>
-      <vodml-id>CoordinateMDomains.timeMDomain</vodml-id>
-      <name>timeMDomain</name>
+      <vodml-id>domain.time</vodml-id>
+      <name>time</name>
       <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
       <objectType>
-        <vodml-id>CoordinateMDomains.timeMDomain.TimeMeasure</vodml-id>
+        <vodml-id>domain.time.TimeMeasure</vodml-id>
         <name>TimeMeasure</name>
         <description>The TimeMeasure object provides a full description of a measured instant in time, optionally adding the known error and/or resolution to the time stamp.</description>
         <extends>
@@ -1594,7 +1594,7 @@
             <vodml-ref>stc2_measurements:uncertainty.CoordMeasure.coord</vodml-ref>
           </role>
           <datatype>
-            <vodml-ref>stc2_coordinates:CoordinateDomains.timeDomain.TimeStamp</vodml-ref>
+            <vodml-ref>stc2_coordinates:domain.time.TimeStamp</vodml-ref>
           </datatype>
         </constraint>
         <constraint xsi:type="vo-dml:SubsettedRole">
