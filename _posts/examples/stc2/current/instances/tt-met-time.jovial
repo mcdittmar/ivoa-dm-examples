@@ -10,16 +10,16 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(id: "MJD_FRAME", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeFrame") {
+    instance(id: "MJD_FRAME", type: "stc2_coordinates:domain.time.TimeFrame") {
         instance role: "timeScale", value: "TT"
-        instance(role: "timeOrigin", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset") {
+        instance(role: "timeOrigin", type: "stc2_coordinates:domain.time.TimeOffset") {
             instance role: "cval", value: 50814.02
             reference(role: "coordAxis") {
                 idref("file://./standard-frames.vot#MJD_TT_AXIS")
             }
         }
 
-        instance(role: "coordSpace", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeSpace") {
+        instance(role: "coordSpace", type: "stc2_coordinates:domain.time.TimeSpace") {
             instance(role: "coordAxis", id: "_MET_TIME_AXIS") {
                 instance role: "name", value: "time"
                 instance role: "domainMin", value: 0
@@ -28,9 +28,9 @@ dmInstance {
         }
     }
 
-    instance(type: "stc2_measurements:CoordinateMDomains.timeMDomain.TimeMeasure") {
+    instance(type: "stc2_measurements:domain.time.TimeMeasure") {
         instance (role: "coord") {
-            instance(role: "cmpt", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset") {
+            instance(role: "cmpt", type: "stc2_coordinates:domain.time.TimeOffset") {
                 instance role: "cval", value: "84244214.7547", unit: "s"
                 reference(role: "coordAxis") {
                     // This is not very portable or convenient. There should be a URI

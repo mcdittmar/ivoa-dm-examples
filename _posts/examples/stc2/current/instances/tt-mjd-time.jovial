@@ -10,9 +10,9 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(type: "stc2_measurements:CoordinateMDomains.timeMDomain.TimeMeasure") {
+    instance(type: "stc2_measurements:domain.time.TimeMeasure") {
         instance (role: "coord") {
-            instance(role: "cmpt", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset") {
+            instance(role: "cmpt", type: "stc2_coordinates:domain.time.TimeOffset") {
                 instance role: "cval", value: "50814.52", unit: "d"
                 reference(role: "coordAxis") {
                     // This is not very portable or convenient. There should be a URI
