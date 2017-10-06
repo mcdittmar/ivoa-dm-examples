@@ -11,6 +11,7 @@ layout: default
         <li>
             <p>
                 <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                {% if post.flavor %} <span class="post-meta">Flavor: {{ post.flavor }} - </span>{% endif %}
                 <span class="post-meta">{{ post.about }}</span>
             </p>
 
