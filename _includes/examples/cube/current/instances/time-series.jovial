@@ -15,7 +15,7 @@ dmInstance {
     model(vodmlURL: cubeLocation)
     model(vodmlURL: datasetLocation)
 
-    instance(id: "_FLUX_FRAME", type: "stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame") {
+    instance(id: "_FLUX_FRAME", type: "stc2_coordinates:domain.generic.GenericFrame") {
         instance(role: "coordSpace") {
             instance(id: "_FLUX_AXIS", role: "coordAxis") {
                 instance role: "name", value: "flux"
@@ -23,7 +23,7 @@ dmInstance {
         }
     }
 
-    instance(id: "_MAG_FRAME", type: "stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame") {
+    instance(id: "_MAG_FRAME", type: "stc2_coordinates:domain.generic.GenericFrame") {
         instance(role: "coordSpace") {
             instance(id: "_MAG_AXIS", role: "coordAxis") {
                 instance role: "name", value: "magnitude"
@@ -55,8 +55,8 @@ dmInstance {
         instance(id: "_DATA_INSTANCE", type: "cube:NDPoint") {
             instance(role: "axis", type: "cube:Observable") {
                 instance role: "dependent", value: "False"
-                instance(role: "instance", type: "stc2_measurements:CoordinateMDomains.timeMDomain.TimeMeasure") {
-                    instance(role: "coord", type: "stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset") {
+                instance(role: "instance", type: "stc2_measurements:domain.time.TimeMeasure") {
+                    instance(role: "coord", type: "stc2_coordinates:domain.time.TimeOffset") {
                         column role: "cval", id:"_col_HJD", data: [1.0, 2.0]
                         reference(role: "coordAxis") {
                             remote("file:../../../stc2/current/instances/standard-frames.vot#TT_AXIS")
@@ -66,7 +66,7 @@ dmInstance {
             }
             instance(role: "axis", type: "cube:Observable") {
                 instance role: "dependent", value: "False"
-                instance (role: "instance", type: "stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D") {
+                instance (role: "instance", type: "stc2_measurements:domain.space.Position2D") {
                     instance (role: "coord") {
                         instance(role: "cmpt") {
                             column role: "cval", id:"_col_RAJ2000", data: [10.0, 20.0]
@@ -85,7 +85,7 @@ dmInstance {
             }
             instance(role: "axis", type: "cube:Observable") {
                 instance role: "dependent", value: "True"
-                instance (role: "instance", type: "stc2_measurements:CoordinateMDomains.genericMDomain.GenericCoordMeasure") {
+                instance (role: "instance", type: "stc2_measurements:domain.generic.GenericCoordMeasure") {
                     instance(role: "coord") {
                         column role: "cval", id:"_col_FLX", data: [100.0, 200.0]
                         reference(role: "coordAxis") {
@@ -101,7 +101,7 @@ dmInstance {
             }
             instance(role: "axis", type: "cube:Observable") {
                 instance role: "dependent", value: "True"
-                instance(role: "instance", type: "stc2_measurements:CoordinateMDomains.genericMDomain.GenericCoordMeasure") {
+                instance(role: "instance", type: "stc2_measurements:domain.generic.GenericCoordMeasure") {
                     instance(role: "coord") {
                         column role: "cval", id:"_col_MAG", data: [100.1, 200.1]
                         reference(role: "coordAxis") {

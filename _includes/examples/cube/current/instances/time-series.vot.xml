@@ -21,9 +21,9 @@
       <URL>file:../models/DatasetMetadata-1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
-      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame" ID="_FLUX_FRAME">
+      <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericFrame" ID="_FLUX_FRAME">
         <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
-          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordSpace">
+          <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordSpace">
             <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
               <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="_FLUX_AXIS">
                 <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
@@ -34,9 +34,9 @@
           </INSTANCE>
         </COMPOSITION>
       </INSTANCE>
-      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericFrame" ID="_MAG_FRAME">
+      <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericFrame" ID="_MAG_FRAME">
         <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
-          <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordSpace">
+          <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordSpace">
             <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
               <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="_MAG_AXIS">
                 <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
@@ -50,8 +50,8 @@
       <INSTANCE dmtype="cube:SparseCube">
         <COMPOSITION dmrole="cube:DataProduct.coordSys">
           <INSTANCE dmtype="stc2_coordinates:coordsystem.AstroCoordSystem">
-            <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.AstroCoordSystem.refPosition">
-              <LITERAL value="TOPOCENTER" dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.Location"/>
+            <ATTRIBUTE dmrole="refPosition">
+              <LITERAL value="TOPOCENTER" dmtype="null"/>
             </ATTRIBUTE>
             <REFERENCE dmrole="stc2_coordinates:coordsystem.AstroCoordSystem.timeFrame">
               <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#TT_FRAME</REMOTEREFERENCE>
@@ -80,9 +80,9 @@
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.timeMDomain.TimeMeasure">
+              <INSTANCE dmtype="stc2_measurements:domain.time.TimeMeasure">
                 <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.timeDomain.TimeOffset">
+                  <INSTANCE dmtype="stc2_coordinates:domain.time.TimeOffset">
                     <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
                       <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#TT_AXIS</REMOTEREFERENCE>
                     </REFERENCE>
@@ -99,11 +99,11 @@
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.spatialMDomain.Position2D">
+              <INSTANCE dmtype="stc2_measurements:domain.space.Position2D">
                 <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialValue2D">
+                  <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialValue2D">
                     <ATTRIBUTE dmrole="stc2_coordinates:coords.MultiCoordValue.cmpt">
-                      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue">
+                      <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialCoordValue">
                         <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
                           <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#FK4_J2000_RA_AXIS</REMOTEREFERENCE>
                         </REFERENCE>
@@ -113,7 +113,7 @@
                       </INSTANCE>
                     </ATTRIBUTE>
                     <ATTRIBUTE dmrole="stc2_coordinates:coords.MultiCoordValue.cmpt">
-                      <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.spatialDomain.SpatialCoordValue">
+                      <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialCoordValue">
                         <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
                           <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#FK4_J2000_DEC_AXIS</REMOTEREFERENCE>
                         </REFERENCE>
@@ -132,9 +132,9 @@
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.genericMDomain.GenericCoordMeasure">
+              <INSTANCE dmtype="stc2_measurements:domain.generic.GenericCoordMeasure">
                 <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordValue">
+                  <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordValue">
                     <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
                       <IDREF>_FLUX_AXIS</IDREF>
                     </REFERENCE>
@@ -162,9 +162,9 @@
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:CoordinateMDomains.genericMDomain.GenericCoordMeasure">
+              <INSTANCE dmtype="stc2_measurements:domain.generic.GenericCoordMeasure">
                 <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:CoordinateDomains.genericDomain.GenericCoordValue">
+                  <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordValue">
                     <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
                       <IDREF>_MAG_AXIS</IDREF>
                     </REFERENCE>
