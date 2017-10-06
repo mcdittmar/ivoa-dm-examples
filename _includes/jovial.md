@@ -1,8 +1,8 @@
 
 {% capture filename %}/examples/{{page.model}}/{{page.flavor}}/instances/{{include.name}}.jovial{% endcapture %}
 
-File: [{{ filename }} ]({{ filename }})
+File: [/assets{{ filename }} ](/assets{{ filename }})
 
 ``` groovy
-{% include_relative {{ filename }} %}
+{% include {{ filename }} %}
 ```
