@@ -11,7 +11,7 @@
   <author>Arnold Rots, Mark Cresitello-Dittmar</author>
   <version>2.0</version>
   <previousVersion>0.x</previousVersion>
-  <lastModified>2017-10-05T14:59:09</lastModified>
+  <lastModified>2017-10-06T14:58:02</lastModified>
   <import>
     <name>ivoa</name>
     <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>

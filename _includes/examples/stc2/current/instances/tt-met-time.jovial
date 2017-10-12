@@ -10,7 +10,7 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(id: "MJD_FRAME", type: "stc2_coordinates:domain.time.TimeFrame") {
+    instance(id: "MET_FRAME", type: "stc2_coordinates:domain.time.TimeFrame") {
         instance role: "timeScale", value: "TT"
         instance(role: "timeOrigin", type: "stc2_coordinates:domain.time.TimeOffset") {
             instance role: "cval", value: 50814.02
@@ -29,13 +29,11 @@ dmInstance {
     }
 
     instance(type: "stc2_measurements:domain.time.TimeMeasure") {
-        instance (role: "coord") {
-            instance(role: "cmpt", type: "stc2_coordinates:domain.time.TimeOffset") {
-                instance role: "cval", value: "84244214.7547", unit: "s"
-                reference(role: "coordAxis") {
-                    // This is not very portable or convenient. There should be a URI
-                    idref "_MET_TIME_AXIS"
-                }
+        instance (role: "coord", type: "stc2_coordinates:domain.time.TimeOffset") {
+            instance role: "cval", value: "84244214.7547", unit: "s"
+            reference(role: "coordAxis") {
+                // This is not very portable or convenient. There should be a URI
+                idref "_MET_TIME_AXIS"
             }
         }
     }

@@ -15,16 +15,9 @@
     <GLOBALS>
       <INSTANCE dmtype="stc2_measurements:domain.time.TimeMeasure">
         <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-          <INSTANCE dmtype="stc2_coordinates:domain.time.TimeStamp">
-            <ATTRIBUTE dmrole="cmpt">
-              <INSTANCE dmtype="stc2_coordinates:domain.time.ISOtime">
-                <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
-                  <LITERAL value="2000-09-02T01:10:14" dmtype="stc2_coordinates:domain.time.DatetimeQuantity"/>
-                </ATTRIBUTE>
-                <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
-                  <REMOTEREFERENCE>file://./standard-frames.vot#TT_AXIS</REMOTEREFERENCE>
-                </REFERENCE>
-              </INSTANCE>
+          <INSTANCE dmtype="stc2_coordinates:domain.time.ISOtime">
+            <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
+              <LITERAL value="2000-09-02T01:10:14" dmtype="stc2_coordinates:domain.time.DatetimeQuantity"/>
             </ATTRIBUTE>
           </INSTANCE>
         </ATTRIBUTE>

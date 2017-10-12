@@ -11,9 +11,8 @@ dmInstance {
     model(vodmlURL: ivoaLocation)
 
     instance(type: "stc2_measurements:domain.time.TimeMeasure") {
-        instance (role: "coord") {
-            instance(role: "cmpt", type: "stc2_coordinates:domain.time.ISOtime") {
-                instance role: "cval", value: "2000-09-02T01:10:14"
+        instance (role: "coord", type: "stc2_coordinates:domain.time.ISOtime") {
+            instance(role: "cval", value: "2000-09-02T01:10:14") {
                 reference(role: "coordAxis") {
                     // This is not very portable or convenient. There should be a URI
                     remote "file://./standard-frames.vot#TT_AXIS"

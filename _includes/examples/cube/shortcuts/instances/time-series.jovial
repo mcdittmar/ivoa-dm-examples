@@ -1,0 +1,105 @@
+def modelsFolder = "file:../models"
+def stcModelsFolder = "file:../../../stc2/shortcuts/models"
+def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"
+
+def coordsLocation = new URL("$stcModelsFolder/STC_coords-v2.0.vo-dml.xml")
+def measLocation = new URL("$stcModelsFolder/STC_meas-v2.0.vo-dml.xml")
+def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml")
+def cubeLocation =  new URL("$modelsFolder/Cube-1.0.vo-dml.xml")
+def datasetLocation = new URL("$modelsFolder/DatasetMetadata-1.0.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: measLocation)
+    model(vodmlURL: ivoaLocation)
+    model(vodmlURL: cubeLocation)
+    model(vodmlURL: datasetLocation)
+
+    instance(id: "_TT_FRAME", type: "coords:GenericCoordFrame") {
+        instance role: "refPosition", value: "TOPOCENTER"
+        instance role: "timeScale", value: "TT"
+    }
+
+    instance(id: "_FK4_J2000_FRAME", type: "coords:domain.spatial.SpaceFrame") {
+        instance role: "spaceRefFrame", value: "FK4"
+        instance role: "equinox", value: "J2000"
+        instance role: "refPosition", value: "TOPOCENTER"
+    }
+
+    instance(type: "cube:SparseCube") {
+        composition role: "data", ref: "_DATA_INSTANCE"
+    }
+
+    table(id: "_DATA_TABLE") {
+        instance(id: "_DATA_INSTANCE", type: "cube:NDPoint") {
+
+            // TIME
+            instance(role: "axis", type: "cube:Observable") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "instance", type: "meas:domain.time.StdTimeMeasure") {
+                    instance(role: "coord", type: "coords:domain.time.ISOTime") {
+                        column role: "date", id:"_col_TIME", data: ["20170201T11:36:52", "20170201T11:36:53"]
+
+                        reference role: "frame", idref: "_TT_FRAME"
+                        // It's default, it could be omitted
+                        reference role: "axis", remote: "ivo://stc/standard-systems#STD-1D-AXIS"
+                    }
+                    instance role: "error"
+                }
+            }
+
+            // POSITION
+            instance(role: "axis", type: "cube:Observable") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "instance", type: "meas:SkyPosition") {
+                    instance (role: "coord", type: "coords:domain.spatial.CelestialCoord") {
+                        column role: "ra", id: "_col_RAJ2000", data: [10.0, 20.0]
+                        column role: "dec", id: "_col_DECJ2000", data: [10.1, 20.1]
+                        reference(role: "frame") {
+                            // Eventually, this should be a URI
+                            idref "_FK4_J2000_FRAME"
+                        }
+                    }
+                }
+            }
+
+            // FLUX
+            instance(role: "axis", type: "cube:Observable") {
+                instance role: "dependent", value: "True"
+
+                instance(role: "instance", type: "meas:GenericCoordMeasure") {
+                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                        column role: "cval", id: "_col_FLUX", type: "ivoa:RealQuantity", data: [100.0, 200.0]
+                        // Implicit standard 1d axis reference
+                        // Implicit topocenter frame reference
+                    }
+                    instance(role: "error", type: "meas:BasicError1D") {
+                        instance(role: "statError", type: "meas:Symmetrical1D") {
+                            column role: "radius", id: "_col_FLUX_ERROR", type: "ivoa:RealQuantity", data: [0.1, 0.2]
+                        }
+                    }
+                }
+            }
+
+            // MAGNITUDE
+            instance(role: "axis", type: "cube:Observable") {
+                instance role: "dependent", value: "True"
+
+                instance(role: "instance", type: "meas:GenericCoordMeasure") {
+                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                        column role: "cval", id: "_col_MAG", type: "ivoa:RealQuantity", data: [100.1, 200.1]
+                        // Implicit standard 1d axis reference
+                        // Implicit topocenter frame reference
+                    }
+                    instance(role: "error", type: "meas:BasicError1D") {
+                        instance(role: "statError", type: "meas:Symmetrical1D") {
+                            column role: "radius", id: "_col_MAG_ERROR", type: "ivoa:RealQuantity", data: [1.1, 1.2]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

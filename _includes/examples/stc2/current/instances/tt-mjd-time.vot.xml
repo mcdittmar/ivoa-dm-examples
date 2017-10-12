@@ -15,17 +15,13 @@
     <GLOBALS>
       <INSTANCE dmtype="stc2_measurements:domain.time.TimeMeasure">
         <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-          <INSTANCE dmtype="stc2_coordinates:domain.time.TimeStamp">
-            <ATTRIBUTE dmrole="cmpt">
-              <INSTANCE dmtype="stc2_coordinates:domain.time.TimeOffset">
-                <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
-                  <LITERAL value="50814.52" dmtype="ivoa:RealQuantity" unit="d"/>
-                </ATTRIBUTE>
-                <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
-                  <REMOTEREFERENCE>file://./standard-frames.vot#JD_TT_AXIS</REMOTEREFERENCE>
-                </REFERENCE>
-              </INSTANCE>
+          <INSTANCE dmtype="stc2_coordinates:domain.time.JD">
+            <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
+              <LITERAL value="2450814.52" dmtype="ivoa:RealQuantity" unit="d"/>
             </ATTRIBUTE>
+            <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
+              <REMOTEREFERENCE>file://./standard-frames.vot#JD_TT_AXIS</REMOTEREFERENCE>
+            </REFERENCE>
           </INSTANCE>
         </ATTRIBUTE>
       </INSTANCE>

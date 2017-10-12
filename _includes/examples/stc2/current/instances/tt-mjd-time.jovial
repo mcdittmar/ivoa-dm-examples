@@ -11,13 +11,11 @@ dmInstance {
     model(vodmlURL: ivoaLocation)
 
     instance(type: "stc2_measurements:domain.time.TimeMeasure") {
-        instance (role: "coord") {
-            instance(role: "cmpt", type: "stc2_coordinates:domain.time.TimeOffset") {
-                instance role: "cval", value: "50814.52", unit: "d"
-                reference(role: "coordAxis") {
-                    // This is not very portable or convenient. There should be a URI
-                    remote "file://./standard-frames.vot#JD_TT_AXIS"
-                }
+        instance (role: "coord", type: "stc2_coordinates:domain.time.MJD") {
+            instance role: "cval", value: "50814.52", unit: "d"
+            reference(role: "coordAxis") {
+                // This is not very portable or convenient. There should be a URI
+                remote "file://./standard-frames.vot#MJD_TT_AXIS"
             }
         }
     }
