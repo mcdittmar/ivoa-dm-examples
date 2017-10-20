@@ -11,7 +11,7 @@ dmInstance {
     model(vodmlURL: ivoaLocation)
 
     instance(type: "meas:domain.temporal.TimeMeasure") {
-        instance (role: "coord", type: "coords:domain.temporal.ISOtime") {
+        instance (role: "coord", type: "coords:domain.temporal.ISOTime") {
             instance role: "date", value: "2000-09-02T01:10:14"
         }
     }

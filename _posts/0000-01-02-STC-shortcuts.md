@@ -85,53 +85,26 @@ For comparison, here is a position in `ICRS` with a symmetric 2D error, i.e. a c
 
 {% include examples.md name='position-icrs-symmetric' %}
 
-{% comment %}
-
 Time measurements
 -----------------
-
-{% include examples.md name='tt-iso-time' %}
 
 ### TT ISO Time
 
 #### DSL
 
-{% include jovial.md name='tt-iso-time' %}
+{% include examples.md name='tt-iso-time' %}
 
-#### VOTable
+### TT JD Time
 
-{% include votable.md name='tt-iso-time' %}
+{% include examples.md name='tt-jd-time' %}
 
-### TT JD Time, DSL
+### TT MJD Time
 
-{% include jovial.md name='tt-jd-time' %}
+{% include examples.md name='tt-mjd-time' %}
 
-### TT JD Time, VOTable
+### TT MET Time
 
-{% include votable.md name='tt-jd-time' %}
-
-### TT MJD Time, DSL
-
-{% include jovial.md name='tt-mjd-time' %}
-
-### TT MJD Time, VOTable
-
-{% include votable.md name='tt-mjd-time' %}
-
-Custom Frames
--------------
-
-The following example shows how to define a custom time frame in terms of standard ones.
-
-### TT MET Time, DSL
-
-{% include jovial.md name='tt-met-time' %}
-
-### TT MET Time, VOTable
-
-{% include votable.md name='tt-met-time' %}
-
-{% endcomment %}
+{% include examples.md name='tt-met-time' %}
 
 Other Measurements
 ------------------
