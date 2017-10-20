@@ -59,25 +59,13 @@ depends on the final version of the model document. One could decide that omitti
 infer the coordinate frame is `ICRS` and the reference position `TOPOCENTER`, or simply assume the information is
 unknown or irrelevant. These cases should be dictated by the STC standard(s).
 
-#### DSL
-
-{% include jovial.md name='position-icrs' %}
-
-#### VOTable
-
-{% include votable.md name='position-icrs' %}
+{% include examples.md name='position-icrs' %}
 
 ### FK4 B1950 position
 
 This is also a simple example, but in a different frame. You can compare these examples with the `ICRS` one above.
 
-#### DSL
-
-{% include jovial.md name='position-fk4' %}
-
-#### VOTable
-
-{% include votable.md name='position-icrs' %}
+{% include examples.md name='position-fk4' %}
 
 ### ICRS Position with Ellipse Error
 
@@ -89,38 +77,28 @@ will be able to understand a lot of information, e.g. information about the fram
 expressed in different frames can be reduced to the same one and e.g. plotted together. Also, `meas` clients can figure
 out the error of a measurement and its shape.
 
-#### DSL
-
-{% include jovial.md name='position-icrs-ellipse' %}
-
-#### VOTable
-
-{% include votable.md name='position-icrs-ellipse' %}
+{% include examples.md name='position-icrs-ellipse' %}
 
 ### ICRS Position with Symmetric Error
 
 For comparison, here is a position in `ICRS` with a symmetric 2D error, i.e. a circle rather than an ellipse.
 
-#### DSL
+{% include examples.md name='position-icrs-symmetric' %}
 
-{% include jovial.md name='position-icrs-symmetric' %}
-
-#### VOTable
-
-{% include votable.md name='position-icrs-symmetric' %}
+{% comment %}
 
 Time measurements
 -----------------
 
-{% comment %}
+{% include examples.md name='tt-iso-time' %}
 
-Still need to figure it out
+### TT ISO Time
 
-### TT ISO Time, DSL
+#### DSL
 
 {% include jovial.md name='tt-iso-time' %}
 
-### TT ISO Time, VOTable
+#### VOTable
 
 {% include votable.md name='tt-iso-time' %}
 
@@ -155,29 +133,16 @@ The following example shows how to define a custom time frame in terms of standa
 
 {% endcomment %}
 
-
 Other Measurements
 ------------------
 
 ### Magnitude with Symmetric Error
 
-#### DSL
-
-{% include jovial.md name='magnitude-sym-error' %}
-
-#### VOTable
-
-{% include votable.md name='magnitude-sym-error' %}
+{% include examples.md name='magnitude-sym-error' %}
 
 ### Magnitude with Asymmetric Error
 
-#### DSL
-
-{% include jovial.md name='magnitude-asym-error' %}
-
-#### VOTable
-
-{% include votable.md name='magnitude-asym-error' %}
+{% include examples.md name='magnitude-asym-error' %}
 
 Notes
 -----
