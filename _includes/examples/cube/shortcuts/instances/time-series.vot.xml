@@ -23,7 +23,11 @@
     <GLOBALS>
       <INSTANCE dmtype="coords:domain.temporal.TimeFrame" ID="_TT_FRAME">
         <ATTRIBUTE dmrole="coords:domain.temporal.TimeFrame.refPosition">
-          <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.RefLocation"/>
+          <INSTANCE dmtype="coords:domain.spatial.StdRefLocation">
+            <ATTRIBUTE dmrole="coords:domain.spatial.StdRefLocation.position">
+              <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.StdRefPosition"/>
+            </ATTRIBUTE>
+          </INSTANCE>
         </ATTRIBUTE>
         <ATTRIBUTE dmrole="coords:domain.temporal.TimeFrame.timescale">
           <LITERAL value="TT" dmtype="coords:domain.temporal.TimeScale"/>
@@ -37,7 +41,11 @@
           <LITERAL value="J2000" dmtype="coords:domain.spatial.Epoch"/>
         </ATTRIBUTE>
         <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.refPosition">
-          <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.RefLocation"/>
+          <INSTANCE dmtype="coords:domain.spatial.StdRefLocation">
+            <ATTRIBUTE dmrole="coords:domain.spatial.StdRefLocation.position">
+              <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.StdRefPosition"/>
+            </ATTRIBUTE>
+          </INSTANCE>
         </ATTRIBUTE>
       </INSTANCE>
       <INSTANCE dmtype="cube:SparseCube">
@@ -47,6 +55,21 @@
       </INSTANCE>
     </GLOBALS>
     <TEMPLATES tableref="_DATA_TABLE">
+      <INSTANCE dmtype="ds:experiment.ObsDataset">
+        <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType">
+          <LITERAL value="TIMESERIES" dmtype="ds:dataset.DataProductType"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel">
+          <LITERAL value="3" dmtype="ivoa:integer"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="ds:dataset.Dataset.dataID">
+          <INSTANCE dmtype="ds:dataset.DataID">
+            <ATTRIBUTE dmrole="ds:dataset.DataID.date">
+              <LITERAL value="2017-03-27T15:35:56" dmtype="ivoa:datetime"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
       <INSTANCE dmtype="cube:NDPoint" ID="_DATA_INSTANCE">
         <COMPOSITION dmrole="cube:DataElement.axis">
           <INSTANCE dmtype="cube:Observable">

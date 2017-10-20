@@ -16,14 +16,18 @@ dmInstance {
     model(vodmlURL: datasetLocation)
 
     instance(id: "_TT_FRAME", type: "coords:domain.temporal.TimeFrame") {
-        instance role: "refPosition", value: "TOPOCENTER"
+        instance(role: "refPosition", type: "coords:domain.spatial.StdRefLocation") {
+            instance role: "position", value: "TOPOCENTER"
+        }
         instance role: "timescale", value: "TT"
     }
 
     instance(id: "_FK4_J2000_FRAME", type: "coords:domain.spatial.SpaceFrame") {
         instance role: "spaceRefFrame", value: "FK4"
         instance role: "equinox", value: "J2000"
-        instance role: "refPosition", value: "TOPOCENTER"
+        instance(role: "refPosition", type: "coords:domain.spatial.StdRefLocation") {
+            instance role: "position", value: "TOPOCENTER"
+        }
     }
 
     instance(type: "cube:SparseCube") {
@@ -31,6 +35,14 @@ dmInstance {
     }
 
     table(id: "_DATA_TABLE") {
+        instance(type: "ds:experiment.ObsDataset") {
+            instance role: "dataProductType", value: "TIMESERIES"
+            instance role: "calibLevel", value: 3
+            instance(role: "dataID") {
+                instance role: "date", value: "2017-03-27T15:35:56"
+            }
+        }
+
         instance(id: "_DATA_INSTANCE", type: "cube:NDPoint") {
 
             // TIME
