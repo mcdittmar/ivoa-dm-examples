@@ -25,6 +25,25 @@ in a simpler language without much boilerplate.
 We also provide the VOTable serializations of those instances, which is what providers and
 clients will need to work with in practice.
 
+Rationale
+---------
+
+Here is a list of requirements we took into account when trying to rework the *current* proposal.
+
+  * **simple and common things should be simple to provide and consume.** There is nothing in this model that
+  provides more functionality when compared to the *current* proposal. However, we tried to simplify the most
+  common scenarios for both data providers and data consumers.
+  
+  * **complex, custom things should be possible.** At the same time, the model should keep supporting more uncommon,
+  complex, or in any way custom scenarios, which is something the *current* proposal does.
+  
+  * **COOSYS works in simple cases.** So the model provides structures that provide the same information, but in
+  the VODML framework.
+  
+  * **Allow standardization of common instances.** The model should allow a standard library of commonly used
+  instances that can be referenced through globally unique identifiers that client can rely on. This makes the
+  serializations less verbose and makes it easier for clients to parse files in the most common cases.
+
 Coordinate Frames
 -----------------
 
