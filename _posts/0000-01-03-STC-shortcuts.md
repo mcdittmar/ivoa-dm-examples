@@ -1,7 +1,8 @@
 ---
 title: STC model
 about: |
-    This is the current Space Time Coordinates model proposal
+    This is an alternative Space Time Coordinates model proposal. The goal of this model is to greatly simplify
+    the model for the most common cases, while keeping flexibility for the complex, custom cases.
 layout: page
 model: stc2
 flavor: shortcuts
@@ -33,54 +34,78 @@ A coordinate frame defines:
 
 It does not define its own axes.
 
-Note that a library of common/standard reference frames can be built in a single VOTable. Intances in other files can
-refer to such frames when declaring their positions. The following example represents such a library of frames.
-
-### DSL Instance
-
-{% include jovial.md name='standard-frames' %}
-
-### VOTable serialization
-
-{% include votable.md name='standard-frames' %}
+Note that a library of common/standard reference frames could be built but it is probably not really useful, because
+frame definitions are in this model rather lightweight, and suitable for being included along with the data in all
+cases. The current model for `SpaceFrame` looks a lot like the `COOSYS` element, but expressed rigorously in the VODML
+framework, allowing for more complex relationships to be created if need be.
 
 Positions
 ---------
 
-Positions can be expressed in terms of the coordinate axes defined as part of the coordinate frames, even remotely
-as shown in the examples below, where positions refer to axes defined in the `standard-frames.vot.xml` file.
+Positions can be expressed with a great deal of flexibility in this model. However, the price of such flexibility is
+complexity, which is not ideal for simple, most common cases. For these reasons we modeled some *shortcut* types
+that can be used in most cases. Such types make a lot of assumptions implicit, thus reducing the number 
 
-Below are two examples of the same 2D position in the sky in two different reference frames.
+### ICRS position
 
-### ICRS position, DSL
+This is the simplest possible position, with just an RA and a DEC. The `SpaceFrame` instance plays the same role as
+`COOSYS`, but it is more flexible, as in more complicated instances there may be more frames and sets of coordinates,
+as well as custom frame, not necessarily spatial.
+
+Using specific types like `SkyPosition` allows instances to be simpler in the most common cases.
+
+Note that in principle the frame instance and reference could be omitted. Whether or not this is a valid instance it
+depends on the final version of the model document. One could decide that omitting the frame information a client can
+infer the coordinate frame is `ICRS` and the reference position `TOPOCENTER`, or simply assume the information is
+unknown or irrelevant. These cases should be dictated by the STC standard(s).
+
+#### DSL
 
 {% include jovial.md name='position-icrs' %}
 
-### ICRS position, VOTable
+#### VOTable
 
 {% include votable.md name='position-icrs' %}
 
-### FK4 B1950 position, DSL
+### FK4 B1950 position
+
+This is also a simple example, but in a different frame. You can compare these examples with the `ICRS` one above.
+
+#### DSL
 
 {% include jovial.md name='position-fk4' %}
 
-### FK4 B1950 position, VOTable
+#### VOTable
 
 {% include votable.md name='position-icrs' %}
 
-### ICRS Position with Ellipse Error, DSL
+### ICRS Position with Ellipse Error
+
+In this example the position also has an associated error, in particular an ellipse.
+
+Note how the error, like the frame, is a property of the measurement, not the coordinate itself. A client with
+knowledge of the `coords` model can only find out about the RA and DEC values, while a client of the `meas` model
+will be able to understand a lot of information, e.g. information about the frame, so that in many cases coordinates
+expressed in different frames can be reduced to the same one and e.g. plotted together. Also, `meas` clients can figure
+out the error of a measurement and its shape.
+
+#### DSL
 
 {% include jovial.md name='position-icrs-ellipse' %}
 
-### ICRS position with Ellipse Error, VOTable
+#### VOTable
 
 {% include votable.md name='position-icrs-ellipse' %}
 
-### ICRS Position with Symmetric Error, DSL
+### ICRS Position with Symmetric Error
+
+For comparison, here is a position in `ICRS` with a symmetric 2D error, i.e. a circle rather than an ellipse.
+
+#### DSL
 
 {% include jovial.md name='position-icrs-symmetric' %}
 
-### ICRS position with Symmetric Error, VOTable
+#### VOTable
 
 {% include votable.md name='position-icrs-symmetric' %}
 
@@ -134,24 +159,33 @@ The following example shows how to define a custom time frame in terms of standa
 Other Measurements
 ------------------
 
-### Magnitude with Symmetric Error, DSL
+### Magnitude with Symmetric Error
+
+#### DSL
 
 {% include jovial.md name='magnitude-sym-error' %}
 
-### Magnitude with Symmetric Error, VOTable
+#### VOTable
 
 {% include votable.md name='magnitude-sym-error' %}
 
-### Magnitude with Asymmetric Error, DSL
+### Magnitude with Asymmetric Error
+
+#### DSL
 
 {% include jovial.md name='magnitude-asym-error' %}
 
-### Magnitude with Asymmetric Error, VOTable
+#### VOTable
 
 {% include votable.md name='magnitude-asym-error' %}
 
 Notes
 -----
+
+### Position distance
+
+We might be missing, especially in the sky position shortcuts, an attribute for the distance of an object. This would
+allow measurements/coordinates to be easily converted to a Cartesian system when the distance information is available.
 
 ### VODML Mapping
 

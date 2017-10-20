@@ -13,37 +13,12 @@
       <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
-      <INSTANCE dmtype="coords:CoordSpace">
-        <COMPOSITION dmrole="coords:CoordSpace.axisGroup">
-          <INSTANCE dmtype="coords:AxisGroup">
-            <COMPOSITION dmrole="coords:AxisGroup.axis">
-              <INSTANCE dmtype="coords:ContinuousAxis" ID="_MAG_AXIS">
-                <ATTRIBUTE dmrole="coords:Axis.name">
-                  <LITERAL value="mag" dmtype="ivoa:string"/>
-                </ATTRIBUTE>
-                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
-                  <LITERAL value="-Inf" dmtype="ivoa:RealQuantity"/>
-                </ATTRIBUTE>
-                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
-                  <LITERAL value="+Inf" dmtype="ivoa:RealQuantity"/>
-                </ATTRIBUTE>
-                <ATTRIBUTE dmrole="coords:ContinuousAxis.cyclic">
-                  <LITERAL value="false" dmtype="ivoa:boolean"/>
-                </ATTRIBUTE>
-              </INSTANCE>
-            </COMPOSITION>
-          </INSTANCE>
-        </COMPOSITION>
-      </INSTANCE>
       <INSTANCE dmtype="meas:GenericCoordMeasure">
         <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
           <INSTANCE dmtype="coords:PhysicalCoordValue">
             <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
               <LITERAL value="-0.28" dmtype="ivoa:RealQuantity"/>
             </ATTRIBUTE>
-            <REFERENCE dmrole="coords:CoordValue.axis">
-              <IDREF>_MAG_AXIS</IDREF>
-            </REFERENCE>
           </INSTANCE>
         </ATTRIBUTE>
         <COMPOSITION dmrole="meas:CoordMeasure.error">
@@ -51,7 +26,7 @@
             <ATTRIBUTE dmrole="meas:BasicError1D.statError">
               <INSTANCE dmtype="meas:Symmetrical1D">
                 <ATTRIBUTE dmrole="meas:Symmetrical1D.radius">
-                  <LITERAL value="0.0000985" dmtype="ivoa:RealQuantity"/>
+                  <LITERAL value="0.01" dmtype="ivoa:RealQuantity"/>
                 </ATTRIBUTE>
               </INSTANCE>
             </ATTRIBUTE>

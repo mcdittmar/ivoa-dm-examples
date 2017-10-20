@@ -10,7 +10,7 @@
   <author>Arnold Rots, Mark Cresitello-Dittmar</author>
   <version>2.0</version>
   <previousVersion>0.x</previousVersion>
-  <lastModified>2017-10-06T14:52:48</lastModified>
+  <lastModified>2017-10-13T15:36:12</lastModified>
   <import>
     <name>ivoa</name>
     <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>
@@ -363,20 +363,6 @@
     <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
-    <composition>
-      <vodml-id>CoordSpace.axisGroup</vodml-id>
-      <name>axisGroup</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-      <datatype>
-        <vodml-ref>coords:AxisGroup</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>1</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </composition>
     <reference>
       <vodml-id>CoordSpace.frame</vodml-id>
       <name>frame</name>
@@ -387,7 +373,21 @@
         <vodml-ref>coords:CoordFrame</vodml-ref>
       </datatype>
       <multiplicity>
-        <minOccurs>0</minOccurs>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>CoordSpace.axisGroup</vodml-id>
+      <name>axisGroup</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>coords:AxisGroup</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </reference>
@@ -1224,20 +1224,6 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
             <maxOccurs>1</maxOccurs>
           </multiplicity>
         </attribute>
-        <reference>
-          <vodml-id>domain.spatial.CelestialCoord.frame</vodml-id>
-          <name>frame</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>coords:domain.spatial.SpaceFrame</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>1</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </reference>
       </dataType>
 
       <dataType>
@@ -1277,20 +1263,6 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
             <maxOccurs>1</maxOccurs>
           </multiplicity>
         </attribute>
-        <reference>
-          <vodml-id>domain.spatial.GalacticCoord.frame</vodml-id>
-          <name>frame</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>coords:domain.spatial.SpaceFrame</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>1</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </reference>
       </dataType>
 
       <objectType>

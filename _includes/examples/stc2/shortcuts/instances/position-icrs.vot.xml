@@ -13,6 +13,18 @@
       <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
+      <INSTANCE dmtype="coords:domain.spatial.SpaceFrame" ID="_SPACE_FRAME">
+        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.spaceRefFrame">
+          <LITERAL value="ICRS" dmtype="coords:domain.spatial.StdRefFrame"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.refPosition">
+          <INSTANCE dmtype="coords:domain.spatial.StdRefLocation">
+            <ATTRIBUTE dmrole="coords:domain.spatial.StdRefLocation.position">
+              <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.StdRefPosition"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </ATTRIBUTE>
+      </INSTANCE>
       <INSTANCE dmtype="meas:SkyPosition">
         <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
           <INSTANCE dmtype="coords:domain.spatial.CelestialCoord">
@@ -22,11 +34,11 @@
             <ATTRIBUTE dmrole="coords:domain.spatial.CelestialCoord.dec">
               <LITERAL value="-72.9580158133" dmtype="ivoa:RealQuantity" unit="deg"/>
             </ATTRIBUTE>
-            <REFERENCE dmrole="coords:domain.spatial.CelestialCoord.frame">
-              <REMOTEREFERENCE>file://./standard-frames.vot#ICRS_FRAME</REMOTEREFERENCE>
-            </REFERENCE>
           </INSTANCE>
         </ATTRIBUTE>
+        <REFERENCE dmrole="meas:CoordMeasure.coordFrame">
+          <IDREF>_SPACE_FRAME</IDREF>
+        </REFERENCE>
       </INSTANCE>
     </GLOBALS>
   </VODML>

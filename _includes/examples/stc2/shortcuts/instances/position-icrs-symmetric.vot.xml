@@ -22,11 +22,11 @@
             <ATTRIBUTE dmrole="coords:domain.spatial.CelestialCoord.dec">
               <LITERAL value="-72.9580158133" dmtype="ivoa:RealQuantity" unit="deg"/>
             </ATTRIBUTE>
-            <REFERENCE dmrole="coords:domain.spatial.CelestialCoord.frame">
-              <REMOTEREFERENCE>file://./standard-frames.vot#ICRS_FRAME</REMOTEREFERENCE>
-            </REFERENCE>
           </INSTANCE>
         </ATTRIBUTE>
+        <REFERENCE dmrole="meas:CoordMeasure.coordFrame">
+          <IDREF>_SPACE_FRAME</IDREF>
+        </REFERENCE>
         <COMPOSITION dmrole="meas:CoordMeasure.error">
           <INSTANCE dmtype="meas:BasicError2D">
             <ATTRIBUTE dmrole="meas:BasicError2D.statError">

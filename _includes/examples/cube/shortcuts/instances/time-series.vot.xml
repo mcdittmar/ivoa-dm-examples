@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <VODML>
     <MODEL>
-      <NAME>stc2_coordinates</NAME>
-      <URL>file:../../../stc2/current/models/STC_coords-v2.0.vo-dml.xml</URL>
+      <NAME>coords</NAME>
+      <URL>file:../../../stc2/shortcuts/models/STC_coords-v2.0.vo-dml.xml</URL>
     </MODEL>
     <MODEL>
-      <NAME>stc2_measurements</NAME>
-      <URL>file:../../../stc2/current/models/STC_meas-v2.0.vo-dml.xml</URL>
+      <NAME>meas</NAME>
+      <URL>file:../../../stc2/shortcuts/models/STC_meas-v2.0.vo-dml.xml</URL>
     </MODEL>
     <MODEL>
       <NAME>ivoa</NAME>
@@ -21,52 +21,26 @@
       <URL>file:../models/DatasetMetadata-1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
-      <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericFrame" ID="_FLUX_FRAME">
-        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
-          <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordSpace">
-            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
-              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="_FLUX_AXIS">
-                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
-                  <LITERAL value="flux" dmtype="ivoa:string"/>
-                </ATTRIBUTE>
-              </INSTANCE>
-            </COMPOSITION>
-          </INSTANCE>
-        </COMPOSITION>
+      <INSTANCE dmtype="coords:domain.temporal.TimeFrame" ID="_TT_FRAME">
+        <ATTRIBUTE dmrole="coords:domain.temporal.TimeFrame.refPosition">
+          <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.RefLocation"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="coords:domain.temporal.TimeFrame.timescale">
+          <LITERAL value="TT" dmtype="coords:domain.temporal.TimeScale"/>
+        </ATTRIBUTE>
       </INSTANCE>
-      <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericFrame" ID="_MAG_FRAME">
-        <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordFrame.coordSpace">
-          <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordSpace">
-            <COMPOSITION dmrole="stc2_coordinates:coordsystem.CoordSpace.coordAxis">
-              <INSTANCE dmtype="stc2_coordinates:coordsystem.CoordAxis" ID="_MAG_AXIS">
-                <ATTRIBUTE dmrole="stc2_coordinates:coordsystem.Axis.name">
-                  <LITERAL value="magnitude" dmtype="ivoa:string"/>
-                </ATTRIBUTE>
-              </INSTANCE>
-            </COMPOSITION>
-          </INSTANCE>
-        </COMPOSITION>
+      <INSTANCE dmtype="coords:domain.spatial.SpaceFrame" ID="_FK4_J2000_FRAME">
+        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.spaceRefFrame">
+          <LITERAL value="FK4" dmtype="coords:domain.spatial.StdRefFrame"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.equinox">
+          <LITERAL value="J2000" dmtype="coords:domain.spatial.Epoch"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.refPosition">
+          <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.RefLocation"/>
+        </ATTRIBUTE>
       </INSTANCE>
       <INSTANCE dmtype="cube:SparseCube">
-        <COMPOSITION dmrole="cube:DataProduct.coordSys">
-          <INSTANCE dmtype="stc2_coordinates:coordsystem.AstroCoordSystem">
-            <ATTRIBUTE dmrole="refPosition">
-              <LITERAL value="TOPOCENTER" dmtype="null"/>
-            </ATTRIBUTE>
-            <REFERENCE dmrole="stc2_coordinates:coordsystem.AstroCoordSystem.timeFrame">
-              <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#TT_FRAME</REMOTEREFERENCE>
-            </REFERENCE>
-            <REFERENCE dmrole="stc2_coordinates:coordsystem.AstroCoordSystem.spaceFrame">
-              <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#FK4_J2000_FRAME</REMOTEREFERENCE>
-            </REFERENCE>
-            <REFERENCE dmrole="stc2_coordinates:coordsystem.CoordSys.genericFrame">
-              <IDREF>_FLUX_FRAME</IDREF>
-            </REFERENCE>
-            <REFERENCE dmrole="stc2_coordinates:coordsystem.CoordSys.genericFrame">
-              <IDREF>_MAG_FRAME</IDREF>
-            </REFERENCE>
-          </INSTANCE>
-        </COMPOSITION>
         <COMPOSITION dmrole="cube:SparseCube.data">
           <EXTINSTANCES>_DATA_INSTANCE</EXTINSTANCES>
         </COMPOSITION>
@@ -80,17 +54,17 @@
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:domain.time.TimeMeasure">
-                <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:domain.time.TimeOffset">
-                    <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
-                      <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#TT_AXIS</REMOTEREFERENCE>
-                    </REFERENCE>
-                    <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
-                      <COLUMN dmtype="ivoa:RealQuantity" ref="_col_HJD"/>
+              <INSTANCE dmtype="meas:StdTimeMeasure">
+                <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
+                  <INSTANCE dmtype="coords:domain.temporal.ISOTime">
+                    <ATTRIBUTE dmrole="coords:domain.temporal.ISOTime.date">
+                      <COLUMN dmtype="ivoa:datetime" ref="_col_TIME"/>
                     </ATTRIBUTE>
                   </INSTANCE>
                 </ATTRIBUTE>
+                <REFERENCE dmrole="frame">
+                  <IDREF>_TT_FRAME</IDREF>
+                </REFERENCE>
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
@@ -99,31 +73,20 @@
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:domain.space.Position2D">
-                <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialValue2D">
-                    <ATTRIBUTE dmrole="stc2_coordinates:coords.MultiCoordValue.cmpt">
-                      <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialCoordValue">
-                        <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
-                          <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#FK4_J2000_RA_AXIS</REMOTEREFERENCE>
-                        </REFERENCE>
-                        <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
-                          <COLUMN dmtype="ivoa:RealQuantity" ref="_col_RAJ2000"/>
-                        </ATTRIBUTE>
-                      </INSTANCE>
+              <INSTANCE dmtype="meas:SkyPosition">
+                <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
+                  <INSTANCE dmtype="coords:domain.spatial.CelestialCoord">
+                    <ATTRIBUTE dmrole="coords:domain.spatial.CelestialCoord.ra">
+                      <COLUMN dmtype="ivoa:RealQuantity" ref="_col_RAJ2000"/>
                     </ATTRIBUTE>
-                    <ATTRIBUTE dmrole="stc2_coordinates:coords.MultiCoordValue.cmpt">
-                      <INSTANCE dmtype="stc2_coordinates:domain.space.SpatialCoordValue">
-                        <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
-                          <REMOTEREFERENCE>file:../../../stc2/current/instances/standard-frames.vot#FK4_J2000_DEC_AXIS</REMOTEREFERENCE>
-                        </REFERENCE>
-                        <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
-                          <COLUMN dmtype="ivoa:RealQuantity" ref="_col_DECJ2000"/>
-                        </ATTRIBUTE>
-                      </INSTANCE>
+                    <ATTRIBUTE dmrole="coords:domain.spatial.CelestialCoord.dec">
+                      <COLUMN dmtype="ivoa:RealQuantity" ref="_col_DECJ2000"/>
                     </ATTRIBUTE>
                   </INSTANCE>
                 </ATTRIBUTE>
+                <REFERENCE dmrole="frame">
+                  <IDREF>_FK4_J2000_FRAME</IDREF>
+                </REFERENCE>
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
@@ -132,23 +95,20 @@
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:domain.generic.GenericCoordMeasure">
-                <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordValue">
-                    <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
-                      <IDREF>_FLUX_AXIS</IDREF>
-                    </REFERENCE>
-                    <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
-                      <COLUMN dmtype="ivoa:RealQuantity" ref="_col_FLX"/>
+              <INSTANCE dmtype="meas:GenericCoordMeasure">
+                <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
+                  <INSTANCE dmtype="coords:GenericCoordValue">
+                    <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
+                      <COLUMN dmtype="ivoa:RealQuantity" ref="_col_FLUX"/>
                     </ATTRIBUTE>
                   </INSTANCE>
                 </ATTRIBUTE>
-                <COMPOSITION dmrole="stc2_measurements:uncertainty.CoordMeasure.error">
-                  <INSTANCE dmtype="stc2_measurements:uncertainty.Error1D">
-                    <ATTRIBUTE dmrole="stc2_measurements:uncertainty.Error1D.statError">
-                      <INSTANCE dmtype="stc2_measurements:stctypes.Symmetrical1D">
-                        <ATTRIBUTE dmrole="stc2_measurements:stctypes.Symmetrical1D.radius">
-                          <COLUMN dmtype="ivoa:RealQuantity" ref="_col_FLUX_ERR"/>
+                <COMPOSITION dmrole="meas:CoordMeasure.error">
+                  <INSTANCE dmtype="meas:BasicError1D">
+                    <ATTRIBUTE dmrole="meas:BasicError1D.statError">
+                      <INSTANCE dmtype="meas:Symmetrical1D">
+                        <ATTRIBUTE dmrole="meas:Symmetrical1D.radius">
+                          <COLUMN dmtype="ivoa:RealQuantity" ref="_col_FLUX_ERROR"/>
                         </ATTRIBUTE>
                       </INSTANCE>
                     </ATTRIBUTE>
@@ -162,23 +122,20 @@
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
             <COMPOSITION dmrole="cube:Observable.instance">
-              <INSTANCE dmtype="stc2_measurements:domain.generic.GenericCoordMeasure">
-                <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
-                  <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordValue">
-                    <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
-                      <IDREF>_MAG_AXIS</IDREF>
-                    </REFERENCE>
-                    <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
+              <INSTANCE dmtype="meas:GenericCoordMeasure">
+                <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
+                  <INSTANCE dmtype="coords:GenericCoordValue">
+                    <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_MAG"/>
                     </ATTRIBUTE>
                   </INSTANCE>
                 </ATTRIBUTE>
-                <COMPOSITION dmrole="stc2_measurements:uncertainty.CoordMeasure.error">
-                  <INSTANCE dmtype="stc2_measurements:uncertainty.Error1D">
-                    <ATTRIBUTE dmrole="stc2_measurements:uncertainty.Error1D.statError">
-                      <INSTANCE dmtype="stc2_measurements:stctypes.Symmetrical1D">
-                        <ATTRIBUTE dmrole="stc2_measurements:stctypes.Symmetrical1D.radius">
-                          <COLUMN dmtype="ivoa:RealQuantity" ref="_col_MAG_ERR"/>
+                <COMPOSITION dmrole="meas:CoordMeasure.error">
+                  <INSTANCE dmtype="meas:BasicError1D">
+                    <ATTRIBUTE dmrole="meas:BasicError1D.statError">
+                      <INSTANCE dmtype="meas:Symmetrical1D">
+                        <ATTRIBUTE dmrole="meas:Symmetrical1D.radius">
+                          <COLUMN dmtype="ivoa:RealQuantity" ref="_col_MAG_ERROR"/>
                         </ATTRIBUTE>
                       </INSTANCE>
                     </ATTRIBUTE>
@@ -193,17 +150,17 @@
   </VODML>
   <RESOURCE>
     <TABLE ID="_DATA_TABLE">
-      <FIELD datatype="float" arraysize="1" ID="_col_HJD"/>
+      <FIELD datatype="char" arraysize="17" ID="_col_TIME"/>
       <FIELD datatype="float" arraysize="1" ID="_col_RAJ2000"/>
       <FIELD datatype="float" arraysize="1" ID="_col_DECJ2000"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_FLX"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_FLUX_ERR"/>
+      <FIELD datatype="float" arraysize="1" ID="_col_FLUX"/>
+      <FIELD datatype="float" arraysize="1" ID="_col_FLUX_ERROR"/>
       <FIELD datatype="float" arraysize="1" ID="_col_MAG"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_MAG_ERR"/>
+      <FIELD datatype="float" arraysize="1" ID="_col_MAG_ERROR"/>
       <DATA>
         <TABLEDATA>
           <TR>
-            <TD>2.0</TD>
+            <TD>20170201T11:36:53</TD>
             <TD>20.0</TD>
             <TD>20.1</TD>
             <TD>200.0</TD>
@@ -212,7 +169,7 @@
             <TD>1.2</TD>
           </TR>
           <TR>
-            <TD>1.0</TD>
+            <TD>20170201T11:36:52</TD>
             <TD>10.0</TD>
             <TD>10.1</TD>
             <TD>100.0</TD>

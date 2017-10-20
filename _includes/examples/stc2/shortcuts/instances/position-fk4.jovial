@@ -10,15 +10,22 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    // RA/DEC position in FK4_B1950
+    instance(id: "_SPACE_FRAME", type: "coords:domain.spatial.SpaceFrame") {
+        instance role: "spaceRefFrame", value: "FK4"
+        instance role: "equinox", value: "B1950"
+        instance(role: "refPosition", type: "coords:domain.spatial.StdRefLocation") {
+            instance role: "position", value: "TOPOCENTER"
+        }
+    }
+
     instance(type: "meas:SkyPosition") {
-        instance (role: "coord", type: "coords:domain.spatial.CelestialCoord") {
-            instance(role: "ra", value: 12.9768538031, unit: "deg")
-            instance(role: "dec", value: -72.9580158133, unit:"deg")
-            reference(role: "frame") {
-                // Eventually, this should be a URI
-                remote "file://./standard-frames.vot#FK4_B1950_FRAME"
-            }
+        reference(role: "coordFrame") {
+            idref "_SPACE_FRAME"
+        }
+
+        instance(role: "coord", type: "coords:domain.spatial.CelestialCoord") {
+            instance role: "ra", value: 12.9768538031, unit: "deg"
+            instance role: "dec", value: -72.9580158133, unit: "deg"
         }
     }
 }
