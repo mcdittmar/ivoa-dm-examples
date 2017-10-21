@@ -13,6 +13,15 @@ Table of Contents
 * TOC
 {:toc}
 
+Model Files
+-----------
+
+{% capture stc-coords %}/assets/examples/{{page.model}}/{{page.flavor}}/models/STC_coords-v2.0.html{% endcapture %}
+{% capture stc-meas %}/assets/examples/{{page.model}}/{{page.flavor}}/models/STC_meas-v2.0.html{% endcapture %}
+[Coordinates HTML documentation]({{ stc-coords | absolute_url }})
+
+[Measurements HTML documentation]({{ stc-meas | absolute_url }})
+
 Generalities
 ------------
 
