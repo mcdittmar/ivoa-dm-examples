@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="/ivoa-dm-examples/feed.xml" rel="self" type="application/atom+xml" /><link href="/ivoa-dm-examples/" rel="alternate" type="text/html" /><updated>2017-10-27T15:40:06-04:00</updated><id>/ivoa-dm-examples/</id><title type="html">IVOA Data Model Examples</title><subtitle>This website contains example serializations for instances of IVOA Data Models. Information in this site is currently not sanctioned by the IVOA but it is used by Data Model Working Group members as a tool for discussing and documenting data models.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="/ivoa-dm-examples/feed.xml" rel="self" type="application/atom+xml" /><link href="/ivoa-dm-examples/" rel="alternate" type="text/html" /><updated>2017-10-27T17:16:18-04:00</updated><id>/ivoa-dm-examples/</id><title type="html">IVOA Data Model Examples</title><subtitle>This website contains example serializations for instances of IVOA Data Models. Information in this site is currently not sanctioned by the IVOA but it is used by Data Model Working Group members as a tool for discussing and documenting data models.
 </subtitle><entry><title type="html">Demos</title><link href="/ivoa-dm-examples/0000/01/04/Demos.html" rel="alternate" type="text/html" title="Demos" /><published>0000-01-04T00:00:00-04:56</published><updated>0000-01-04T00:00:00-04:56</updated><id>/ivoa-dm-examples/0000/01/04/Demos</id><content type="html" xml:base="/ivoa-dm-examples/0000/01/04/Demos.html">&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#table-of-contents&quot; id=&quot;markdown-toc-table-of-contents&quot;&gt;Table of Contents&lt;/a&gt;&lt;/li&gt;
@@ -11781,7 +11781,8 @@ div#notebook {
 &lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;h1 id=&quot;STC,-Cube,-Time-Series,-and-VODML-Demo&quot;&gt;STC, Cube, Time Series, and VODML Demo&lt;a class=&quot;anchor-link&quot; href=&quot;#STC,-Cube,-Time-Series,-and-VODML-Demo&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;h2 id=&quot;Table-of-Contents&quot;&gt;Table of Contents&lt;a class=&quot;anchor-link&quot; href=&quot;#Table-of-Contents&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h1 id=&quot;STC,-Cube,-Time-Series,-and-VODML-Demo&quot;&gt;STC, Cube, Time Series, and VODML Demo&lt;a class=&quot;anchor-link&quot; href=&quot;#STC,-Cube,-Time-Series,-and-VODML-Demo&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;O. Laurino - October, 27th 2017&lt;/p&gt;
+&lt;h2 id=&quot;Table-of-Contents&quot;&gt;Table of Contents&lt;a class=&quot;anchor-link&quot; href=&quot;#Table-of-Contents&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#parser&quot;&gt;VODML Parser&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#framework&quot;&gt;VODML Python framework&lt;/a&gt;&lt;/li&gt;
@@ -11798,6 +11799,7 @@ div#notebook {
 &lt;li&gt;&lt;a href=&quot;#plotting&quot;&gt;An advanced plotting client&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#invariance&quot;&gt;Invariance of VODML serializations&lt;/a&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#tests&quot;&gt;Tests&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -11832,10 +11834,9 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;parser&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;The-Parser&quot;&gt;The Parser&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Parser&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The cell below implements a parser for the &lt;em&gt;Mapping VODML instances VOTable&lt;/em&gt; specification. It implements most of the specification, enough for parsing the examples, but it lacks support for some constructs and above all it lacks proper error handling and validation. It's also not optimized.&lt;/p&gt;
-&lt;p&gt;The parser is included here to make the notebook complete and self-contained, since writing a parser for the &lt;em&gt;VODML Mapping&lt;/em&gt; specification is rather straighforward.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;You can skip the parser definition and jump directly to the &lt;a href=&quot;#models&quot;&gt;definition&lt;/a&gt; and &lt;a href=&quot;#usage&quot;&gt;usage&lt;/a&gt; of the STC model(s)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; For simplicity, the parser implemented below only works on Python 3.6.&lt;/p&gt;
+&lt;h2 id=&quot;The-Parser&quot;&gt;The Parser&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Parser&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The cell below implements a parser for the &lt;a href=&quot;http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml-mapping/doc/&quot;&gt;&lt;em&gt;Mapping VODML instances VOTable&lt;/em&gt;&lt;/a&gt; specification. It implements much of the specification, enough for parsing the examples. However, it's not complete above all it lacks proper error handling. It's also not optimized.&lt;/p&gt;
+&lt;p&gt;To make the notebook complete and self-contained, and since writing a parser for the &lt;em&gt;VODML Mapping&lt;/em&gt; specification from scratch is rather straighforward, the parser implementation is included here in full.&lt;/p&gt;
+&lt;p&gt;For simplicity, the parser implemented below only works on Python 3.6.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -11971,12 +11972,12 @@ div#notebook {
         
         &lt;span class=&quot;n&quot;&gt;referred_element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reference_element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;//def:INSTANCE[@ID=&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{id_ref}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;#39;]&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;namespaces&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
         
-        &lt;span class=&quot;c1&quot;&gt;# FIXME: way too simplistic: references should have their own lifecycle&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# and be just referenced by instances, rather than attached to them.&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# FIXME: way too simplistic: referenced instances should have their own lifecycle&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# and be just referenced by the referrers, rather than attached to them.&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;# The problem here is that an instance referenced twice would be instantiated&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# twice, and there would be no link. Really, what should happen is that&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# twice, and there would be no link between the two. Really, what should happen is that&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;# a weak value dictionary should be created so that referenced instances have a life&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# of its own and changes to an instance should be reflected across the process.&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# of their own and changes to an instance should be reflected across the process.&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;# As per usual garbage collection processing, referenced instances should be&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;# garbage collected when no referring objects are to be found, hence the&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;# weak value dictionary.&lt;/span&gt;
@@ -12083,7 +12084,7 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;framework&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;A-simple-VODML-Python-Framework&quot;&gt;A simple VODML Python Framework&lt;a class=&quot;anchor-link&quot; href=&quot;#A-simple-VODML-Python-Framework&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The cell below implements a simple Python framework for representing VODML models in Python in a convenient declarative way. If you have worked with a framework like Django or SQLAlchemy you'll find the model representations quite familiar. Again, not all of the VODML meta-model is implemented, and in particular no validation is performed.&lt;/p&gt;
+&lt;h2 id=&quot;A-simple-VODML-Python-Framework&quot;&gt;A simple VODML Python Framework&lt;a class=&quot;anchor-link&quot; href=&quot;#A-simple-VODML-Python-Framework&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The cell below implements a simple Python framework for representing VODML models in Python in a convenient declarative way. If you ever worked with a framework like Django or SQLAlchemy you'll find the model representations quite familiar. Again, not all of the VODML meta-model is implemented, multiplicities are treated in a rather crude way, and no validation is performed. That being said, few lines of Python provide a perfectly usable framework.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12155,9 +12156,9 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;models&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;The-Models&quot;&gt;The Models&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Models&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The following cells define the actual models using the framework created above.&lt;/p&gt;
+&lt;h2 id=&quot;The-Models&quot;&gt;The Models&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Models&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The following cells define actual models using the framework created above. These representations are easily generated automatically, but for the benefit of clarity they are described explicitly here.&lt;/p&gt;
 &lt;p&gt;&lt;a id=&quot;ivoa&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;IVOA-basic-model&quot;&gt;IVOA basic model&lt;a class=&quot;anchor-link&quot; href=&quot;#IVOA-basic-model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;First we define implementations for some basic quantities from the IVOA basic model. For simplicity, we don't differentiate between primitives and quantities, and we treat both as quantities. This is not necessarily advisable in production code, but it works for the purposes of this notebook.&lt;/p&gt;
+&lt;h2 id=&quot;IVOA-basic-model&quot;&gt;IVOA basic model&lt;a class=&quot;anchor-link&quot; href=&quot;#IVOA-basic-model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;First we define implementations for some basic quantities from the &lt;a href=&quot;http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html&quot;&gt;IVOA basic model&lt;/a&gt;. For simplicity, we don't differentiate between primitives and quantities, and we treat both as quantities. This is not necessarily advisable in production code, but it works for the purposes of this notebook.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12216,8 +12217,9 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;coords&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Coordinates-Model&quot;&gt;Coordinates Model&lt;a class=&quot;anchor-link&quot; href=&quot;#Coordinates-Model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The STC model was split in three submodules. At the base we have the &lt;code&gt;coords&lt;/code&gt; model, which defines types that have to do with frames and coordinates. For simplicity, and since there are no ambiguities in the type names, we omit the package structure of the model and we define all the classes in the same namespace.&lt;/p&gt;
+&lt;h2 id=&quot;Coordinates-Model&quot;&gt;Coordinates Model&lt;a class=&quot;anchor-link&quot; href=&quot;#Coordinates-Model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The STC model was split in three submodules. At the base we have the &lt;a href=&quot;/ivoa-dm-examples/assets/examples/stc2/shortcuts/models/STC_coords-v2.0.html&quot;&gt;&lt;code&gt;coords&lt;/code&gt;&lt;/a&gt; model, which defines types that have to do with frames and coordinates. For simplicity, and since there are no ambiguities in the type names, we omit the package structure of the model and we define all the classes in the same namespace.&lt;/p&gt;
 &lt;p&gt;Note that not all of &lt;code&gt;coords&lt;/code&gt; is defined here, only the classes that correspond to types that we are going to use in the demo.&lt;/p&gt;
+&lt;p&gt;Again, all these classes could easily be automatically generated from the VODML model descriptions, but are included here in explicitly for clarity. Also, as we are not performing any validation, many types are simply associated to strings.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12277,6 +12279,13 @@ div#notebook {
     &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Attribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;coords:domain.temporal.JD.date&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     
     
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TimeScale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StringQuantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    For simplicity, assume this is just a string, which is fine for this notebook.&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vodml_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;coords:domain.temporal.TimeScale&amp;quot;&lt;/span&gt;
+    
+    
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Coordinate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;vodml_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;coords:Coordinate&amp;quot;&lt;/span&gt;
     
@@ -12326,7 +12335,7 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;meas&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Measurements-Model&quot;&gt;Measurements Model&lt;a class=&quot;anchor-link&quot; href=&quot;#Measurements-Model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The &lt;code&gt;meas&lt;/code&gt; model defines types for measurements, including convenient shortcuts for measurement that are often used in Astronomy, like the &lt;code&gt;SkyPosition&lt;/code&gt;, which represents a celestial coordinate. It also introduces error structures. Again, we are not defining classes for all of the types in the model, but only those types we need for the demo.&lt;/p&gt;
+&lt;h2 id=&quot;Measurements-Model&quot;&gt;Measurements Model&lt;a class=&quot;anchor-link&quot; href=&quot;#Measurements-Model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The &lt;a href=&quot;/ivoa-dm-examples/assets/examples/stc2/shortcuts/models/STC_meas-v2.0.html&quot;&gt;&lt;code&gt;meas&lt;/code&gt;&lt;/a&gt; model defines types for measurements, including convenient shortcuts for measurement that are often used in Astronomy, like &lt;code&gt;SkyPosition&lt;/code&gt;, which represents a celestial coordinate. It also introduces error structures. Again, we are not defining classes for all of the types in the model, but only those types we need for the demo.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12491,7 +12500,6 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;The cell below does the actual parsing. We use the &lt;code&gt;find_instances&lt;/code&gt; method to get all of the instances of a certain type, i.e. the &lt;code&gt;SkyPosition&lt;/code&gt; type. In this case only one instance is present, but we'll look at a more complex example below.&lt;/p&gt;
-&lt;p&gt;The cell presents the values in assert statements that are used both to show the actual values in the instance, and also to test the notebook after code changes.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12516,7 +12524,10 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;astropy&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;A-simple-Astropy-STC-client&quot;&gt;A simple Astropy STC client&lt;a class=&quot;anchor-link&quot; href=&quot;#A-simple-Astropy-STC-client&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The next cell defines a new class that takes a SkyPosition instance as an initializer parameter. The class delegates all of its members to an instance of the Astropy's &lt;code&gt;astropy.coordinates.SkyCoord&lt;/code&gt; class. This way the new class acts as a drop-in replacement for any operation that can be applied to a &lt;code&gt;SkyCoord&lt;/code&gt; instance, as shown below.&lt;/p&gt;
+&lt;h2 id=&quot;A-minimalistic-Astropy-STC-client&quot;&gt;A minimalistic Astropy STC client&lt;a class=&quot;anchor-link&quot; href=&quot;#A-minimalistic-Astropy-STC-client&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Model classes like the ones introduced above do not implement any logic, they are just representing the types in a VODML model. However, they can be used to build useful clients as shown below.&lt;/p&gt;
+&lt;p&gt;As &lt;a href=&quot;http://www.astropy.org/&quot;&gt;Astropy&lt;/a&gt; provides a rich package for astronomical coordinates manipulation, all we need to do something useful of the position we just parsed is to provide an adapter class that transforms the position into an Astropy object.&lt;/p&gt;
+&lt;p&gt;The cell below does exactly this, by encapsulating an &lt;code&gt;stc_position&lt;/code&gt; into an &lt;code&gt;astropy.coordinates.SkyCoord&lt;/code&gt; object.&lt;/p&gt;
+&lt;p&gt;Such a class (maybe better equipped in terms of error handling) could be part of an STC library that enables using Astropy on VO serializations.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -12555,66 +12566,12 @@ div#notebook {
     
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__setattr__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;nb&quot;&gt;setattr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sky_coords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
-&lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[9]:&lt;/div&gt;
-&lt;div class=&quot;inner_cell&quot;&gt;
-    &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;astropos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoSkyCoord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy.testing&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assert_approx_equal&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
-&lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[10]:&lt;/div&gt;
-&lt;div class=&quot;inner_cell&quot;&gt;
-    &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;astropy.coordinates&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FK5&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FK5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;equinox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;J2000&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.684591543245&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fk5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;41.269171456186264&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fk5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
-&lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[11]:&lt;/div&gt;
-&lt;div class=&quot;inner_cell&quot;&gt;
-    &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;icrs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.68458000395546&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;41.269169997096114&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
-&lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[12]:&lt;/div&gt;
-&lt;div class=&quot;inner_cell&quot;&gt;
-    &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;astropos_galactic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;galactic&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;assert_approx_equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;121.17424181434197&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_galactic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;significant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;assert_approx_equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;21.57288557543883&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_galactic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;significant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__str__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sky_coord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;fm&quot;&gt;__str__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__repr__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sky_coord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;fm&quot;&gt;__repr__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -12626,15 +12583,101 @@ div#notebook {
 &lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;p&gt;&lt;a id=&quot;timeseries&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Time-Series-Example&quot;&gt;Time Series Example&lt;a class=&quot;anchor-link&quot; href=&quot;#Time-Series-Example&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;a id=&quot;dataset&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;The-Dataset-model&quot;&gt;The Dataset model&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Dataset-model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;So now we can take advantage of Astropy's capabilities to transform the position from one frame to another, or to get the corresponding galactic coordinates.&lt;/p&gt;
+
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[13]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[9]:&lt;/div&gt;
+&lt;div class=&quot;inner_cell&quot;&gt;
+    &lt;div class=&quot;input_area&quot;&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy.testing&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assert_approx_equal&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;astropy.coordinates&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FK5&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;astropos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoSkyCoord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FK5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;equinox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;J2000&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;icrs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;astropos_galactic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;galactic&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;original coordinate:&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  RA=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{pos.coord.ra.value}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; DEC=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{pos.coord.dec.value}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  Frame=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{pos.coord_frame.space_ref_frame.value}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  Equinox=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{pos.coord_frame.equinox.value}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  &lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;FK5 J2000 (deg):&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  RA=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_fk5_j2000.fk5.ra.deg}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; DEC=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_fk5_j2000.fk5.dec.deg}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  &lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;FK5 J2000 (centiradian):&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  RA=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_fk5_j2000.fk5.ra.centiradian}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; DEC=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_fk5_j2000.fk5.dec.centiradian}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  &lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;ICRS (deg):&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  RA=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_icrs.ra.deg}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; DEC=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_icrs.dec.deg}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  &lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;Galactic (deg):&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;  l=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_galactic.l.deg}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; b=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{astropos_galactic.b.deg}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;output_wrapper&quot;&gt;
+&lt;div class=&quot;output&quot;&gt;
+
+
+&lt;div class=&quot;output_area&quot;&gt;
+
+&lt;div class=&quot;prompt&quot;&gt;&lt;/div&gt;
+
+
+&lt;div class=&quot;output_subarea output_stream output_stdout output_text&quot;&gt;
+&lt;pre&gt;
+original coordinate:
+  RA=10.34209135 DEC=41.13232112
+  Frame=FK5
+  Equinox=J1975
+  
+FK5 J2000 (deg):
+  RA=10.684591543245 DEC=41.269171456186264
+  
+FK5 J2000 (centiradian):
+  RA=18.648130166036736 DEC=72.0282921480513
+  
+ICRS (deg):
+  RA=10.68458000395546 DEC=41.269169997096114
+  
+Galactic (deg):
+  l=121.17424181434197 b=-21.57288557543883
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;prompt input_prompt&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;a id=&quot;timeseries&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Time-Series-Example&quot;&gt;Time Series Example&lt;a class=&quot;anchor-link&quot; href=&quot;#Time-Series-Example&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;A time series can be seen in two ways. First and foremost, it is a data set, so it can be represented using the Dataset data model. More specifically, it is a special instance of a cube, with time measurements on the dependent axis. As such, a time series can be represented according to the Cube data model.&lt;/p&gt;
+&lt;p&gt;Note that the two natures can be disjoint, with a different set of annotations for describing the &lt;em&gt;dataset&lt;/em&gt; and the &lt;em&gt;timeseries&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a id=&quot;dataset&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;The-Dataset-model&quot;&gt;The Dataset model&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Dataset-model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Let's define Python classes representing the Dataset VODML model.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
+&lt;div class=&quot;input&quot;&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[10]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -12669,13 +12712,6 @@ div#notebook {
 &lt;span class=&quot;sd&quot;&gt;    For simplicity, assume this is just a string, which is fine for this notebook.&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;vodml_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;ds:dataset.DataProductType&amp;quot;&lt;/span&gt;
-    
-    
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TimeScale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StringQuantity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    For simplicity, assume this is just a string, which is fine for this notebook.&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;vodml_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;coords:domain.temporal.TimeScale&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -12688,13 +12724,14 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;cube&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;The-Cube-Model&quot;&gt;The Cube Model&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Cube-Model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;The-Cube-Model&quot;&gt;The Cube Model&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Cube-Model&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Now let's define a very limited number of Cube classes. We can do a number of interesting things with just few elements (and the Cube model is itself rather small, taking advantage of other models as its building blocks).&lt;/p&gt;
+
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[14]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[11]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -12725,14 +12762,15 @@ div#notebook {
 &lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;h2 id=&quot;A-Time-Series-Example-Dataset&quot;&gt;A Time Series Example Dataset&lt;a class=&quot;anchor-link&quot; href=&quot;#A-Time-Series-Example-Dataset&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The time series votable was too big to be embedded in the notebook. However it is &lt;a href=&quot;time-series.vot.xml&quot;&gt;also available in this site&lt;/a&gt;. The data comes from an &lt;a href=&quot;http://dc.zah.uni-heidelberg.de/getproduct/k2c9vst/data/MOA-2016-BLG-0254_VST_r_SDSS78.t&quot;&gt;actual data set&lt;/a&gt;, courtesy of the &lt;a href=&quot;http://www.g-vo.org/&quot;&gt;German Astrophysical Virtual Observatory (GAVO)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;A-Time-Series-Example-Dataset&quot;&gt;A Time Series Example Dataset&lt;a class=&quot;anchor-link&quot; href=&quot;#A-Time-Series-Example-Dataset&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The time series votable was too big to be embedded in the notebook. However it is &lt;a href=&quot;time-series.vot.xml&quot;&gt;also available in this site&lt;/a&gt;. The data comes from an &lt;a href=&quot;http://dc.zah.uni-heidelberg.de/getproduct/k2c9vst/data/MOA-2016-BLG-0254_VST_r_SDSS78.t&quot;&gt;actual data set&lt;/a&gt;, courtesy of the &lt;a href=&quot;http://www.g-vo.org/&quot;&gt;German Astrophysical Virtual Observatory (GAVO)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We parse the VOTable as both a time series and a data set.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[15]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[12]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time_series_xml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;time-series.vot.xml&amp;quot;&lt;/span&gt;
@@ -12755,19 +12793,37 @@ div#notebook {
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;plotting&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;An-advanced-plotting-client&quot;&gt;An advanced plotting client&lt;a class=&quot;anchor-link&quot; href=&quot;#An-advanced-plotting-client&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;An-advanced-plotting-client&quot;&gt;An advanced plotting client&lt;a class=&quot;anchor-link&quot; href=&quot;#An-advanced-plotting-client&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;We can put everything together in a generic plotting client that greatly simplifies the generation of plots. We can complicate the client at will, but in this case we will just produce a client that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;takes istances of a time series and the corresponding dataset from VODML/VOTable serializations&lt;/li&gt;
+&lt;li&gt;allows the user to plot an x array, a y array, and the corresponding errors using the names of their corresponding VOTable columns.&lt;/li&gt;
+&lt;li&gt;it can deal with STC positions, times, and generic measurements.&lt;/li&gt;
+&lt;li&gt;to keep things simple, it assumes a simple symmetric error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The original file has very small errors, so in order to make the error bars visible the client has a &quot;bug&quot; that multiplies the errors by 10.&lt;/p&gt;
+&lt;p&gt;The cell below provides an implementation of a simple client implementing the above requirements and rather generic. We are not including any knowledge about the specific file (although we are indeed making some assumptions and we could do better with error handling).&lt;/p&gt;
+
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[16]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[13]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;VoAxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_axis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;
-        
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_init_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_init_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# FIXME this is way too simplistic, even for this notebook&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# it doesn&amp;#39;t take into account the different possible error types&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stat_error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;IndexError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;None&lt;/span&gt;
+
     &lt;span class=&quot;nd&quot;&gt;@classmethod&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;is_vo_axis_for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model_class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -12780,7 +12836,6 @@ div#notebook {
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;fm&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_init_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_init_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_init_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;astropy.time&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Time&lt;/span&gt;
@@ -12791,14 +12846,6 @@ div#notebook {
         &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_init_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# FIXME this is way too simplistic, even for this notebook&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# it doesn&amp;#39;t take into account the different possible error types&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stat_error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;IndexError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;None&lt;/span&gt;
     
     
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SkyPositionAxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VoAxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -12813,7 +12860,6 @@ div#notebook {
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;fm&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cval&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stat_error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
         
@@ -12837,19 +12883,9 @@ div#notebook {
     
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;by_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
-&lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[17]:&lt;/div&gt;
-&lt;div class=&quot;inner_cell&quot;&gt;
-    &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NdPointPlot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NdPointPlot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ndpoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_ndpoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoNdPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ndpoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_dataset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataset&lt;/span&gt;
@@ -12888,10 +12924,6 @@ div#notebook {
         &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tight_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
         
         &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        
-        
-            
-        
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -12899,9 +12931,18 @@ div#notebook {
 &lt;/div&gt;
 
 &lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;prompt input_prompt&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;And finally here are the plots. We instantiate the plotting client and then we use it to plot the time series along different axes in 2D plots.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[18]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[14]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;points_plot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NdPointPlot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -13934,6 +13975,51 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;a id=&quot;invariance&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Invariance-of-VODML-serializations&quot;&gt;Invariance of VODML serializations&lt;a class=&quot;anchor-link&quot; href=&quot;#Invariance-of-VODML-serializations&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;We introduced an example with a simple sky position in our first example. Then we parsed a much more complicated serialization of a time series, which also includes positional information.&lt;/p&gt;
+&lt;p&gt;It is worth stressing that despite the fact that the sky position is deep inside an instance of a different data model, the simplistic client we built above still works, i.e.:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
+&lt;div class=&quot;input&quot;&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[15]:&lt;/div&gt;
+&lt;div class=&quot;inner_cell&quot;&gt;
+    &lt;div class=&quot;input_area&quot;&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ts_parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find_instances&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SkyPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;new_astro_pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VoSkyCoord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_astro_pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;output_wrapper&quot;&gt;
+&lt;div class=&quot;output&quot;&gt;
+
+
+&lt;div class=&quot;output_area&quot;&gt;
+
+&lt;div class=&quot;prompt&quot;&gt;&lt;/div&gt;
+
+
+&lt;div class=&quot;output_subarea output_stream output_stdout output_text&quot;&gt;
+&lt;pre&gt;&amp;lt;SkyCoord (FK4: equinox=J2000.000, obstime=J2000.000): (ra, dec) in deg
+    ( 269.82846, -27.99478)&amp;gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;prompt input_prompt&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;&lt;a id=&quot;tests&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;Tests&quot;&gt;Tests&lt;a class=&quot;anchor-link&quot; href=&quot;#Tests&quot;&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;
 &lt;/div&gt;
@@ -13941,7 +14027,27 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[19]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[16]:&lt;/div&gt;
+&lt;div class=&quot;inner_cell&quot;&gt;
+    &lt;div class=&quot;input_area&quot;&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.684591543245&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fk5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;41.269171456186264&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_fk5_j2000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fk5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.68458000395546&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;41.269169997096114&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_icrs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;assert_approx_equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;121.17424181434197&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_galactic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;significant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;assert_approx_equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;21.57288557543883&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;astropos_galactic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;significant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
+&lt;div class=&quot;input&quot;&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[17]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sky_positions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -13959,7 +14065,7 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[20]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[18]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;points&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -13976,7 +14082,7 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
 &lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[21]:&lt;/div&gt;
+&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[19]:&lt;/div&gt;
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
 &lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
@@ -14004,19 +14110,6 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 
 &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;mag&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;magnitude&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;adu&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flux&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
-&lt;div class=&quot;input&quot;&gt;
-&lt;div class=&quot;prompt input_prompt&quot;&gt;In&amp;nbsp;[&amp;nbsp;]:&lt;/div&gt;
-&lt;div class=&quot;inner_cell&quot;&gt;
-    &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;

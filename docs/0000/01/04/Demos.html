@@ -11856,7 +11856,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="STC,-Cube,-Time-Series,-and-VODML-Demo">STC, Cube, Time Series, and VODML Demo<a class="anchor-link" href="#STC,-Cube,-Time-Series,-and-VODML-Demo">&#194;&#182;</a></h1><h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#194;&#182;</a></h2><ul>
+<h1 id="STC,-Cube,-Time-Series,-and-VODML-Demo">STC, Cube, Time Series, and VODML Demo<a class="anchor-link" href="#STC,-Cube,-Time-Series,-and-VODML-Demo">&#194;&#182;</a></h1><p>O. Laurino - October, 27th 2017</p>
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#194;&#182;</a></h2><ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#parser">VODML Parser</a></li>
 <li><a href="#framework">VODML Python framework</a></li>
@@ -11873,6 +11874,7 @@ div#notebook {
 <li><a href="#plotting">An advanced plotting client</a></li>
 </ul>
 </li>
+<li><a href="#invariance">Invariance of VODML serializations</a>  </li>
 <li><a href="#tests">Tests</a></li>
 </ul>
 
@@ -11907,10 +11909,9 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="parser"></a></p>
-<h2 id="The-Parser">The Parser<a class="anchor-link" href="#The-Parser">&#194;&#182;</a></h2><p>The cell below implements a parser for the <em>Mapping VODML instances VOTable</em> specification. It implements most of the specification, enough for parsing the examples, but it lacks support for some constructs and above all it lacks proper error handling and validation. It's also not optimized.</p>
-<p>The parser is included here to make the notebook complete and self-contained, since writing a parser for the <em>VODML Mapping</em> specification is rather straighforward.</p>
-<p><strong>You can skip the parser definition and jump directly to the <a href="#models">definition</a> and <a href="#usage">usage</a> of the STC model(s)</strong></p>
-<p><strong>Note</strong> For simplicity, the parser implemented below only works on Python 3.6.</p>
+<h2 id="The-Parser">The Parser<a class="anchor-link" href="#The-Parser">&#194;&#182;</a></h2><p>The cell below implements a parser for the <a href="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml-mapping/doc/"><em>Mapping VODML instances VOTable</em></a> specification. It implements much of the specification, enough for parsing the examples. However, it's not complete above all it lacks proper error handling. It's also not optimized.</p>
+<p>To make the notebook complete and self-contained, and since writing a parser for the <em>VODML Mapping</em> specification from scratch is rather straighforward, the parser implementation is included here in full.</p>
+<p>For simplicity, the parser implemented below only works on Python 3.6.</p>
 
 </div>
 </div>
@@ -12046,12 +12047,12 @@ div#notebook {
         
         <span class="n">referred_element</span> <span class="o">=</span> <span class="n">reference_element</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;//def:INSTANCE[@ID=&#39;</span><span class="si">{id_ref}</span><span class="s2">&#39;]&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         
-        <span class="c1"># FIXME: way too simplistic: references should have their own lifecycle</span>
-        <span class="c1"># and be just referenced by instances, rather than attached to them.</span>
+        <span class="c1"># FIXME: way too simplistic: referenced instances should have their own lifecycle</span>
+        <span class="c1"># and be just referenced by the referrers, rather than attached to them.</span>
         <span class="c1"># The problem here is that an instance referenced twice would be instantiated</span>
-        <span class="c1"># twice, and there would be no link. Really, what should happen is that</span>
+        <span class="c1"># twice, and there would be no link between the two. Really, what should happen is that</span>
         <span class="c1"># a weak value dictionary should be created so that referenced instances have a life</span>
-        <span class="c1"># of its own and changes to an instance should be reflected across the process.</span>
+        <span class="c1"># of their own and changes to an instance should be reflected across the process.</span>
         <span class="c1"># As per usual garbage collection processing, referenced instances should be</span>
         <span class="c1"># garbage collected when no referring objects are to be found, hence the</span>
         <span class="c1"># weak value dictionary.</span>
@@ -12158,7 +12159,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="framework"></a></p>
-<h2 id="A-simple-VODML-Python-Framework">A simple VODML Python Framework<a class="anchor-link" href="#A-simple-VODML-Python-Framework">&#194;&#182;</a></h2><p>The cell below implements a simple Python framework for representing VODML models in Python in a convenient declarative way. If you have worked with a framework like Django or SQLAlchemy you'll find the model representations quite familiar. Again, not all of the VODML meta-model is implemented, and in particular no validation is performed.</p>
+<h2 id="A-simple-VODML-Python-Framework">A simple VODML Python Framework<a class="anchor-link" href="#A-simple-VODML-Python-Framework">&#194;&#182;</a></h2><p>The cell below implements a simple Python framework for representing VODML models in Python in a convenient declarative way. If you ever worked with a framework like Django or SQLAlchemy you'll find the model representations quite familiar. Again, not all of the VODML meta-model is implemented, multiplicities are treated in a rather crude way, and no validation is performed. That being said, few lines of Python provide a perfectly usable framework.</p>
 
 </div>
 </div>
@@ -12230,9 +12231,9 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="models"></a></p>
-<h2 id="The-Models">The Models<a class="anchor-link" href="#The-Models">&#194;&#182;</a></h2><p>The following cells define the actual models using the framework created above.</p>
+<h2 id="The-Models">The Models<a class="anchor-link" href="#The-Models">&#194;&#182;</a></h2><p>The following cells define actual models using the framework created above. These representations are easily generated automatically, but for the benefit of clarity they are described explicitly here.</p>
 <p><a id="ivoa"></a></p>
-<h2 id="IVOA-basic-model">IVOA basic model<a class="anchor-link" href="#IVOA-basic-model">&#194;&#182;</a></h2><p>First we define implementations for some basic quantities from the IVOA basic model. For simplicity, we don't differentiate between primitives and quantities, and we treat both as quantities. This is not necessarily advisable in production code, but it works for the purposes of this notebook.</p>
+<h2 id="IVOA-basic-model">IVOA basic model<a class="anchor-link" href="#IVOA-basic-model">&#194;&#182;</a></h2><p>First we define implementations for some basic quantities from the <a href="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html">IVOA basic model</a>. For simplicity, we don't differentiate between primitives and quantities, and we treat both as quantities. This is not necessarily advisable in production code, but it works for the purposes of this notebook.</p>
 
 </div>
 </div>
@@ -12291,8 +12292,9 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="coords"></a></p>
-<h2 id="Coordinates-Model">Coordinates Model<a class="anchor-link" href="#Coordinates-Model">&#194;&#182;</a></h2><p>The STC model was split in three submodules. At the base we have the <code>coords</code> model, which defines types that have to do with frames and coordinates. For simplicity, and since there are no ambiguities in the type names, we omit the package structure of the model and we define all the classes in the same namespace.</p>
+<h2 id="Coordinates-Model">Coordinates Model<a class="anchor-link" href="#Coordinates-Model">&#194;&#182;</a></h2><p>The STC model was split in three submodules. At the base we have the <a href="/ivoa-dm-examples/assets/examples/stc2/shortcuts/models/STC_coords-v2.0.html"><code>coords</code></a> model, which defines types that have to do with frames and coordinates. For simplicity, and since there are no ambiguities in the type names, we omit the package structure of the model and we define all the classes in the same namespace.</p>
 <p>Note that not all of <code>coords</code> is defined here, only the classes that correspond to types that we are going to use in the demo.</p>
+<p>Again, all these classes could easily be automatically generated from the VODML model descriptions, but are included here in explicitly for clarity. Also, as we are not performing any validation, many types are simply associated to strings.</p>
 
 </div>
 </div>
@@ -12352,6 +12354,13 @@ div#notebook {
     <span class="n">date</span> <span class="o">=</span> <span class="n">Attribute</span><span class="p">(</span><span class="s2">&quot;coords:domain.temporal.JD.date&quot;</span><span class="p">)</span>
     
     
+<span class="k">class</span> <span class="nc">TimeScale</span><span class="p">(</span><span class="n">StringQuantity</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For simplicity, assume this is just a string, which is fine for this notebook.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vodml_id</span> <span class="o">=</span> <span class="s2">&quot;coords:domain.temporal.TimeScale&quot;</span>
+    
+    
 <span class="k">class</span> <span class="nc">Coordinate</span><span class="p">:</span>
     <span class="n">vodml_id</span> <span class="o">=</span> <span class="s2">&quot;coords:Coordinate&quot;</span>
     
@@ -12401,7 +12410,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="meas"></a></p>
-<h2 id="Measurements-Model">Measurements Model<a class="anchor-link" href="#Measurements-Model">&#194;&#182;</a></h2><p>The <code>meas</code> model defines types for measurements, including convenient shortcuts for measurement that are often used in Astronomy, like the <code>SkyPosition</code>, which represents a celestial coordinate. It also introduces error structures. Again, we are not defining classes for all of the types in the model, but only those types we need for the demo.</p>
+<h2 id="Measurements-Model">Measurements Model<a class="anchor-link" href="#Measurements-Model">&#194;&#182;</a></h2><p>The <a href="/ivoa-dm-examples/assets/examples/stc2/shortcuts/models/STC_meas-v2.0.html"><code>meas</code></a> model defines types for measurements, including convenient shortcuts for measurement that are often used in Astronomy, like <code>SkyPosition</code>, which represents a celestial coordinate. It also introduces error structures. Again, we are not defining classes for all of the types in the model, but only those types we need for the demo.</p>
 
 </div>
 </div>
@@ -12566,7 +12575,6 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The cell below does the actual parsing. We use the <code>find_instances</code> method to get all of the instances of a certain type, i.e. the <code>SkyPosition</code> type. In this case only one instance is present, but we'll look at a more complex example below.</p>
-<p>The cell presents the values in assert statements that are used both to show the actual values in the instance, and also to test the notebook after code changes.</p>
 
 </div>
 </div>
@@ -12591,7 +12599,10 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="astropy"></a></p>
-<h2 id="A-simple-Astropy-STC-client">A simple Astropy STC client<a class="anchor-link" href="#A-simple-Astropy-STC-client">&#194;&#182;</a></h2><p>The next cell defines a new class that takes a SkyPosition instance as an initializer parameter. The class delegates all of its members to an instance of the Astropy's <code>astropy.coordinates.SkyCoord</code> class. This way the new class acts as a drop-in replacement for any operation that can be applied to a <code>SkyCoord</code> instance, as shown below.</p>
+<h2 id="A-minimalistic-Astropy-STC-client">A minimalistic Astropy STC client<a class="anchor-link" href="#A-minimalistic-Astropy-STC-client">&#194;&#182;</a></h2><p>Model classes like the ones introduced above do not implement any logic, they are just representing the types in a VODML model. However, they can be used to build useful clients as shown below.</p>
+<p>As <a href="http://www.astropy.org/">Astropy</a> provides a rich package for astronomical coordinates manipulation, all we need to do something useful of the position we just parsed is to provide an adapter class that transforms the position into an Astropy object.</p>
+<p>The cell below does exactly this, by encapsulating an <code>stc_position</code> into an <code>astropy.coordinates.SkyCoord</code> object.</p>
+<p>Such a class (maybe better equipped in terms of error handling) could be part of an STC library that enables using Astropy on VO serializations.</p>
 
 </div>
 </div>
@@ -12630,66 +12641,12 @@ div#notebook {
     
     <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sky_coords</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">astropos</span> <span class="o">=</span> <span class="n">VoSkyCoord</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="k">import</span> <span class="n">assert_approx_equal</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="k">import</span> <span class="n">FK5</span>
-<span class="n">astropos_fk5_j2000</span> <span class="o">=</span> <span class="n">astropos</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">FK5</span><span class="p">(</span><span class="n">equinox</span><span class="o">=</span><span class="s2">&quot;J2000&quot;</span><span class="p">))</span>
-<span class="k">assert</span> <span class="mf">10.684591543245</span> <span class="o">==</span> <span class="n">astropos_fk5_j2000</span><span class="o">.</span><span class="n">fk5</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">deg</span>
-<span class="k">assert</span> <span class="mf">41.269171456186264</span> <span class="o">==</span> <span class="n">astropos_fk5_j2000</span><span class="o">.</span><span class="n">fk5</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">deg</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">astropos_icrs</span> <span class="o">=</span> <span class="n">astropos_fk5_j2000</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="s1">&#39;icrs&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="mf">10.68458000395546</span> <span class="o">==</span> <span class="n">astropos_icrs</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">deg</span>
-<span class="k">assert</span> <span class="mf">41.269169997096114</span> <span class="o">==</span> <span class="n">astropos_icrs</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">deg</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">astropos_galactic</span> <span class="o">=</span> <span class="n">astropos_icrs</span><span class="o">.</span><span class="n">galactic</span>
-<span class="n">assert_approx_equal</span><span class="p">(</span><span class="mf">121.17424181434197</span><span class="p">,</span> <span class="n">astropos_galactic</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">significant</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">assert_approx_equal</span><span class="p">(</span><span class="o">-</span><span class="mf">21.57288557543883</span><span class="p">,</span> <span class="n">astropos_galactic</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">significant</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sky_coord</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sky_coord</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12701,15 +12658,101 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a id="timeseries"></a></p>
-<h1 id="Time-Series-Example">Time Series Example<a class="anchor-link" href="#Time-Series-Example">&#194;&#182;</a></h1><p><a id="dataset"></a></p>
-<h2 id="The-Dataset-model">The Dataset model<a class="anchor-link" href="#The-Dataset-model">&#194;&#182;</a></h2>
+<p>So now we can take advantage of Astropy's capabilities to transform the position from one frame to another, or to get the corresponding galactic coordinates.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="k">import</span> <span class="n">assert_approx_equal</span>
+<span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="k">import</span> <span class="n">FK5</span>
+
+<span class="n">astropos</span> <span class="o">=</span> <span class="n">VoSkyCoord</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="n">astropos_fk5_j2000</span> <span class="o">=</span> <span class="n">astropos</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">FK5</span><span class="p">(</span><span class="n">equinox</span><span class="o">=</span><span class="s2">&quot;J2000&quot;</span><span class="p">))</span>
+<span class="n">astropos_icrs</span> <span class="o">=</span> <span class="n">astropos_fk5_j2000</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="s1">&#39;icrs&#39;</span><span class="p">)</span>
+<span class="n">astropos_galactic</span> <span class="o">=</span> <span class="n">astropos_icrs</span><span class="o">.</span><span class="n">galactic</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">original coordinate:</span>
+<span class="s2">  RA=</span><span class="si">{pos.coord.ra.value}</span><span class="s2"> DEC=</span><span class="si">{pos.coord.dec.value}</span><span class="s2"></span>
+<span class="s2">  Frame=</span><span class="si">{pos.coord_frame.space_ref_frame.value}</span><span class="s2"></span>
+<span class="s2">  Equinox=</span><span class="si">{pos.coord_frame.equinox.value}</span><span class="s2"></span>
+<span class="s2">  </span>
+<span class="s2">FK5 J2000 (deg):</span>
+<span class="s2">  RA=</span><span class="si">{astropos_fk5_j2000.fk5.ra.deg}</span><span class="s2"> DEC=</span><span class="si">{astropos_fk5_j2000.fk5.dec.deg}</span><span class="s2"></span>
+<span class="s2">  </span>
+<span class="s2">FK5 J2000 (centiradian):</span>
+<span class="s2">  RA=</span><span class="si">{astropos_fk5_j2000.fk5.ra.centiradian}</span><span class="s2"> DEC=</span><span class="si">{astropos_fk5_j2000.fk5.dec.centiradian}</span><span class="s2"></span>
+<span class="s2">  </span>
+<span class="s2">ICRS (deg):</span>
+<span class="s2">  RA=</span><span class="si">{astropos_icrs.ra.deg}</span><span class="s2"> DEC=</span><span class="si">{astropos_icrs.dec.deg}</span><span class="s2"></span>
+<span class="s2">  </span>
+<span class="s2">Galactic (deg):</span>
+<span class="s2">  l=</span><span class="si">{astropos_galactic.l.deg}</span><span class="s2"> b=</span><span class="si">{astropos_galactic.b.deg}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+original coordinate:
+  RA=10.34209135 DEC=41.13232112
+  Frame=FK5
+  Equinox=J1975
+  
+FK5 J2000 (deg):
+  RA=10.684591543245 DEC=41.269171456186264
+  
+FK5 J2000 (centiradian):
+  RA=18.648130166036736 DEC=72.0282921480513
+  
+ICRS (deg):
+  RA=10.68458000395546 DEC=41.269169997096114
+  
+Galactic (deg):
+  l=121.17424181434197 b=-21.57288557543883
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="timeseries"></a></p>
+<h1 id="Time-Series-Example">Time Series Example<a class="anchor-link" href="#Time-Series-Example">&#194;&#182;</a></h1><p>A time series can be seen in two ways. First and foremost, it is a data set, so it can be represented using the Dataset data model. More specifically, it is a special instance of a cube, with time measurements on the dependent axis. As such, a time series can be represented according to the Cube data model.</p>
+<p>Note that the two natures can be disjoint, with a different set of annotations for describing the <em>dataset</em> and the <em>timeseries</em></p>
+<p><a id="dataset"></a></p>
+<h2 id="The-Dataset-model">The Dataset model<a class="anchor-link" href="#The-Dataset-model">&#194;&#182;</a></h2><p>Let's define Python classes representing the Dataset VODML model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">DataID</span><span class="p">:</span>
@@ -12744,13 +12787,6 @@ div#notebook {
 <span class="sd">    For simplicity, assume this is just a string, which is fine for this notebook.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">vodml_id</span> <span class="o">=</span> <span class="s2">&quot;ds:dataset.DataProductType&quot;</span>
-    
-    
-<span class="k">class</span> <span class="nc">TimeScale</span><span class="p">(</span><span class="n">StringQuantity</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    For simplicity, assume this is just a string, which is fine for this notebook.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">vodml_id</span> <span class="o">=</span> <span class="s2">&quot;coords:domain.temporal.TimeScale&quot;</span>
 </pre></div>
 
 </div>
@@ -12763,13 +12799,14 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="cube"></a></p>
-<h2 id="The-Cube-Model">The Cube Model<a class="anchor-link" href="#The-Cube-Model">&#194;&#182;</a></h2>
+<h2 id="The-Cube-Model">The Cube Model<a class="anchor-link" href="#The-Cube-Model">&#194;&#182;</a></h2><p>Now let's define a very limited number of Cube classes. We can do a number of interesting things with just few elements (and the Cube model is itself rather small, taking advantage of other models as its building blocks).</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">DataElement</span><span class="p">:</span>
@@ -12800,14 +12837,15 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-Time-Series-Example-Dataset">A Time Series Example Dataset<a class="anchor-link" href="#A-Time-Series-Example-Dataset">&#194;&#182;</a></h2><p>The time series votable was too big to be embedded in the notebook. However it is <a href="time-series.vot.xml">also available in this site</a>. The data comes from an <a href="http://dc.zah.uni-heidelberg.de/getproduct/k2c9vst/data/MOA-2016-BLG-0254_VST_r_SDSS78.t">actual data set</a>, courtesy of the <a href="http://www.g-vo.org/">German Astrophysical Virtual Observatory (GAVO)</a></p>
+<h2 id="A-Time-Series-Example-Dataset">A Time Series Example Dataset<a class="anchor-link" href="#A-Time-Series-Example-Dataset">&#194;&#182;</a></h2><p>The time series votable was too big to be embedded in the notebook. However it is <a href="time-series.vot.xml">also available in this site</a>. The data comes from an <a href="http://dc.zah.uni-heidelberg.de/getproduct/k2c9vst/data/MOA-2016-BLG-0254_VST_r_SDSS78.t">actual data set</a>, courtesy of the <a href="http://www.g-vo.org/">German Astrophysical Virtual Observatory (GAVO)</a>.</p>
+<p>We parse the VOTable as both a time series and a data set.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">time_series_xml</span> <span class="o">=</span> <span class="s2">&quot;time-series.vot.xml&quot;</span>
@@ -12830,19 +12868,37 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="plotting"></a></p>
-<h2 id="An-advanced-plotting-client">An advanced plotting client<a class="anchor-link" href="#An-advanced-plotting-client">&#194;&#182;</a></h2>
+<h2 id="An-advanced-plotting-client">An advanced plotting client<a class="anchor-link" href="#An-advanced-plotting-client">&#194;&#182;</a></h2><p>We can put everything together in a generic plotting client that greatly simplifies the generation of plots. We can complicate the client at will, but in this case we will just produce a client that:</p>
+<ul>
+<li>takes istances of a time series and the corresponding dataset from VODML/VOTable serializations</li>
+<li>allows the user to plot an x array, a y array, and the corresponding errors using the names of their corresponding VOTable columns.</li>
+<li>it can deal with STC positions, times, and generic measurements.</li>
+<li>to keep things simple, it assumes a simple symmetric error</li>
+</ul>
+<p>The original file has very small errors, so in order to make the error bars visible the client has a "bug" that multiplies the errors by 10.</p>
+<p>The cell below provides an implementation of a simple client implementing the above requirements and rather generic. We are not including any knowledge about the specific file (although we are indeed making some assumptions and we could do better with error handling).</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">VoAxis</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_axis</span> <span class="o">=</span> <span class="n">axis</span>
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_error</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="nf">_init_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+        <span class="c1"># FIXME this is way too simplistic, even for this notebook</span>
+        <span class="c1"># it doesn&#39;t take into account the different possible error types</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">axis</span><span class="o">.</span><span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stat_error</span><span class="o">.</span><span class="n">radius</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">is_vo_axis_for</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis</span><span class="o">.</span><span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_class</span><span class="p">)</span>
@@ -12855,7 +12911,6 @@ div#notebook {
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_value</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_error</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
         
     <span class="k">def</span> <span class="nf">_init_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">astropy.time</span> <span class="k">import</span> <span class="n">Time</span>
@@ -12866,14 +12921,6 @@ div#notebook {
         <span class="n">value</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">t_format</span><span class="p">)</span>
         <span class="n">unit</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">unit</span>
         <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="n">unit</span>
-    
-    <span class="k">def</span> <span class="nf">_init_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
-        <span class="c1"># FIXME this is way too simplistic, even for this notebook</span>
-        <span class="c1"># it doesn&#39;t take into account the different possible error types</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">axis</span><span class="o">.</span><span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stat_error</span><span class="o">.</span><span class="n">radius</span>
-        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
     
     
 <span class="k">class</span> <span class="nc">SkyPositionAxis</span><span class="p">(</span><span class="n">VoAxis</span><span class="p">):</span>
@@ -12888,7 +12935,6 @@ div#notebook {
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">cval</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stat_error</span><span class="o">.</span><span class="n">radius</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">unit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">name</span>
         
@@ -12912,19 +12958,9 @@ div#notebook {
     
     <span class="k">def</span> <span class="nf">by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-</pre></div>
 
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">NdPointPlot</span><span class="p">:</span>
+    
+<span class="k">class</span> <span class="nc">NdPointPlot</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndpoint</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ndpoint</span> <span class="o">=</span> <span class="n">VoNdPoint</span><span class="p">(</span><span class="n">ndpoint</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dataset</span> <span class="o">=</span> <span class="n">dataset</span>
@@ -12963,10 +12999,6 @@ div#notebook {
         <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
         
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-        
-        
-            
-        
 </pre></div>
 
 </div>
@@ -12974,9 +13006,18 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And finally here are the plots. We instantiate the plotting client and then we use it to plot the time series along different axes in 2D plots.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">points_plot</span> <span class="o">=</span> <span class="n">NdPointPlot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
@@ -14009,6 +14050,51 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="invariance"></a></p>
+<h1 id="Invariance-of-VODML-serializations">Invariance of VODML serializations<a class="anchor-link" href="#Invariance-of-VODML-serializations">&#194;&#182;</a></h1><p>We introduced an example with a simple sky position in our first example. Then we parsed a much more complicated serialization of a time series, which also includes positional information.</p>
+<p>It is worth stressing that despite the fact that the sky position is deep inside an instance of a different data model, the simplistic client we built above still works, i.e.:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_pos</span> <span class="o">=</span> <span class="n">ts_parser</span><span class="o">.</span><span class="n">find_instances</span><span class="p">(</span><span class="n">SkyPosition</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">new_astro_pos</span> <span class="o">=</span> <span class="n">VoSkyCoord</span><span class="p">(</span><span class="n">new_pos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_astro_pos</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;SkyCoord (FK4: equinox=J2000.000, obstime=J2000.000): (ra, dec) in deg
+    ( 269.82846, -27.99478)&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="tests"></a></p>
 <h1 id="Tests">Tests<a class="anchor-link" href="#Tests">&#194;&#182;</a></h1>
 </div>
@@ -14016,7 +14102,27 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="mf">10.684591543245</span> <span class="o">==</span> <span class="n">astropos_fk5_j2000</span><span class="o">.</span><span class="n">fk5</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">deg</span>
+<span class="k">assert</span> <span class="mf">41.269171456186264</span> <span class="o">==</span> <span class="n">astropos_fk5_j2000</span><span class="o">.</span><span class="n">fk5</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">deg</span>
+
+<span class="k">assert</span> <span class="mf">10.68458000395546</span> <span class="o">==</span> <span class="n">astropos_icrs</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">deg</span>
+<span class="k">assert</span> <span class="mf">41.269169997096114</span> <span class="o">==</span> <span class="n">astropos_icrs</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">deg</span>
+
+<span class="n">assert_approx_equal</span><span class="p">(</span><span class="mf">121.17424181434197</span><span class="p">,</span> <span class="n">astropos_galactic</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">significant</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">assert_approx_equal</span><span class="p">(</span><span class="o">-</span><span class="mf">21.57288557543883</span><span class="p">,</span> <span class="n">astropos_galactic</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">significant</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">sky_positions</span><span class="p">)</span>
@@ -14034,7 +14140,7 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
@@ -14051,7 +14157,7 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -14079,19 +14185,6 @@ UmKMMeY2OCkxxhhzG5yUGGOMuY3/D/4KTZVojenxAAAAAElFTkSuQmCC
 
 <span class="k">assert</span> <span class="s1">&#39;mag&#39;</span> <span class="o">==</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">cval</span><span class="o">.</span><span class="n">unit</span>
 <span class="k">assert</span> <span class="s1">&#39;adu&#39;</span> <span class="o">==</span> <span class="n">flux</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">cval</span><span class="o">.</span><span class="n">unit</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
