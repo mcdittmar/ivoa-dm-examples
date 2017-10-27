@@ -5,10 +5,10 @@ variables:
 
 before_script:
   - bundle install
-  - wget -P /tmp/ https://repo.continuum.io/miniconda/Miniconda3-4.3.30-Linux-x86_64.sh
+  - wget -q -P /tmp/ https://repo.continuum.io/miniconda/Miniconda3-4.3.30-Linux-x86_64.sh
   - bash /tmp/Miniconda3-4.3.30-Linux-x86_64.sh -b -p /tmp/miniconda
   - export PATH=/tmp/miniconda/bin:$PATH
-  - conda install -y notebook
+  - conda install -y -q notebook
 
 test:
   stage: test
