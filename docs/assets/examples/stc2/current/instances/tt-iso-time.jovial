@@ -1,0 +1,23 @@
+def modelsFolder = "file:../models"
+def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"
+
+def coordsLocation = new URL("$modelsFolder/STC_coords-v2.0.vo-dml.xml")
+def measLocation = new URL("$modelsFolder/STC_meas-v2.0.vo-dml.xml")
+def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: measLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "stc2_measurements:domain.time.TimeMeasure") {
+        instance (role: "coord", type: "stc2_coordinates:domain.time.ISOtime") {
+            instance(role: "cval", value: "2000-09-02T01:10:14") {
+                reference(role: "coordAxis") {
+                    // This is not very portable or convenient. There should be a URI
+                    remote "file://./standard-frames.vot#TT_AXIS"
+                }
+            }
+        }
+    }
+}

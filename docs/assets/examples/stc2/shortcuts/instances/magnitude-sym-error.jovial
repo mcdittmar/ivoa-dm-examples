@@ -1,0 +1,25 @@
+def modelsFolder = "file:../models"
+def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"
+
+def coordsLocation = new URL("$modelsFolder/STC_coords-v2.0.vo-dml.xml")
+def measLocation = new URL("$modelsFolder/STC_meas-v2.0.vo-dml.xml")
+def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: measLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "meas:GenericCoordMeasure") {
+        // implicit reference to TOPOCENTER Std 1D frame
+        instance(role: "coord", type: "coords:PhysicalCoordValue") {
+            // implicit reference to STD 1D Axis
+            instance role: "cval", value: -0.28, type: "ivoa:RealQuantity"
+        }
+        instance(role: "error", type: "meas:BasicError1D") {
+            instance(role: "statError", type: "meas:Symmetrical1D") {
+                instance role: "radius", value: 0.01
+            }
+        }
+    }
+}

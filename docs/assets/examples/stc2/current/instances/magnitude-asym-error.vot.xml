@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>stc2_coordinates</NAME>
+      <URL>file:../models/STC_coords-v2.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>stc2_measurements</NAME>
+      <URL>file:../models/STC_meas-v2.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="stc2_coordinates:dmain.generic.GenericFrame">
+        <ATTRIBUTE dmrole="coordSpace">
+          <INSTANCE dmtype="null">
+            <ATTRIBUTE dmrole="coordAxis">
+              <INSTANCE dmtype="null" ID="MAG_AXIS">
+                <ATTRIBUTE dmrole="name">
+                  <LITERAL value="mag" dmtype="null"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE dmtype="stc2_measurements:domain.generic.GenericCoordMeasure">
+        <ATTRIBUTE dmrole="stc2_measurements:uncertainty.CoordMeasure.coord">
+          <INSTANCE dmtype="stc2_coordinates:domain.generic.GenericCoordValue">
+            <ATTRIBUTE dmrole="stc2_coordinates:coords.PhysicalCoordValue.cval">
+              <LITERAL value="-0.28" dmtype="ivoa:RealQuantity"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="stc2_coordinates:coords.CoordValue.coordAxis">
+              <IDREF>MAG_AXIS</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="stc2_measurements:uncertainty.CoordMeasure.error">
+          <INSTANCE dmtype="stc2_measurements:uncertainty.Error1D">
+            <ATTRIBUTE dmrole="stc2_measurements:uncertainty.Error1D.statError">
+              <INSTANCE dmtype="stc2_measurements:stctypes.Asymmetrical1D">
+                <ATTRIBUTE dmrole="stc2_measurements:stctypes.Asymmetrical1D.plus">
+                  <LITERAL value="0.0000985" dmtype="ivoa:RealQuantity"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="stc2_measurements:stctypes.Asymmetrical1D.minus">
+                  <LITERAL value="0.0001752" dmtype="ivoa:RealQuantity"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+</VOTABLE>

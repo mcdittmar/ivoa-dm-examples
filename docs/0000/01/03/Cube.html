@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cube model</title>
+  <meta name="description" content="Table of Contents Table of Contents">
+
+  <link rel="stylesheet" href="/ivoa-dm-examples/assets/main.css">
+  <link rel="canonical" href="/ivoa-dm-examples/0000/01/03/Cube.html">
+  <link rel="alternate" type="application/rss+xml" title="IVOA Data Model Examples" href="/ivoa-dm-examples/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/ivoa-dm-examples/">IVOA Data Model Examples</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/ivoa-dm-examples/about/">About</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Cube model</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="table-of-contents">Table of Contents</h2>
+<ul id="markdown-toc">
+  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
+  <li><a href="#generalities" id="markdown-toc-generalities">Generalities</a></li>
+  <li><a href="#model-files" id="markdown-toc-model-files">Model Files</a></li>
+  <li><a href="#time-series" id="markdown-toc-time-series">Time Series</a>    <ul>
+      <li><a href="#dsl" id="markdown-toc-dsl">DSL</a></li>
+      <li><a href="#votable" id="markdown-toc-votable">VOTable</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="generalities">Generalities</h2>
+
+<p>As for the other examples we provide two representations for the instances. One is expressed in
+a Domain Specific Language (DSL) that we are developing along with the VODML-related standards.</p>
+
+<p>The DSL is independent of the serialization format, and allows to describe the instances
+in a simpler language without much boilerplate.</p>
+
+<p>We also provide the VOTable serializations of those instances, which is what providers and
+clients will need to work with in practice.</p>
+
+<h2 id="model-files">Model Files</h2>
+
+<p><a href="/ivoa-dm-examples/assets/examples/cube/shortcuts/models/Cube-1.0.html">Coordinates HTML documentation</a></p>
+
+<h2 id="time-series">Time Series</h2>
+
+<h4 id="dsl">DSL</h4>
+
+<p>File: <a href="/ivoa-dm-examples/assets/examples/cube/shortcuts/instances/time-series.jovial">/examples/cube/shortcuts/instances/time-series.jovial </a></p>
+
+<div class="language-groovy highlighter-rouge"><pre class="highlight"><code><span class="kt">def</span> <span class="n">modelsFolder</span> <span class="o">=</span> <span class="s2">"file:../models"</span>
+<span class="kt">def</span> <span class="n">stcModelsFolder</span> <span class="o">=</span> <span class="s2">"file:../../../stc2/shortcuts/models"</span>
+<span class="kt">def</span> <span class="n">voluteFolder</span> <span class="o">=</span> <span class="s2">"https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"</span>
+
+<span class="kt">def</span> <span class="n">coordsLocation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s2">"$stcModelsFolder/STC_coords-v2.0.vo-dml.xml"</span><span class="o">)</span>
+<span class="kt">def</span> <span class="n">measLocation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s2">"$stcModelsFolder/STC_meas-v2.0.vo-dml.xml"</span><span class="o">)</span>
+<span class="kt">def</span> <span class="n">ivoaLocation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s2">"$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml"</span><span class="o">)</span>
+<span class="kt">def</span> <span class="n">cubeLocation</span> <span class="o">=</span>  <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s2">"$modelsFolder/Cube-1.0.vo-dml.xml"</span><span class="o">)</span>
+<span class="kt">def</span> <span class="n">datasetLocation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s2">"$modelsFolder/DatasetMetadata-1.0.vo-dml.xml"</span><span class="o">)</span>
+
+<span class="n">dmInstance</span> <span class="o">{</span>
+    <span class="n">model</span><span class="o">(</span><span class="nl">vodmlURL:</span> <span class="n">coordsLocation</span><span class="o">)</span>
+    <span class="n">model</span><span class="o">(</span><span class="nl">vodmlURL:</span> <span class="n">measLocation</span><span class="o">)</span>
+    <span class="n">model</span><span class="o">(</span><span class="nl">vodmlURL:</span> <span class="n">ivoaLocation</span><span class="o">)</span>
+    <span class="n">model</span><span class="o">(</span><span class="nl">vodmlURL:</span> <span class="n">cubeLocation</span><span class="o">)</span>
+    <span class="n">model</span><span class="o">(</span><span class="nl">vodmlURL:</span> <span class="n">datasetLocation</span><span class="o">)</span>
+
+    <span class="n">instance</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">"_TT_FRAME"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:domain.temporal.TimeFrame"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"refPosition"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:domain.spatial.StdRefLocation"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"position"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"TOPOCENTER"</span>
+        <span class="o">}</span>
+        <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"timescale"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"TT"</span>
+    <span class="o">}</span>
+
+    <span class="n">instance</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">"_FK4_J2000_FRAME"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:domain.spatial.SpaceFrame"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"spaceRefFrame"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"FK4"</span>
+        <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"equinox"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"J2000"</span>
+        <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"refPosition"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:domain.spatial.StdRefLocation"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"position"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"TOPOCENTER"</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="n">instance</span><span class="o">(</span><span class="nl">type:</span> <span class="s2">"cube:SparseCube"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">composition</span> <span class="nl">role:</span> <span class="s2">"data"</span><span class="o">,</span> <span class="nl">ref:</span> <span class="s2">"_DATA_INSTANCE"</span>
+    <span class="o">}</span>
+
+    <span class="n">table</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">"_DATA_TABLE"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">instance</span><span class="o">(</span><span class="nl">type:</span> <span class="s2">"ds:experiment.ObsDataset"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"dataProductType"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"TIMESERIES"</span>
+            <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"calibLevel"</span><span class="o">,</span> <span class="nl">value:</span> <span class="mi">3</span>
+            <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"dataID"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"date"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"2017-03-27T15:35:56"</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">instance</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">"_DATA_INSTANCE"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"cube:NDPoint"</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="c1">// TIME</span>
+            <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"axis"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"cube:Observable"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"dependent"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"False"</span>
+
+                <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"instance"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:StdTimeMeasure"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">reference</span> <span class="nl">role:</span> <span class="s2">"frame"</span><span class="o">,</span> <span class="nl">idref:</span> <span class="s2">"_TT_FRAME"</span>
+
+                    <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"coord"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:domain.temporal.ISOTime"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">column</span> <span class="nl">role:</span> <span class="s2">"date"</span><span class="o">,</span> <span class="nl">id:</span><span class="s2">"_col_TIME"</span><span class="o">,</span> <span class="nl">data:</span> <span class="o">[</span><span class="s2">"20170201T11:36:52"</span><span class="o">,</span> <span class="s2">"20170201T11:36:53"</span><span class="o">]</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="c1">// POSITION</span>
+            <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"axis"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"cube:Observable"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"dependent"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"False"</span>
+
+                <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"instance"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:SkyPosition"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">reference</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"frame"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">// This could be a standard URI, rather...</span>
+                        <span class="n">idref</span> <span class="s2">"_FK4_J2000_FRAME"</span>
+                    <span class="o">}</span>
+                    <span class="n">instance</span> <span class="o">(</span><span class="nl">role:</span> <span class="s2">"coord"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:domain.spatial.CelestialCoord"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">column</span> <span class="nl">role:</span> <span class="s2">"ra"</span><span class="o">,</span> <span class="nl">id:</span> <span class="s2">"_col_RAJ2000"</span><span class="o">,</span> <span class="nl">data:</span> <span class="o">[</span><span class="mf">10.0</span><span class="o">,</span> <span class="mf">20.0</span><span class="o">]</span>
+                        <span class="n">column</span> <span class="nl">role:</span> <span class="s2">"dec"</span><span class="o">,</span> <span class="nl">id:</span> <span class="s2">"_col_DECJ2000"</span><span class="o">,</span> <span class="nl">data:</span> <span class="o">[</span><span class="mf">10.1</span><span class="o">,</span> <span class="mf">20.1</span><span class="o">]</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="c1">// FLUX</span>
+            <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"axis"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"cube:Observable"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"dependent"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"True"</span>
+
+                <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"instance"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:GenericCoordMeasure"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// Implicit topocenter frame reference</span>
+                    <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"coord"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:GenericCoordValue"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">column</span> <span class="nl">role:</span> <span class="s2">"cval"</span><span class="o">,</span> <span class="nl">id:</span> <span class="s2">"_col_FLUX"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"ivoa:RealQuantity"</span><span class="o">,</span> <span class="nl">data:</span> <span class="o">[</span><span class="mf">100.0</span><span class="o">,</span> <span class="mf">200.0</span><span class="o">]</span>
+                        <span class="c1">// Implicit standard 1d axis reference</span>
+                    <span class="o">}</span>
+                    <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"error"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:BasicError1D"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"statError"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:Symmetrical1D"</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">column</span> <span class="nl">role:</span> <span class="s2">"radius"</span><span class="o">,</span> <span class="nl">id:</span> <span class="s2">"_col_FLUX_ERROR"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"ivoa:RealQuantity"</span><span class="o">,</span> <span class="nl">data:</span> <span class="o">[</span><span class="mf">0.1</span><span class="o">,</span> <span class="mf">0.2</span><span class="o">]</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="c1">// MAGNITUDE</span>
+            <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"axis"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"cube:Observable"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">instance</span> <span class="nl">role:</span> <span class="s2">"dependent"</span><span class="o">,</span> <span class="nl">value:</span> <span class="s2">"True"</span>
+
+                <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"instance"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:GenericCoordMeasure"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// Implicit topocenter frame reference</span>
+                    <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"coord"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"coords:GenericCoordValue"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">column</span> <span class="nl">role:</span> <span class="s2">"cval"</span><span class="o">,</span> <span class="nl">id:</span> <span class="s2">"_col_MAG"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"ivoa:RealQuantity"</span><span class="o">,</span> <span class="nl">data:</span> <span class="o">[</span><span class="mf">100.1</span><span class="o">,</span> <span class="mf">200.1</span><span class="o">]</span>
+                        <span class="c1">// Implicit standard 1d axis reference</span>
+                    <span class="o">}</span>
+                    <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"error"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:BasicError1D"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">instance</span><span class="o">(</span><span class="nl">role:</span> <span class="s2">"statError"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"meas:Symmetrical1D"</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">column</span> <span class="nl">role:</span> <span class="s2">"radius"</span><span class="o">,</span> <span class="nl">id:</span> <span class="s2">"_col_MAG_ERROR"</span><span class="o">,</span> <span class="nl">type:</span> <span class="s2">"ivoa:RealQuantity"</span><span class="o">,</span> <span class="nl">data:</span> <span class="o">[</span><span class="mf">1.1</span><span class="o">,</span> <span class="mf">1.2</span><span class="o">]</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+
+<h4 id="votable">VOTable</h4>
+
+<p>File: <a href="/ivoa-dm-examples/assets/examples/cube/shortcuts/instances/time-series.vot.xml">/examples/cube/shortcuts/instances/time-series.vot.xml </a></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><span class="nt">&lt;VOTABLE</span> <span class="na">xmlns=</span><span class="s">"http://www.ivoa.net/xml/VOTable/v1.4"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;VODML&gt;</span>
+    <span class="nt">&lt;MODEL&gt;</span>
+      <span class="nt">&lt;NAME&gt;</span>coords<span class="nt">&lt;/NAME&gt;</span>
+      <span class="nt">&lt;URL&gt;</span>file:../../../stc2/shortcuts/models/STC_coords-v2.0.vo-dml.xml<span class="nt">&lt;/URL&gt;</span>
+    <span class="nt">&lt;/MODEL&gt;</span>
+    <span class="nt">&lt;MODEL&gt;</span>
+      <span class="nt">&lt;NAME&gt;</span>meas<span class="nt">&lt;/NAME&gt;</span>
+      <span class="nt">&lt;URL&gt;</span>file:../../../stc2/shortcuts/models/STC_meas-v2.0.vo-dml.xml<span class="nt">&lt;/URL&gt;</span>
+    <span class="nt">&lt;/MODEL&gt;</span>
+    <span class="nt">&lt;MODEL&gt;</span>
+      <span class="nt">&lt;NAME&gt;</span>ivoa<span class="nt">&lt;/NAME&gt;</span>
+      <span class="nt">&lt;URL&gt;</span>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models//ivoa/vo-dml/IVOA-v1.0.vo-dml.xml<span class="nt">&lt;/URL&gt;</span>
+    <span class="nt">&lt;/MODEL&gt;</span>
+    <span class="nt">&lt;MODEL&gt;</span>
+      <span class="nt">&lt;NAME&gt;</span>cube<span class="nt">&lt;/NAME&gt;</span>
+      <span class="nt">&lt;URL&gt;</span>file:../models/Cube-1.0.vo-dml.xml<span class="nt">&lt;/URL&gt;</span>
+    <span class="nt">&lt;/MODEL&gt;</span>
+    <span class="nt">&lt;MODEL&gt;</span>
+      <span class="nt">&lt;NAME&gt;</span>ds<span class="nt">&lt;/NAME&gt;</span>
+      <span class="nt">&lt;URL&gt;</span>file:../models/DatasetMetadata-1.0.vo-dml.xml<span class="nt">&lt;/URL&gt;</span>
+    <span class="nt">&lt;/MODEL&gt;</span>
+    <span class="nt">&lt;GLOBALS&gt;</span>
+      <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:domain.temporal.TimeFrame"</span> <span class="na">ID=</span><span class="s">"_TT_FRAME"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.temporal.TimeFrame.refPosition"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.StdRefLocation"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.spatial.StdRefLocation.position"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"TOPOCENTER"</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.StdRefPosition"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+          <span class="nt">&lt;/INSTANCE&gt;</span>
+        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.temporal.TimeFrame.timescale"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"TT"</span> <span class="na">dmtype=</span><span class="s">"coords:domain.temporal.TimeScale"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+      <span class="nt">&lt;/INSTANCE&gt;</span>
+      <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.SpaceFrame"</span> <span class="na">ID=</span><span class="s">"_FK4_J2000_FRAME"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.spatial.SpaceFrame.spaceRefFrame"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"FK4"</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.StdRefFrame"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.spatial.SpaceFrame.equinox"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"J2000"</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.Epoch"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.spatial.SpaceFrame.refPosition"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.StdRefLocation"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.spatial.StdRefLocation.position"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"TOPOCENTER"</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.StdRefPosition"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+          <span class="nt">&lt;/INSTANCE&gt;</span>
+        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+      <span class="nt">&lt;/INSTANCE&gt;</span>
+      <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"cube:SparseCube"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"cube:SparseCube.data"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;EXTINSTANCES&gt;</span>_DATA_INSTANCE<span class="nt">&lt;/EXTINSTANCES&gt;</span>
+        <span class="nt">&lt;/COMPOSITION&gt;</span>
+      <span class="nt">&lt;/INSTANCE&gt;</span>
+    <span class="nt">&lt;/GLOBALS&gt;</span>
+    <span class="nt">&lt;TEMPLATES</span> <span class="na">tableref=</span><span class="s">"_DATA_TABLE"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"ds:experiment.ObsDataset"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"ds:dataset.Dataset.dataProductType"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"TIMESERIES"</span> <span class="na">dmtype=</span><span class="s">"ds:dataset.DataProductType"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"ds:experiment.ObsDataset.calibLevel"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"3"</span> <span class="na">dmtype=</span><span class="s">"ivoa:integer"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+        <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"ds:dataset.Dataset.dataID"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"ds:dataset.DataID"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"ds:dataset.DataID.date"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"2017-03-27T15:35:56"</span> <span class="na">dmtype=</span><span class="s">"ivoa:datetime"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+          <span class="nt">&lt;/INSTANCE&gt;</span>
+        <span class="nt">&lt;/COMPOSITION&gt;</span>
+      <span class="nt">&lt;/INSTANCE&gt;</span>
+      <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"cube:NDPoint"</span> <span class="na">ID=</span><span class="s">"_DATA_INSTANCE"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"cube:DataElement.axis"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"cube:Observable"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"cube:DataAxis.dependent"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"False"</span> <span class="na">dmtype=</span><span class="s">"ivoa:boolean"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+            <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"cube:Observable.instance"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:StdTimeMeasure"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:CoordMeasure.coord"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:domain.temporal.ISOTime"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.temporal.ISOTime.date"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;COLUMN</span> <span class="na">dmtype=</span><span class="s">"ivoa:datetime"</span> <span class="na">ref=</span><span class="s">"_col_TIME"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                  <span class="nt">&lt;/INSTANCE&gt;</span>
+                <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                <span class="nt">&lt;REFERENCE</span> <span class="na">dmrole=</span><span class="s">"frame"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;IDREF&gt;</span>_TT_FRAME<span class="nt">&lt;/IDREF&gt;</span>
+                <span class="nt">&lt;/REFERENCE&gt;</span>
+              <span class="nt">&lt;/INSTANCE&gt;</span>
+            <span class="nt">&lt;/COMPOSITION&gt;</span>
+          <span class="nt">&lt;/INSTANCE&gt;</span>
+          <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"cube:Observable"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"cube:DataAxis.dependent"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"False"</span> <span class="na">dmtype=</span><span class="s">"ivoa:boolean"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+            <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"cube:Observable.instance"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:SkyPosition"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:CoordMeasure.coord"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:domain.spatial.CelestialCoord"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.spatial.CelestialCoord.ra"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;COLUMN</span> <span class="na">dmtype=</span><span class="s">"ivoa:RealQuantity"</span> <span class="na">ref=</span><span class="s">"_col_RAJ2000"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                    <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:domain.spatial.CelestialCoord.dec"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;COLUMN</span> <span class="na">dmtype=</span><span class="s">"ivoa:RealQuantity"</span> <span class="na">ref=</span><span class="s">"_col_DECJ2000"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                  <span class="nt">&lt;/INSTANCE&gt;</span>
+                <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                <span class="nt">&lt;REFERENCE</span> <span class="na">dmrole=</span><span class="s">"frame"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;IDREF&gt;</span>_FK4_J2000_FRAME<span class="nt">&lt;/IDREF&gt;</span>
+                <span class="nt">&lt;/REFERENCE&gt;</span>
+              <span class="nt">&lt;/INSTANCE&gt;</span>
+            <span class="nt">&lt;/COMPOSITION&gt;</span>
+          <span class="nt">&lt;/INSTANCE&gt;</span>
+          <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"cube:Observable"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"cube:DataAxis.dependent"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"True"</span> <span class="na">dmtype=</span><span class="s">"ivoa:boolean"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+            <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"cube:Observable.instance"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:GenericCoordMeasure"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:CoordMeasure.coord"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:GenericCoordValue"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:PhysicalCoordValue.cval"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;COLUMN</span> <span class="na">dmtype=</span><span class="s">"ivoa:RealQuantity"</span> <span class="na">ref=</span><span class="s">"_col_FLUX"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                  <span class="nt">&lt;/INSTANCE&gt;</span>
+                <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"meas:CoordMeasure.error"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:BasicError1D"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:BasicError1D.statError"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:Symmetrical1D"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:Symmetrical1D.radius"</span><span class="nt">&gt;</span>
+                          <span class="nt">&lt;COLUMN</span> <span class="na">dmtype=</span><span class="s">"ivoa:RealQuantity"</span> <span class="na">ref=</span><span class="s">"_col_FLUX_ERROR"</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                      <span class="nt">&lt;/INSTANCE&gt;</span>
+                    <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                  <span class="nt">&lt;/INSTANCE&gt;</span>
+                <span class="nt">&lt;/COMPOSITION&gt;</span>
+              <span class="nt">&lt;/INSTANCE&gt;</span>
+            <span class="nt">&lt;/COMPOSITION&gt;</span>
+          <span class="nt">&lt;/INSTANCE&gt;</span>
+          <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"cube:Observable"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"cube:DataAxis.dependent"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;LITERAL</span> <span class="na">value=</span><span class="s">"True"</span> <span class="na">dmtype=</span><span class="s">"ivoa:boolean"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+            <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"cube:Observable.instance"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:GenericCoordMeasure"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:CoordMeasure.coord"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"coords:GenericCoordValue"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"coords:PhysicalCoordValue.cval"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;COLUMN</span> <span class="na">dmtype=</span><span class="s">"ivoa:RealQuantity"</span> <span class="na">ref=</span><span class="s">"_col_MAG"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                  <span class="nt">&lt;/INSTANCE&gt;</span>
+                <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                <span class="nt">&lt;COMPOSITION</span> <span class="na">dmrole=</span><span class="s">"meas:CoordMeasure.error"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:BasicError1D"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:BasicError1D.statError"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;INSTANCE</span> <span class="na">dmtype=</span><span class="s">"meas:Symmetrical1D"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;ATTRIBUTE</span> <span class="na">dmrole=</span><span class="s">"meas:Symmetrical1D.radius"</span><span class="nt">&gt;</span>
+                          <span class="nt">&lt;COLUMN</span> <span class="na">dmtype=</span><span class="s">"ivoa:RealQuantity"</span> <span class="na">ref=</span><span class="s">"_col_MAG_ERROR"</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                      <span class="nt">&lt;/INSTANCE&gt;</span>
+                    <span class="nt">&lt;/ATTRIBUTE&gt;</span>
+                  <span class="nt">&lt;/INSTANCE&gt;</span>
+                <span class="nt">&lt;/COMPOSITION&gt;</span>
+              <span class="nt">&lt;/INSTANCE&gt;</span>
+            <span class="nt">&lt;/COMPOSITION&gt;</span>
+          <span class="nt">&lt;/INSTANCE&gt;</span>
+        <span class="nt">&lt;/COMPOSITION&gt;</span>
+      <span class="nt">&lt;/INSTANCE&gt;</span>
+    <span class="nt">&lt;/TEMPLATES&gt;</span>
+  <span class="nt">&lt;/VODML&gt;</span>
+  <span class="nt">&lt;RESOURCE&gt;</span>
+    <span class="nt">&lt;TABLE</span> <span class="na">ID=</span><span class="s">"_DATA_TABLE"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FIELD</span> <span class="na">datatype=</span><span class="s">"char"</span> <span class="na">arraysize=</span><span class="s">"17"</span> <span class="na">ID=</span><span class="s">"_col_TIME"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;FIELD</span> <span class="na">datatype=</span><span class="s">"float"</span> <span class="na">arraysize=</span><span class="s">"1"</span> <span class="na">ID=</span><span class="s">"_col_RAJ2000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;FIELD</span> <span class="na">datatype=</span><span class="s">"float"</span> <span class="na">arraysize=</span><span class="s">"1"</span> <span class="na">ID=</span><span class="s">"_col_DECJ2000"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;FIELD</span> <span class="na">datatype=</span><span class="s">"float"</span> <span class="na">arraysize=</span><span class="s">"1"</span> <span class="na">ID=</span><span class="s">"_col_FLUX"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;FIELD</span> <span class="na">datatype=</span><span class="s">"float"</span> <span class="na">arraysize=</span><span class="s">"1"</span> <span class="na">ID=</span><span class="s">"_col_FLUX_ERROR"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;FIELD</span> <span class="na">datatype=</span><span class="s">"float"</span> <span class="na">arraysize=</span><span class="s">"1"</span> <span class="na">ID=</span><span class="s">"_col_MAG"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;FIELD</span> <span class="na">datatype=</span><span class="s">"float"</span> <span class="na">arraysize=</span><span class="s">"1"</span> <span class="na">ID=</span><span class="s">"_col_MAG_ERROR"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;DATA&gt;</span>
+        <span class="nt">&lt;TABLEDATA&gt;</span>
+          <span class="nt">&lt;TR&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>20170201T11:36:53<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>20.0<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>20.1<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>200.0<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>0.2<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>200.1<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>1.2<span class="nt">&lt;/TD&gt;</span>
+          <span class="nt">&lt;/TR&gt;</span>
+          <span class="nt">&lt;TR&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>20170201T11:36:52<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>10.0<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>10.1<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>100.0<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>0.1<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>100.1<span class="nt">&lt;/TD&gt;</span>
+            <span class="nt">&lt;TD&gt;</span>1.1<span class="nt">&lt;/TD&gt;</span>
+          <span class="nt">&lt;/TR&gt;</span>
+        <span class="nt">&lt;/TABLEDATA&gt;</span>
+      <span class="nt">&lt;/DATA&gt;</span>
+    <span class="nt">&lt;/TABLE&gt;</span>
+  <span class="nt">&lt;/RESOURCE&gt;</span>
+<span class="nt">&lt;/VOTABLE&gt;</span>
+
+</code></pre>
+</div>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">IVOA Data Model Examples</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              IVOA Data Model Examples
+            
+            </li>
+            
+            <li><a href="mailto:olaurino@cfa.harvard.edu">olaurino@cfa.harvard.edu</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/olaurino"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">olaurino</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>This website contains example serializations for instances of IVOA Data Models. Information in this site is currently not sanctioned by the IVOA but it is used by Data Model Working Group members as a tool for discussing and documenting data models.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
