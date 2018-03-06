@@ -119,8 +119,6 @@ Time measurements
 
 ### TT ISO Time
 
-#### DSL
-
 {% include examples.md name='tt-iso-time' %}
 
 ### TT JD Time
@@ -148,11 +146,6 @@ Other Measurements
 
 Notes
 -----
-
-### Position distance
-
-We might be missing, especially in the sky position shortcuts, an attribute for the distance of an object. This would
-allow measurements/coordinates to be easily converted to a Cartesian system when the distance information is available.
 
 ### VODML Mapping
 
