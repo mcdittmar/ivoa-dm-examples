@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vo-dml:model xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 ../xsd/vo-dml-v1.0.xsd">
+              xsi:schemaLocation="http://www.ivoa.net/xml/VODML/v1 file:///data/vao/staff/mcd/docs/models/dm/vo-dml/xsd/vo-dml-v1.xsd">
   <name>cube</name>
   <description>
           TODO : Missing description : please, update your UML model asap.
@@ -10,7 +10,7 @@
   <title>IVOA N-Dimensional Cube Model</title>
   <author>Mark Cresitello-Dittmar, Doug Tody, Omar Laurino, Gerard Lemson, Markus Demleitner, and the IVOA Data Model Working Group</author>
   <version>1.0</version>
-  <lastModified>2017-10-13T16:02:06</lastModified>
+  <lastModified>2018-02-23T17:15:07</lastModified>
   <import>
     <name>ivoa</name>
     <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>
@@ -33,8 +33,8 @@
   </import>
   <import>
     <name>trans</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans-v2.0.vo-dml.xml</url>
-    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans-v2.0.html</documentationURL>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans_alt-v2.0.vo-dml.xml</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans_alt-v2.0.html</documentationURL>
   </import>
   <objectType>
     <vodml-id>NDImage</vodml-id>
@@ -138,7 +138,7 @@
           TODO : Missing description : please, update your UML model asap.
         </description>
       <datatype>
-        <vodml-ref>coords:PixelCoordSystem</vodml-ref>
+        <vodml-ref>coords:domain.pixel.PixelCoordSystem</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
@@ -197,40 +197,12 @@
     </extends>
   </objectType>
 
-  <objectType>
-    <vodml-id>Observable</vodml-id>
-    <name>Observable</name>
-    <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-    <extends>
-      <vodml-ref>cube:DataAxis</vodml-ref>
-    </extends>
-    <composition>
-      <vodml-id>Observable.instance</vodml-id>
-      <name>instance</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-      <datatype>
-        <vodml-ref>meas:CoordMeasure</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>1</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </composition>
-  </objectType>
-
   <objectType abstract="true">
     <vodml-id>DataAxis</vodml-id>
     <name>DataAxis</name>
     <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
-    <extends>
-      <vodml-ref>coords:CoordSpace</vodml-ref>
-    </extends>
     <attribute>
       <vodml-id>DataAxis.dependent</vodml-id>
       <name>dependent</name>
@@ -245,6 +217,20 @@
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </attribute>
+    <composition>
+      <vodml-id>DataAxis.measurement</vodml-id>
+      <name>measurement</name>
+      <description>
+        TODO : Missing description : please, update your UML model asap.
+      </description>
+      <datatype>
+        <vodml-ref>meas:Measure</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </composition>
   </objectType>
 
   <objectType>
@@ -289,42 +275,6 @@
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </composition>
-  </objectType>
-
-  <objectType abstract="true">
-    <vodml-id>AssignedState</vodml-id>
-    <name>AssignedState</name>
-    <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-    <extends>
-      <vodml-ref>cube:DataAxis</vodml-ref>
-    </extends>
-  </objectType>
-
-  <objectType>
-    <vodml-id>PolarizationState</vodml-id>
-    <name>PolarizationState</name>
-    <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-    <extends>
-      <vodml-ref>cube:AssignedState</vodml-ref>
-    </extends>
-    <attribute>
-      <vodml-id>PolarizationState.coord</vodml-id>
-      <name>coord</name>
-      <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-      <datatype>
-        <vodml-ref>coords:domain.polarization.PolCoordValue</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>1</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </attribute>
   </objectType>
 
 </vo-dml:model>
