@@ -1,11 +1,12 @@
 ---
 title: STC model
 about: |
-    This is an alternative Space Time Coordinates model proposal. The goal of this model is to greatly simplify
-    the model for the most common cases, while keeping flexibility for the complex, custom cases.
+    This is the current Space Time Coordinates model proposal. Note that the STC v1 model has been separated into three
+    different, and simpler, components. The components have been given a version 2 to clarify that they are part of
+    an  overarching STC v2 framework.
 layout: page
 model: stc2
-flavor: shortcuts
+flavor: current
 ---
 
 Table of Contents
@@ -37,7 +38,7 @@ clients will need to work with in practice.
 Rationale
 ---------
 
-Here is a list of requirements we took into account when trying to rework the *current* proposal.
+Here is a list of requirements we took into account when trying to rework the STC v1 standard.
 
   * **simple and common things should be simple to provide and consume.** There is nothing in this model that
   provides more functionality when compared to the *current* proposal. However, we tried to simplify the most

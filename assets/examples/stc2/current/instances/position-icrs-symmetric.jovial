@@ -10,25 +10,18 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(type: "stc2_measurements:domain.space.Position2D") {
-        instance (role: "coord") {
-            instance(role: "cmpt") {
-                instance(role: "cval", value: 12.9768538031, unit: "deg")
-                reference(role: "coordAxis") {
-                    // This is not very portable or convenient. There should be a URI
-                    remote "file://./standard-frames.vot#ICRS_RA_AXIS"
-                }
-            }
-            instance(role: "cmpt") {
-                instance(role: "cval", value: -72.9580158133, unit:"deg")
-                reference(role: "coordAxis") {
-                    remote "file://./standard-frames.vot#ICRS_DEC_AXIS"
-                }
+    instance(type: "meas:SkyPosition") {
+
+        instance (role: "coord", type: "coords:domain.space.EquatorialCoord") {
+            instance(role: "ra", value: 12.9768538031, unit: "deg")
+            instance(role: "dec", value: -72.9580158133, unit:"deg")
+            reference(role: "frame") {
+                idref "_SPACE_FRAME"
             }
         }
 
-        instance (role: "error") {
-            instance (role: "statError", type: "stc2_measurements:stctypes.Symmetrical2D") {
+        instance(role: "error", type: "meas:Error2D") {
+            instance (role: "statError", type: "meas:Symmetrical2D") {
                 instance role: "radius", value: 0.00027, unit: "deg"
             }
         }

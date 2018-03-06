@@ -10,13 +10,9 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(type: "stc2_measurements:domain.time.TimeMeasure") {
-        instance (role: "coord", type: "stc2_coordinates:domain.time.MJD") {
-            instance role: "cval", value: "50814.52", unit: "d"
-            reference(role: "coordAxis") {
-                // This is not very portable or convenient. There should be a URI
-                remote "file://./standard-frames.vot#MJD_TT_AXIS"
-            }
+    instance(type: "meas:StdTimeMeasure") {
+        instance (role: "coord", type: "coords:domain.time.MJD") {
+            instance role: "date", value: 50814.0
         }
     }
 }

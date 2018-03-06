@@ -23,18 +23,18 @@
   </import>
   <import>
     <name>coords</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_coords_alt-v2.0.vo-dml.xml</url>
-    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_coords_alt-v2.0.html</documentationURL>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_coords-v2.0.vo-dml.xml</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_coords-v2.0.html</documentationURL>
   </import>
   <import>
     <name>meas</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_meas_alt-v2.0.vo-dml.xml</url>
-    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_meas_alt-v2.0.html</documentationURL>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_meas-v2.0.vo-dml.xml</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_meas-v2.0.html</documentationURL>
   </import>
   <import>
     <name>trans</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans_alt-v2.0.vo-dml.xml</url>
-    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans_alt-v2.0.html</documentationURL>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans-v2.0.vo-dml.xml</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans-v2.0.html</documentationURL>
   </import>
   <objectType>
     <vodml-id>NDImage</vodml-id>

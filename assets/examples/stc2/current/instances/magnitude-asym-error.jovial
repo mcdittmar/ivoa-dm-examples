@@ -10,25 +10,16 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(type: "stc2_coordinates:dmain.generic.GenericFrame") {
-        instance(role: "coordSpace") {
-            instance(role: "coordAxis", id: "MAG_AXIS") {
-                instance role: "name", value: "mag"
-            }
+    instance(type: "meas:GenericCoordMeasure") {
+        // implicit reference to STD 1D Axis
+        instance(role: "coord", type: "coords:PhysicalCoordValue") {
+            // implicit reference to TOPOCENTER STD 1D frame
+            instance role: "cval", value: "-0.28", type: "ivoa:RealQuantity"
         }
-    }
-
-    instance(type: "stc2_measurements:domain.generic.GenericCoordMeasure") {
-        instance(role: "coord") {
-            instance role: "cval", value: "-0.28"
-            reference(role: "coordAxis") {
-                idref "MAG_AXIS"
-            }
-        }
-        instance(role: "error", type: "stc2_measurements:uncertainty.Error1D") {
-            instance(role: "statError", type: "stc2_measurements:stctypes.Asymmetrical1D") {
-                instance role: "plus", value: 9.85e-05
-                instance role: "minus", value: 0.0001752
+        instance(role: "error", type: "meas:Error1D") {
+            instance(role: "statError", type: "meas:Asymmetrical1D") {
+                instance role: "plus", value: 0.02
+                instance role: "minus", value: 0.01
             }
         }
     }
