@@ -1,9 +1,9 @@
 ---
-title: STC model
+title: Measurements and Coordinates
 about: |
-    This is the current Space Time Coordinates model proposal. Note that the STC v1 model has been separated into three
+    The STC v1 model has been separated into three
     different, and simpler, components. The components have been given a version 2 to clarify that they are part of
-    an  overarching STC v2 framework.
+    an overarching STC v2 framework.
 layout: page
 model: stc2
 flavor: current
