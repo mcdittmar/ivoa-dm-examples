@@ -1,3 +1,6 @@
 [submodule "jovial"]
 	path = jovial
 	url = https://github.com/olaurino/jovial
+[submodule "rama"]
+	path = rama
+	url = https://github.com/olaurino/rama
