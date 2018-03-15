@@ -62,7 +62,12 @@
           <COLUMN dmtype="coords:domain.space.StdRefFrame" ref="_REF_FRAME"/>
         </ATTRIBUTE>
       </INSTANCE>
-      <INSTANCE dmtype="coords:GenericCoordFrame" ID="_PHOT_FRAME">
+      <INSTANCE dmtype="coords:GenericCoordFrame">
+        <PRIMARYKEY>
+          <PKFIELD>
+            <LITERAL dmtype="ivoa:string" value="_PHOT_FRAME"/>
+          </PKFIELD>
+        </PRIMARYKEY>
         <ATTRIBUTE dmrole="coords:GenericCoordFrame.refPosition">
           <INSTANCE dmtype="coords:domain.space.StdRefLocation">
             <ATTRIBUTE dmrole="coords:domain.space.StdRefLocation.position">
@@ -216,6 +221,13 @@
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_H_MAG"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <FOREIGNKEY>
+                        <PKFIELD>
+                          <LITERAL dmtype="ivoa:string" value="_PHOT_FRAME"/>
+                        </PKFIELD>
+                      </FOREIGNKEY>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
                 <COMPOSITION dmrole="meas:CoordMeasure.error">
@@ -266,6 +278,13 @@
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_J_MAG"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <FOREIGNKEY>
+                        <PKFIELD>
+                          <LITERAL dmtype="ivoa:string" value="_PHOT_FRAME"/>
+                        </PKFIELD>
+                      </FOREIGNKEY>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
                 <COMPOSITION dmrole="meas:CoordMeasure.error">
@@ -316,6 +335,13 @@
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_K_MAG"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <FOREIGNKEY>
+                        <PKFIELD>
+                          <LITERAL dmtype="ivoa:string" value="_PHOT_FRAME"/>
+                        </PKFIELD>
+                      </FOREIGNKEY>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
                 <COMPOSITION dmrole="meas:CoordMeasure.error">
@@ -366,6 +392,13 @@
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_L_MAG"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <FOREIGNKEY>
+                        <PKFIELD>
+                          <LITERAL dmtype="ivoa:string" value="_PHOT_FRAME"/>
+                        </PKFIELD>
+                      </FOREIGNKEY>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
                 <COMPOSITION dmrole="meas:CoordMeasure.error">
@@ -416,6 +449,13 @@
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_M_MAG"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <FOREIGNKEY>
+                        <PKFIELD>
+                          <LITERAL dmtype="ivoa:string" value="_PHOT_FRAME"/>
+                        </PKFIELD>
+                      </FOREIGNKEY>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
                 <COMPOSITION dmrole="meas:CoordMeasure.error">

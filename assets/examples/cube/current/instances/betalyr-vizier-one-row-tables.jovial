@@ -35,7 +35,8 @@ dmInstance {
             }
         }
 
-        instance(id: "_PHOT_FRAME", type: "coords:GenericCoordFrame") {
+        instance(type: "coords:GenericCoordFrame") {
+            pk(value: "_PHOT_FRAME")
             instance(role: "refPosition", type: "coords:domain.space.StdRefLocation") {
                 column id: "_SPACE_REF_POSITION", role: "position", data: ["BARYCENTER"]
             }
@@ -131,11 +132,13 @@ dmInstance {
                 instance role: "dependent", value: "True"
 
                 instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    // Implicit topocenter frame reference
                     instance(role: "coord", type: "coords:GenericCoordValue") {
                         column role: "cval", id: "_col_H_MAG", type: "ivoa:RealQuantity", data: hmagData, unit: "mag",
                                 name: "h_mag"
                         // Implicit standard 1d axis reference
+                        reference(role: "frame") {
+                            fk(value: "_PHOT_FRAME")
+                        }
                     }
                     instance(role: "error", type: "meas:Error1D") {
                         instance(role: "statError", type: "meas:Symmetrical1D") {
@@ -169,11 +172,13 @@ dmInstance {
                 instance role: "dependent", value: "True"
 
                 instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    // Implicit topocenter frame reference
                     instance(role: "coord", type: "coords:GenericCoordValue") {
                         column role: "cval", id: "_col_J_MAG", type: "ivoa:RealQuantity", data: jmagData, unit: "mag",
                                 name: "j_mag"
                         // Implicit standard 1d axis reference
+                        reference(role: "frame") {
+                            fk(value: "_PHOT_FRAME")
+                        }
                     }
                     instance(role: "error", type: "meas:Error1D") {
                         instance(role: "statError", type: "meas:Symmetrical1D") {
@@ -207,11 +212,13 @@ dmInstance {
                 instance role: "dependent", value: "True"
 
                 instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    // Implicit topocenter frame reference
                     instance(role: "coord", type: "coords:GenericCoordValue") {
                         column role: "cval", id: "_col_K_MAG", type: "ivoa:RealQuantity", data: kmagData, unit: "mag",
                                 name: "k_mag"
                         // Implicit standard 1d axis reference
+                        reference(role: "frame") {
+                            fk(value: "_PHOT_FRAME")
+                        }
                     }
                     instance(role: "error", type: "meas:Error1D") {
                         instance(role: "statError", type: "meas:Symmetrical1D") {
@@ -245,11 +252,13 @@ dmInstance {
                 instance role: "dependent", value: "True"
 
                 instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    // Implicit topocenter frame reference
                     instance(role: "coord", type: "coords:GenericCoordValue") {
                         column role: "cval", id: "_col_L_MAG", type: "ivoa:RealQuantity", data: lmagData, unit: "mag",
                                 name: "l_mag"
                         // Implicit standard 1d axis reference
+                        reference(role: "frame") {
+                            fk(value: "_PHOT_FRAME")
+                        }
                     }
                     instance(role: "error", type: "meas:Error1D") {
                         instance(role: "statError", type: "meas:Symmetrical1D") {
@@ -283,11 +292,13 @@ dmInstance {
                 instance role: "dependent", value: "True"
 
                 instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    // Implicit topocenter frame reference
                     instance(role: "coord", type: "coords:GenericCoordValue") {
                         column role: "cval", id: "_col_M_MAG", type: "ivoa:RealQuantity", data: mmagData, unit: "mag",
                                 name: "m_mag"
                         // Implicit standard 1d axis reference
+                        reference(role: "frame") {
+                            fk(value: "_PHOT_FRAME")
+                        }
                     }
                     instance(role: "error", type: "meas:Error1D") {
                         instance(role: "statError", type: "meas:Symmetrical1D") {
