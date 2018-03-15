@@ -1,0 +1,304 @@
+def modelsFolder = "file:../models"
+def stcModelsFolder = "file:../../../stc2/current/models"
+def voluteFolder = "https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/"
+
+def coordsLocation = new URL("$stcModelsFolder/STC_coords-v2.0.vo-dml.xml")
+def measLocation = new URL("$stcModelsFolder/STC_meas-v2.0.vo-dml.xml")
+def ivoaLocation = new URL("$voluteFolder/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml")
+def cubeLocation =  new URL("$modelsFolder/Cube-1.0.vo-dml.xml")
+def datasetLocation = new URL("$modelsFolder/DatasetMetadata-1.0.vo-dml.xml")
+
+// Data is defined in an auxiliary data to keep this file cleaner.
+evaluate(new File("betalyr-vizier-data.groovy"))
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: measLocation)
+    model(vodmlURL: ivoaLocation)
+    model(vodmlURL: cubeLocation)
+    model(vodmlURL: datasetLocation)
+
+    table(id: "_COORD_SYSTEM") {
+        instance(type: "coords:domain.time.TimeFrame") {
+            pk(value: "_TT_FRAME")
+            instance(role: "refPosition", type: "coords:domain.space.StdRefLocation") {
+                column id: "_TIME_REF_POSITION", role: "position", data: ["BARYCENTER"]
+            }
+            column id: "_TIME_SCALE", role: "timescale", data: ["TT"]
+        }
+
+        instance(type: "coords:domain.space.SpaceFrame") {
+            pk(value: "_ICRS_FRAME")
+            column id: "_REF_FRAME", role: "spaceRefFrame", data: ["ICRS"]
+            instance(role: "refPosition", type: "coords:domain.space.StdRefLocation") {
+                column id: "_SPACE_REF_POSITION", role: "position", data: ["BARYCENTER"]
+            }
+        }
+
+        instance(id: "_PHOT_FRAME", type: "coords:GenericCoordFrame") {
+            instance(role: "refPosition", type: "coords:domain.space.StdRefLocation") {
+                column id: "_SPACE_REF_POSITION", role: "position", data: ["BARYCENTER"]
+            }
+        }
+    }
+
+    table(id: "_DATA_ID") {
+        instance(type: "ds:party.Individual") {
+            pk(value: "_SHENAVRIN")
+            column id: "_CREATOR", role: "name", data: ["Shenavrin"]
+        }
+        instance(type: "ds:party.Organization") {
+            pk(value: "_VIZIER")
+            column id: "_CONTRIBUTOR", role: "name", data: ["CDS VizieR"]
+        }
+        instance(type: "ds:experiment.ObsDataset") {
+            column id: "_DATA_PRODUCT_TYPE", role: "dataProductType", data: ["TIMESERIES"]
+
+            column id: "_CALIB_LEVEL", role: "calibLevel", data: [1]
+
+            instance(role: "target", type: "ds:experiment.Target") {
+                column role: "name", id: "_TARGET_NAME", data = ["Beta Lyr"]
+            }
+
+            instance(role: "dataID") {
+
+                instance(role: "creator") {
+                    reference(role: "party") {
+                        fk(value: "_SHENAVRIN")
+                    }
+                }
+
+                instance(role: "contributor") {
+                    reference(role: "party") {
+                        fk(value: "_VIZIER")
+                    }
+                }
+            }
+
+            instance(role: "curation") {
+                column id: "_PUBLISHER_DID", role: "publisherDID", data: ["test:TestTimeSeries"]
+            }
+        }
+    }
+
+    instance(type: "cube:SparseCube") {
+        composition role: "data", ref: "_DATA_INSTANCE"
+    }
+
+    table(id: "_DATA_TABLE") {
+
+        instance(id: "_DATA_INSTANCE", type: "cube:NDPoint") {
+
+            // POSITION (constant for all
+            instance(role: "axis") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "measurement", type: "meas:SkyPosition") {
+                    instance (role: "coord", type: "coords:domain.space.EquatorialCoord") {
+                        instance role: "ra", value: ra // This should also go into its own table according to the
+                        instance role: "dec", value: dec // original serialization
+                        reference(role: "frame") {
+                            fk(value: "_ICRS_FRAME")
+                        }
+                    }
+
+                    instance (role: "error", type: "meas:Error2D") {
+                        instance (role: "statError", type: "meas:Symmetrical2D") {
+                            instance role: "radius", value: raDecErr
+                        }
+                    }
+                }
+            }
+
+            // ############# Start Band H instances ################
+
+            // Band H Time
+            instance(role: "axis") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                    instance(role: "coord", type: "coords:domain.time.JD") {
+                        column role: "date", id:"_col_H_TIME", data: jdhData, unit: "d", name: "h_time"
+                        reference(role: "frame") {
+                            fk(value: "_TT_FRAME")
+                        }
+                    }
+                }
+            }
+
+            // Band H Magnitude and Error
+            instance(role: "axis") {
+                instance role: "dependent", value: "True"
+
+                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
+                    // Implicit topocenter frame reference
+                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                        column role: "cval", id: "_col_H_MAG", type: "ivoa:RealQuantity", data: hmagData, unit: "mag",
+                                name: "h_mag"
+                        // Implicit standard 1d axis reference
+                    }
+                    instance(role: "error", type: "meas:Error1D") {
+                        instance(role: "statError", type: "meas:Symmetrical1D") {
+                            column role: "radius", id: "_col_H_MAG_ERROR", type: "ivoa:RealQuantity", data: hmagErrData,
+                                    unit: "mag"
+                        }
+                    }
+                }
+            }
+
+            // ############# End Band H instances ################
+
+            // ############# Start Band J instances ################
+
+            // Band J Time
+            instance(role: "axis") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                    instance(role: "coord", type: "coords:domain.time.JD") {
+                        column role: "date", id:"_col_J_TIME", data: jdjData, unit: "d", name: "j_time"
+                        reference(role: "frame") {
+                            fk(value: "_TT_FRAME")
+                        }
+                    }
+                }
+            }
+
+            // Band J Magnitude and Error
+            instance(role: "axis") {
+                instance role: "dependent", value: "True"
+
+                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
+                    // Implicit topocenter frame reference
+                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                        column role: "cval", id: "_col_J_MAG", type: "ivoa:RealQuantity", data: jmagData, unit: "mag",
+                                name: "j_mag"
+                        // Implicit standard 1d axis reference
+                    }
+                    instance(role: "error", type: "meas:Error1D") {
+                        instance(role: "statError", type: "meas:Symmetrical1D") {
+                            column role: "radius", id: "_col_J_MAG_ERROR", type: "ivoa:RealQuantity", data: jmagErrData,
+                                    unit: "mag"
+                        }
+                    }
+                }
+            }
+
+            // ############# End Band J instances ################
+
+            // ############# Start Band K instances ################
+
+            // Band K Time
+            instance(role: "axis") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                    instance(role: "coord", type: "coords:domain.time.JD") {
+                        column role: "date", id:"_col_K_TIME", data: jdkData, unit: "d", name: "k_time"
+                        reference(role: "frame") {
+                            fk(value: "_TT_FRAME")
+                        }
+                    }
+                }
+            }
+
+            // Band K Magnitude and Error
+            instance(role: "axis") {
+                instance role: "dependent", value: "True"
+
+                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
+                    // Implicit topocenter frame reference
+                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                        column role: "cval", id: "_col_K_MAG", type: "ivoa:RealQuantity", data: kmagData, unit: "mag",
+                                name: "k_mag"
+                        // Implicit standard 1d axis reference
+                    }
+                    instance(role: "error", type: "meas:Error1D") {
+                        instance(role: "statError", type: "meas:Symmetrical1D") {
+                            column role: "radius", id: "_col_K_MAG_ERROR", type: "ivoa:RealQuantity", data: kmagErrData,
+                                    unit: "mag"
+                        }
+                    }
+                }
+            }
+
+            // ############# End Band K instances ################
+
+            // ############# Start Band L instances ################
+
+            // Band L Time
+            instance(role: "axis") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                    instance(role: "coord", type: "coords:domain.time.JD") {
+                        column role: "date", id:"_col_L_TIME", data: jdlData, unit: "d", name: "l_time"
+                        reference(role: "frame") {
+                            fk(value: "_TT_FRAME")
+                        }
+                    }
+                }
+            }
+
+            // Band L Magnitude and Error
+            instance(role: "axis") {
+                instance role: "dependent", value: "True"
+
+                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
+                    // Implicit topocenter frame reference
+                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                        column role: "cval", id: "_col_L_MAG", type: "ivoa:RealQuantity", data: lmagData, unit: "mag",
+                                name: "l_mag"
+                        // Implicit standard 1d axis reference
+                    }
+                    instance(role: "error", type: "meas:Error1D") {
+                        instance(role: "statError", type: "meas:Symmetrical1D") {
+                            column role: "radius", id: "_col_L_MAG_ERROR", type: "ivoa:RealQuantity", data: lmagErrData,
+                                    unit: "mag"
+                        }
+                    }
+                }
+            }
+
+            // ############# End Band L instances ################
+
+            // ############# Start Band M instances ################
+
+            // Band M Time
+            instance(role: "axis") {
+                instance role: "dependent", value: "False"
+
+                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                    instance(role: "coord", type: "coords:domain.time.JD") {
+                        column role: "date", id:"_col_M_TIME", data: jdmData, unit: "d", name: "m_time"
+                        reference(role: "frame") {
+                            fk(value: "_TT_FRAME")
+                        }
+                    }
+                }
+            }
+
+            // Band M Magnitude and Error
+            instance(role: "axis") {
+                instance role: "dependent", value: "True"
+
+                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
+                    // Implicit topocenter frame reference
+                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                        column role: "cval", id: "_col_M_MAG", type: "ivoa:RealQuantity", data: mmagData, unit: "mag",
+                                name: "m_mag"
+                        // Implicit standard 1d axis reference
+                    }
+                    instance(role: "error", type: "meas:Error1D") {
+                        instance(role: "statError", type: "meas:Symmetrical1D") {
+                            column role: "radius", id: "_col_M_MAG_ERROR", type: "ivoa:RealQuantity", data: mmagErrData,
+                                    unit: "mag"
+                        }
+                    }
+                }
+            }
+
+            // ############# End Band M instances ################
+        }
+    }
+}

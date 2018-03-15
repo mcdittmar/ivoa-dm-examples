@@ -1,0 +1,3 @@
+[submodule "jovial"]
+	path = jovial
+	url = https://github.com/olaurino/jovial
