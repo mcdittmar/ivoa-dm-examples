@@ -499,7 +499,7 @@
       <FIELD datatype="char" arraysize="8" ID="_TARGET_NAME" name="_TARGET_NAME"/>
       <FIELD datatype="char" arraysize="19" ID="_PUBLISHER_DID" name="_PUBLISHER_DID"/>
       <FIELD datatype="char" arraysize="10" ID="_DATA_PRODUCT_TYPE" name="_DATA_PRODUCT_TYPE"/>
-      <FIELD datatype="int" arraysize="1" ID="_CALIB_LEVEL" name="_CALIB_LEVEL"/>
+      <FIELD datatype="int" ID="_CALIB_LEVEL" name="_CALIB_LEVEL"/>
       <DATA>
         <TABLEDATA>
           <TR>
@@ -514,21 +514,21 @@
       </DATA>
     </TABLE>
     <TABLE ID="_DATA_TABLE">
-      <FIELD datatype="float" arraysize="1" ID="_col_H_TIME" name="h_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_H_MAG" name="h_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_H_MAG_ERROR" name="_col_H_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_J_TIME" name="j_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_J_MAG" name="j_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_J_MAG_ERROR" name="_col_J_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_K_TIME" name="k_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_K_MAG" name="k_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_K_MAG_ERROR" name="_col_K_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_L_TIME" name="l_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_L_MAG" name="l_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_L_MAG_ERROR" name="_col_L_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_M_TIME" name="m_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_M_MAG" name="m_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_M_MAG_ERROR" name="_col_M_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_H_TIME" name="h_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_H_MAG" name="h_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_H_MAG_ERROR" name="_col_H_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_J_TIME" name="j_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_J_MAG" name="j_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_J_MAG_ERROR" name="_col_J_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_K_TIME" name="k_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_K_MAG" name="k_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_K_MAG_ERROR" name="_col_K_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_L_TIME" name="l_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_L_MAG" name="l_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_L_MAG_ERROR" name="_col_L_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_M_TIME" name="m_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_M_MAG" name="m_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_M_MAG_ERROR" name="_col_M_MAG_ERROR" unit="mag"/>
       <DATA>
         <TABLEDATA>
           <TR>
