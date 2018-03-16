@@ -21,29 +21,29 @@
       <URL>file:../models/DatasetMetadata-1.0.vo-dml.xml</URL>
     </MODEL>
     <GLOBALS>
-      <INSTANCE dmtype="coords:domain.temporal.TimeFrame" ID="_TIME_FRAME">
-        <ATTRIBUTE dmrole="coords:domain.temporal.TimeFrame.refPosition">
-          <INSTANCE dmtype="coords:domain.spatial.StdRefLocation">
-            <ATTRIBUTE dmrole="coords:domain.spatial.StdRefLocation.position">
-              <LITERAL value="HELIOCENTER" dmtype="coords:domain.spatial.StdRefPosition"/>
+      <INSTANCE dmtype="coords:domain.time.TimeFrame" ID="_TIME_FRAME">
+        <ATTRIBUTE dmrole="coords:domain.time.TimeFrame.refPosition">
+          <INSTANCE dmtype="coords:domain.space.StdRefLocation">
+            <ATTRIBUTE dmrole="coords:domain.space.StdRefLocation.position">
+              <LITERAL value="HELIOCENTER" dmtype="coords:domain.space.StdRefPosition"/>
             </ATTRIBUTE>
           </INSTANCE>
         </ATTRIBUTE>
-        <ATTRIBUTE dmrole="coords:domain.temporal.TimeFrame.timescale">
-          <LITERAL value="TT" dmtype="coords:domain.temporal.TimeScale"/>
+        <ATTRIBUTE dmrole="coords:domain.time.TimeFrame.timescale">
+          <LITERAL value="TT" dmtype="coords:domain.time.TimeScale"/>
         </ATTRIBUTE>
       </INSTANCE>
-      <INSTANCE dmtype="coords:domain.spatial.SpaceFrame" ID="_SPACE_FRAME">
-        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.spaceRefFrame">
-          <LITERAL value="FK4" dmtype="coords:domain.spatial.StdRefFrame"/>
+      <INSTANCE dmtype="coords:domain.space.SpaceFrame" ID="_SPACE_FRAME">
+        <ATTRIBUTE dmrole="coords:domain.space.SpaceFrame.spaceRefFrame">
+          <LITERAL value="FK4" dmtype="coords:domain.space.StdRefFrame"/>
         </ATTRIBUTE>
-        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.equinox">
-          <LITERAL value="J2000" dmtype="coords:domain.spatial.Epoch"/>
+        <ATTRIBUTE dmrole="coords:domain.space.SpaceFrame.equinox">
+          <LITERAL value="J2000" dmtype="coords:domain.space.Epoch"/>
         </ATTRIBUTE>
-        <ATTRIBUTE dmrole="coords:domain.spatial.SpaceFrame.refPosition">
-          <INSTANCE dmtype="coords:domain.spatial.StdRefLocation">
-            <ATTRIBUTE dmrole="coords:domain.spatial.StdRefLocation.position">
-              <LITERAL value="TOPOCENTER" dmtype="coords:domain.spatial.StdRefPosition"/>
+        <ATTRIBUTE dmrole="coords:domain.space.SpaceFrame.refPosition">
+          <INSTANCE dmtype="coords:domain.space.StdRefLocation">
+            <ATTRIBUTE dmrole="coords:domain.space.StdRefLocation.position">
+              <LITERAL value="TOPOCENTER" dmtype="coords:domain.space.StdRefPosition"/>
             </ATTRIBUTE>
           </INSTANCE>
         </ATTRIBUTE>
@@ -83,15 +83,15 @@
       </INSTANCE>
       <INSTANCE dmtype="cube:NDPoint" ID="_DATA_INSTANCE">
         <COMPOSITION dmrole="cube:DataElement.axis">
-          <INSTANCE dmtype="cube:Observable">
+          <INSTANCE dmtype="cube:DataAxis">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:Observable.instance">
+            <COMPOSITION dmrole="cube:DataAxis.measurement">
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-                  <INSTANCE dmtype="coords:domain.temporal.JD">
-                    <ATTRIBUTE dmrole="coords:domain.temporal.JD.date">
+                  <INSTANCE dmtype="coords:domain.time.JD">
+                    <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                       <COLUMN dmtype="ivoa:real" ref="_col_TIME"/>
                     </ATTRIBUTE>
                   </INSTANCE>
@@ -102,18 +102,18 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:Observable">
+          <INSTANCE dmtype="cube:DataAxis">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:Observable.instance">
+            <COMPOSITION dmrole="cube:DataAxis.measurement">
               <INSTANCE dmtype="meas:SkyPosition">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-                  <INSTANCE dmtype="coords:domain.spatial.CelestialCoord">
-                    <ATTRIBUTE dmrole="coords:domain.spatial.CelestialCoord.ra">
+                  <INSTANCE dmtype="coords:domain.space.EquatorialCoord">
+                    <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.ra">
                       <LITERAL value="269.82846" dmtype="ivoa:RealQuantity" unit="deg"/>
                     </ATTRIBUTE>
-                    <ATTRIBUTE dmrole="coords:domain.spatial.CelestialCoord.dec">
+                    <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.dec">
                       <LITERAL value="-27.99478" dmtype="ivoa:RealQuantity" unit="deg"/>
                     </ATTRIBUTE>
                   </INSTANCE>
@@ -124,11 +124,11 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:Observable">
+          <INSTANCE dmtype="cube:DataAxis">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:Observable.instance">
+            <COMPOSITION dmrole="cube:DataAxis.measurement">
               <INSTANCE dmtype="meas:GenericCoordMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:GenericCoordValue">
@@ -138,8 +138,8 @@
                   </INSTANCE>
                 </ATTRIBUTE>
                 <COMPOSITION dmrole="meas:CoordMeasure.error">
-                  <INSTANCE dmtype="meas:BasicError1D">
-                    <ATTRIBUTE dmrole="meas:BasicError1D.statError">
+                  <INSTANCE dmtype="meas:Error1D">
+                    <ATTRIBUTE dmrole="meas:Error1D.statError">
                       <INSTANCE dmtype="meas:Symmetrical1D">
                         <ATTRIBUTE dmrole="meas:Symmetrical1D.radius">
                           <COLUMN dmtype="ivoa:RealQuantity" ref="_col_FLUX_ERROR"/>
@@ -151,11 +151,11 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:Observable">
+          <INSTANCE dmtype="cube:DataAxis">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:Observable.instance">
+            <COMPOSITION dmrole="cube:DataAxis.measurement">
               <INSTANCE dmtype="meas:GenericCoordMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:GenericCoordValue">
@@ -165,8 +165,8 @@
                   </INSTANCE>
                 </ATTRIBUTE>
                 <COMPOSITION dmrole="meas:CoordMeasure.error">
-                  <INSTANCE dmtype="meas:BasicError1D">
-                    <ATTRIBUTE dmrole="meas:BasicError1D.statError">
+                  <INSTANCE dmtype="meas:Error1D">
+                    <ATTRIBUTE dmrole="meas:Error1D.statError">
                       <INSTANCE dmtype="meas:Symmetrical1D">
                         <ATTRIBUTE dmrole="meas:Symmetrical1D.radius">
                           <COLUMN dmtype="ivoa:RealQuantity" ref="_col_MAG_ERROR"/>
