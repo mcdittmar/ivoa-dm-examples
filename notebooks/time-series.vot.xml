@@ -94,11 +94,11 @@
                     <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                       <COLUMN dmtype="ivoa:real" ref="_col_TIME"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_TIME_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
-                <REFERENCE dmrole="meas:CoordMeasure.coordFrame">
-                  <IDREF>_TIME_FRAME</IDREF>
-                </REFERENCE>
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
@@ -116,11 +116,11 @@
                     <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.dec">
                       <LITERAL value="-27.99478" dmtype="ivoa:RealQuantity" unit="deg"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_SPACE_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
-                <REFERENCE dmrole="meas:CoordMeasure.coordFrame">
-                  <IDREF>_SPACE_FRAME</IDREF>
-                </REFERENCE>
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
@@ -184,11 +184,11 @@
   </VODML>
   <RESOURCE>
     <TABLE ID="_DATA_TABLE">
-      <FIELD datatype="float" arraysize="1" ID="_col_TIME" unit="d" name="hjd" />
-      <FIELD datatype="float" arraysize="1" ID="_col_FLUX" unit="adu" name="flux" />
-      <FIELD datatype="float" arraysize="1" ID="_col_FLUX_ERROR" unit="adu" name="flux_error" />
-      <FIELD datatype="float" arraysize="1" ID="_col_MAG" unit="mag" name="magnitude"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_MAG_ERROR" unit="mag" name="magnitude_error" />
+      <FIELD datatype="float" ID="_col_TIME" unit="d" name="hjd" />
+      <FIELD datatype="float" ID="_col_FLUX" unit="adu" name="flux" />
+      <FIELD datatype="float" ID="_col_FLUX_ERROR" unit="adu" name="flux_error" />
+      <FIELD datatype="float" ID="_col_MAG" unit="mag" name="magnitude"/>
+      <FIELD datatype="float" ID="_col_MAG_ERROR" unit="mag" name="magnitude_error" />
       <DATA>
         <TABLEDATA>
           <TR>
