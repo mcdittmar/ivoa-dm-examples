@@ -2,16 +2,33 @@ image: ruby:2.3
 
 variables:
   JEKYLL_ENV: production
+  GIT_SUBMODULE_STRATEGY: 'recursive'
 
 before_script:
   - bundle install
-  - wget -q https://repo.continuum.io/miniconda/Miniconda3-4.3.30-Linux-x86_64.sh
-  - bash Miniconda3-4.3.30-Linux-x86_64.sh -b -p miniconda
+  - wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  - bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
   - rm Miniconda3*.sh
-  - export PATH=miniconda/bin:$PATH
+  - export PATH=$(pwd)/miniconda/bin:$PATH
   - conda install -y -q notebook
 
-test:
+instances:
+  stage: test
+  script:
+    - conda install -y -q maven libxml2
+    - cd jovial
+    - mvn -q package -DskipTests
+    - cd ..
+    - error=0
+    - test="bash $(pwd)/ci/test_instances.sh"
+    - export JOVIAL="java -jar $(pwd)/jovial/target/jovial-1.0-SNAPSHOT-jar-with-dependencies.jar"
+    - export SCHEMA="$(pwd)/jovial/src/test/resources/VOTable-1.4.xsd"
+    - cd assets/examples/cube/current/instances
+    - ${test}
+    - cd ../../../stc2/current/instances
+    - ${test}
+
+jekyll:
   stage: test
   script:
   - bundle exec jekyll build -d test
