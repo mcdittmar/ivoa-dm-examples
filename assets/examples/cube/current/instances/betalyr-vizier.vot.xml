@@ -145,12 +145,12 @@
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
-                    <REFERENCE dmrole="coords:Coordinate.frame">
-                      <IDREF>_TT_FRAME</IDREF>
-                    </REFERENCE>
                     <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                       <COLUMN dmtype="ivoa:real" ref="_col_H_TIME"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_TT_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
               </INSTANCE>
@@ -191,12 +191,12 @@
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
-                    <REFERENCE dmrole="coords:Coordinate.frame">
-                      <IDREF>_TT_FRAME</IDREF>
-                    </REFERENCE>
                     <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                       <COLUMN dmtype="ivoa:real" ref="_col_J_TIME"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_TT_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
               </INSTANCE>
@@ -237,12 +237,12 @@
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
-                    <REFERENCE dmrole="coords:Coordinate.frame">
-                      <IDREF>_TT_FRAME</IDREF>
-                    </REFERENCE>
                     <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                       <COLUMN dmtype="ivoa:real" ref="_col_K_TIME"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_TT_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
               </INSTANCE>
@@ -283,12 +283,12 @@
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
-                    <REFERENCE dmrole="coords:Coordinate.frame">
-                      <IDREF>_TT_FRAME</IDREF>
-                    </REFERENCE>
                     <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                       <COLUMN dmtype="ivoa:real" ref="_col_L_TIME"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_TT_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
               </INSTANCE>
@@ -329,12 +329,12 @@
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
-                    <REFERENCE dmrole="coords:Coordinate.frame">
-                      <IDREF>_TT_FRAME</IDREF>
-                    </REFERENCE>
                     <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                       <COLUMN dmtype="ivoa:real" ref="_col_M_TIME"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_TT_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
               </INSTANCE>
@@ -374,21 +374,21 @@
   <RESOURCE>
     <TABLE ID="_DATA_TABLE">
       <FIELD datatype="char" arraysize="8" ID="_TARGET_NAME" name="_TARGET_NAME"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_H_TIME" name="h_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_H_MAG" name="h_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_H_MAG_ERROR" name="_col_H_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_J_TIME" name="j_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_J_MAG" name="j_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_J_MAG_ERROR" name="_col_J_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_K_TIME" name="k_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_K_MAG" name="k_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_K_MAG_ERROR" name="_col_K_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_L_TIME" name="l_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_L_MAG" name="l_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_L_MAG_ERROR" name="_col_L_MAG_ERROR" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_M_TIME" name="m_time" unit="d"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_M_MAG" name="m_mag" unit="mag"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_M_MAG_ERROR" name="_col_M_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_H_TIME" name="h_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_H_MAG" name="h_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_H_MAG_ERROR" name="_col_H_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_J_TIME" name="j_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_J_MAG" name="j_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_J_MAG_ERROR" name="_col_J_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_K_TIME" name="k_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_K_MAG" name="k_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_K_MAG_ERROR" name="_col_K_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_L_TIME" name="l_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_L_MAG" name="l_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_L_MAG_ERROR" name="_col_L_MAG_ERROR" unit="mag"/>
+      <FIELD datatype="float" ID="_col_M_TIME" name="m_time" unit="d"/>
+      <FIELD datatype="float" ID="_col_M_MAG" name="m_mag" unit="mag"/>
+      <FIELD datatype="float" ID="_col_M_MAG_ERROR" name="_col_M_MAG_ERROR" unit="mag"/>
       <DATA>
         <TABLEDATA>
           <TR>

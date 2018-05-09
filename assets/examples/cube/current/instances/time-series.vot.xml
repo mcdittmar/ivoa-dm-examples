@@ -80,12 +80,12 @@
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.ISOTime">
-                    <REFERENCE dmrole="coords:Coordinate.frame">
-                      <IDREF>_TT_FRAME</IDREF>
-                    </REFERENCE>
                     <ATTRIBUTE dmrole="coords:domain.time.ISOTime.date">
                       <COLUMN dmtype="ivoa:datetime" ref="_col_TIME"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_TT_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
               </INSTANCE>
@@ -99,15 +99,15 @@
               <INSTANCE dmtype="meas:SkyPosition">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.space.EquatorialCoord">
-                    <REFERENCE dmrole="coords:Coordinate.frame">
-                      <IDREF>_FK4_J2000_FRAME</IDREF>
-                    </REFERENCE>
                     <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.ra">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_RAJ2000"/>
                     </ATTRIBUTE>
                     <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.dec">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_DECJ2000"/>
                     </ATTRIBUTE>
+                    <REFERENCE dmrole="coords:Coordinate.frame">
+                      <IDREF>_FK4_J2000_FRAME</IDREF>
+                    </REFERENCE>
                   </INSTANCE>
                 </ATTRIBUTE>
               </INSTANCE>
@@ -174,12 +174,12 @@
   <RESOURCE>
     <TABLE ID="_DATA_TABLE">
       <FIELD datatype="char" arraysize="17" ID="_col_TIME" name="_col_TIME"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_RAJ2000" name="_col_RAJ2000"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_DECJ2000" name="_col_DECJ2000"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_FLUX" name="_col_FLUX"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_FLUX_ERROR" name="_col_FLUX_ERROR"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_MAG" name="_col_MAG"/>
-      <FIELD datatype="float" arraysize="1" ID="_col_MAG_ERROR" name="_col_MAG_ERROR"/>
+      <FIELD datatype="float" ID="_col_RAJ2000" name="_col_RAJ2000"/>
+      <FIELD datatype="float" ID="_col_DECJ2000" name="_col_DECJ2000"/>
+      <FIELD datatype="float" ID="_col_FLUX" name="_col_FLUX"/>
+      <FIELD datatype="float" ID="_col_FLUX_ERROR" name="_col_FLUX_ERROR"/>
+      <FIELD datatype="float" ID="_col_MAG" name="_col_MAG"/>
+      <FIELD datatype="float" ID="_col_MAG_ERROR" name="_col_MAG_ERROR"/>
       <DATA>
         <TABLEDATA>
           <TR>
