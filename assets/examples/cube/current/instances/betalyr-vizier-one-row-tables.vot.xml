@@ -149,13 +149,13 @@
     </TEMPLATES>
     <TEMPLATES tableref="_DATA_TABLE">
       <INSTANCE dmtype="cube:NDPoint" ID="_DATA_INSTANCE">
-        <COMPOSITION dmrole="cube:DataElement.axis">
-          <INSTANCE dmtype="cube:DataAxis">
+        <COMPOSITION dmrole="cube:NDPoint.observable">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
-              <INSTANCE dmtype="meas:SkyPosition">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
+              <INSTANCE dmtype="meas:StdPosition">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.space.EquatorialCoord">
                     <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.ra">
@@ -187,11 +187,11 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
@@ -210,14 +210,14 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:GenericCoordMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-                  <INSTANCE dmtype="coords:GenericCoordValue">
+                  <INSTANCE dmtype="coords:PhysicalCoordValue">
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_H_MAG"/>
                     </ATTRIBUTE>
@@ -244,11 +244,11 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
@@ -267,14 +267,14 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:GenericCoordMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-                  <INSTANCE dmtype="coords:GenericCoordValue">
+                  <INSTANCE dmtype="coords:PhysicalCoordValue">
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_J_MAG"/>
                     </ATTRIBUTE>
@@ -301,11 +301,11 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
@@ -324,14 +324,14 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:GenericCoordMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-                  <INSTANCE dmtype="coords:GenericCoordValue">
+                  <INSTANCE dmtype="coords:PhysicalCoordValue">
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_K_MAG"/>
                     </ATTRIBUTE>
@@ -358,11 +358,11 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
@@ -381,14 +381,14 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:GenericCoordMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-                  <INSTANCE dmtype="coords:GenericCoordValue">
+                  <INSTANCE dmtype="coords:PhysicalCoordValue">
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_L_MAG"/>
                     </ATTRIBUTE>
@@ -415,11 +415,11 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="False" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:StdTimeMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.time.JD">
@@ -438,14 +438,14 @@
               </INSTANCE>
             </COMPOSITION>
           </INSTANCE>
-          <INSTANCE dmtype="cube:DataAxis">
+          <INSTANCE dmtype="cube:Observable">
             <ATTRIBUTE dmrole="cube:DataAxis.dependent">
               <LITERAL value="True" dmtype="ivoa:boolean"/>
             </ATTRIBUTE>
-            <COMPOSITION dmrole="cube:DataAxis.measurement">
+            <COMPOSITION dmrole="cube:MeasurementAxis.measure">
               <INSTANCE dmtype="meas:GenericCoordMeasure">
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-                  <INSTANCE dmtype="coords:GenericCoordValue">
+                  <INSTANCE dmtype="coords:PhysicalCoordValue">
                     <ATTRIBUTE dmrole="coords:PhysicalCoordValue.cval">
                       <COLUMN dmtype="ivoa:RealQuantity" ref="_col_M_MAG"/>
                     </ATTRIBUTE>

@@ -91,10 +91,10 @@ dmInstance {
         instance(id: "_DATA_INSTANCE", type: "cube:NDPoint") {
 
             // POSITION (constant for all
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "False"
 
-                instance(role: "measurement", type: "meas:SkyPosition") {
+                instance(role: "measure", type: "meas:StdPosition") {
                     instance (role: "coord", type: "coords:domain.space.EquatorialCoord") {
                         instance role: "ra", value: ra // This should also go into its own table according to the
                         instance role: "dec", value: dec // original serialization
@@ -114,10 +114,10 @@ dmInstance {
             // ############# Start Band H instances ################
 
             // Band H Time
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "False"
 
-                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                instance(role: "measure", type: "meas:StdTimeMeasure") {
                     instance(role: "coord", type: "coords:domain.time.JD") {
                         column role: "date", id:"_col_H_TIME", data: jdhData, unit: "d", name: "h_time"
                         reference(role: "frame") {
@@ -128,11 +128,11 @@ dmInstance {
             }
 
             // Band H Magnitude and Error
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "True"
 
-                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                instance(role: "measure", type: "meas:GenericCoordMeasure") {
+                    instance(role: "coord", type: "coords:PhysicalCoordValue") {
                         column role: "cval", id: "_col_H_MAG", type: "ivoa:RealQuantity", data: hmagData, unit: "mag",
                                 name: "h_mag"
                         // Implicit standard 1d axis reference
@@ -154,10 +154,10 @@ dmInstance {
             // ############# Start Band J instances ################
 
             // Band J Time
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "False"
 
-                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                instance(role: "measure", type: "meas:StdTimeMeasure") {
                     instance(role: "coord", type: "coords:domain.time.JD") {
                         column role: "date", id:"_col_J_TIME", data: jdjData, unit: "d", name: "j_time"
                         reference(role: "frame") {
@@ -168,11 +168,11 @@ dmInstance {
             }
 
             // Band J Magnitude and Error
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "True"
 
-                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                instance(role: "measure", type: "meas:GenericCoordMeasure") {
+                    instance(role: "coord", type: "coords:PhysicalCoordValue") {
                         column role: "cval", id: "_col_J_MAG", type: "ivoa:RealQuantity", data: jmagData, unit: "mag",
                                 name: "j_mag"
                         // Implicit standard 1d axis reference
@@ -194,10 +194,10 @@ dmInstance {
             // ############# Start Band K instances ################
 
             // Band K Time
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "False"
 
-                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                instance(role: "measure", type: "meas:StdTimeMeasure") {
                     instance(role: "coord", type: "coords:domain.time.JD") {
                         column role: "date", id:"_col_K_TIME", data: jdkData, unit: "d", name: "k_time"
                         reference(role: "frame") {
@@ -208,11 +208,11 @@ dmInstance {
             }
 
             // Band K Magnitude and Error
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "True"
 
-                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                instance(role: "measure", type: "meas:GenericCoordMeasure") {
+                    instance(role: "coord", type: "coords:PhysicalCoordValue") {
                         column role: "cval", id: "_col_K_MAG", type: "ivoa:RealQuantity", data: kmagData, unit: "mag",
                                 name: "k_mag"
                         // Implicit standard 1d axis reference
@@ -234,10 +234,10 @@ dmInstance {
             // ############# Start Band L instances ################
 
             // Band L Time
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "False"
 
-                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                instance(role: "measure", type: "meas:StdTimeMeasure") {
                     instance(role: "coord", type: "coords:domain.time.JD") {
                         column role: "date", id:"_col_L_TIME", data: jdlData, unit: "d", name: "l_time"
                         reference(role: "frame") {
@@ -248,11 +248,11 @@ dmInstance {
             }
 
             // Band L Magnitude and Error
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "True"
 
-                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                instance(role: "measure", type: "meas:GenericCoordMeasure") {
+                    instance(role: "coord", type: "coords:PhysicalCoordValue") {
                         column role: "cval", id: "_col_L_MAG", type: "ivoa:RealQuantity", data: lmagData, unit: "mag",
                                 name: "l_mag"
                         // Implicit standard 1d axis reference
@@ -274,10 +274,10 @@ dmInstance {
             // ############# Start Band M instances ################
 
             // Band M Time
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "False"
 
-                instance(role: "measurement", type: "meas:StdTimeMeasure") {
+                instance(role: "measure", type: "meas:StdTimeMeasure") {
                     instance(role: "coord", type: "coords:domain.time.JD") {
                         column role: "date", id:"_col_M_TIME", data: jdmData, unit: "d", name: "m_time"
                         reference(role: "frame") {
@@ -288,11 +288,11 @@ dmInstance {
             }
 
             // Band M Magnitude and Error
-            instance(role: "axis") {
+            instance(role: "observable") {
                 instance role: "dependent", value: "True"
 
-                instance(role: "measurement", type: "meas:GenericCoordMeasure") {
-                    instance(role: "coord", type: "coords:GenericCoordValue") {
+                instance(role: "measure", type: "meas:GenericCoordMeasure") {
+                    instance(role: "coord", type: "coords:PhysicalCoordValue") {
                         column role: "cval", id: "_col_M_MAG", type: "ivoa:RealQuantity", data: mmagData, unit: "mag",
                                 name: "m_mag"
                         // Implicit standard 1d axis reference

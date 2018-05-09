@@ -10,7 +10,7 @@
   <title>IVOA N-Dimensional Cube Model</title>
   <author>Mark Cresitello-Dittmar, Doug Tody, Omar Laurino, Gerard Lemson, Markus Demleitner, and the IVOA Data Model Working Group</author>
   <version>1.0</version>
-  <lastModified>2018-02-23T17:15:07</lastModified>
+  <lastModified>2018-05-04T17:20:10</lastModified>
   <import>
     <name>ivoa</name>
     <url>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>
@@ -33,8 +33,8 @@
   </import>
   <import>
     <name>trans</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans_alt-v2.0.vo-dml.xml</url>
-    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans_alt-v2.0.html</documentationURL>
+    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans-v2.0.vo-dml.xml</url>
+    <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/vo-dml/STC_trans-v2.0.html</documentationURL>
   </import>
   <objectType>
     <vodml-id>NDImage</vodml-id>
@@ -43,7 +43,7 @@
           TODO : Missing description : please, update your UML model asap.
         </description>
     <extends>
-      <vodml-ref>cube:PixelatedDataProduct</vodml-ref>
+      <vodml-ref>cube:DataProduct</vodml-ref>
     </extends>
     <composition>
       <vodml-id>NDImage.data</vodml-id>
@@ -59,6 +59,20 @@
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </composition>
+    <composition>
+      <vodml-id>NDImage.pixelCoordSys</vodml-id>
+      <name>pixelCoordSys</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>coords:domain.pixel.PixelCoordSystem</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </composition>
   </objectType>
 
   <objectType>
@@ -68,7 +82,7 @@
           TODO : Missing description : please, update your UML model asap.
         </description>
     <extends>
-      <vodml-ref>cube:PointDataProduct</vodml-ref>
+      <vodml-ref>cube:DataProduct</vodml-ref>
     </extends>
     <composition>
       <vodml-id>SparseCube.data</vodml-id>
@@ -120,42 +134,20 @@
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </composition>
-  </objectType>
-
-  <objectType abstract="true">
-    <vodml-id>PixelatedDataProduct</vodml-id>
-    <name>PixelatedDataProduct</name>
-    <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-    <extends>
-      <vodml-ref>cube:DataProduct</vodml-ref>
-    </extends>
-    <composition>
-      <vodml-id>PixelatedDataProduct.pixelCoordSys</vodml-id>
-      <name>pixelCoordSys</name>
+    <reference>
+      <vodml-id>DataProduct.dataset</vodml-id>
+      <name>dataset</name>
       <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
       <datatype>
-        <vodml-ref>coords:domain.pixel.PixelCoordSystem</vodml-ref>
+        <vodml-ref>ds:dataset.Dataset</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>1</minOccurs>
         <maxOccurs>1</maxOccurs>
       </multiplicity>
-    </composition>
-  </objectType>
-
-  <objectType abstract="true">
-    <vodml-id>PointDataProduct</vodml-id>
-    <name>PointDataProduct</name>
-    <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-    <extends>
-      <vodml-ref>cube:DataProduct</vodml-ref>
-    </extends>
+    </reference>
   </objectType>
 
   <objectType>
@@ -164,12 +156,6 @@
     <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
-    <extends>
-      <vodml-ref>cube:DataElement</vodml-ref>
-    </extends>
-    <constraint>
-      <description>axis:DataAxis[1]</description>
-    </constraint>
     <composition>
       <vodml-id>Voxel.pixelAxis</vodml-id>
       <name>pixelAxis</name>
@@ -184,6 +170,34 @@
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
     </composition>
+    <composition>
+      <vodml-id>Voxel.valueAxis</vodml-id>
+      <name>valueAxis</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>cube:ValueAxis</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </composition>
+    <composition>
+      <vodml-id>Voxel.coordAxis</vodml-id>
+      <name>coordAxis</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>cube:VirtualImageAxis</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </composition>
   </objectType>
 
   <objectType>
@@ -192,9 +206,20 @@
     <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
-    <extends>
-      <vodml-ref>cube:DataElement</vodml-ref>
-    </extends>
+    <composition>
+      <vodml-id>NDPoint.observable</vodml-id>
+      <name>observable</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>cube:Observable</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </composition>
   </objectType>
 
   <objectType abstract="true">
@@ -217,20 +242,6 @@
         <maxOccurs>1</maxOccurs>
       </multiplicity>
     </attribute>
-    <composition>
-      <vodml-id>DataAxis.measurement</vodml-id>
-      <name>measurement</name>
-      <description>
-        TODO : Missing description : please, update your UML model asap.
-      </description>
-      <datatype>
-        <vodml-ref>meas:Measure</vodml-ref>
-      </datatype>
-      <multiplicity>
-        <minOccurs>1</minOccurs>
-        <maxOccurs>1</maxOccurs>
-      </multiplicity>
-    </composition>
   </objectType>
 
   <objectType>
@@ -239,6 +250,9 @@
     <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
+    <extends>
+      <vodml-ref>cube:ImageAxis</vodml-ref>
+    </extends>
     <attribute>
       <vodml-id>PixelAxis.coord</vodml-id>
       <name>coord</name>
@@ -256,25 +270,209 @@
   </objectType>
 
   <objectType abstract="true">
-    <vodml-id>DataElement</vodml-id>
-    <name>DataElement</name>
+    <vodml-id>MeasurementAxis</vodml-id>
+    <name>MeasurementAxis</name>
     <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
+    <extends>
+      <vodml-ref>cube:DataAxis</vodml-ref>
+    </extends>
     <composition>
-      <vodml-id>DataElement.axis</vodml-id>
-      <name>axis</name>
+      <vodml-id>MeasurementAxis.measure</vodml-id>
+      <name>measure</name>
       <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
       <datatype>
-        <vodml-ref>cube:DataAxis</vodml-ref>
+        <vodml-ref>meas:Measure</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </composition>
+  </objectType>
+
+  <objectType>
+    <vodml-id>Observable</vodml-id>
+    <name>Observable</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>cube:MeasurementAxis</vodml-ref>
+    </extends>
+  </objectType>
+
+  <objectType>
+    <vodml-id>ValueAxis</vodml-id>
+    <name>ValueAxis</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>cube:MeasurementAxis</vodml-ref>
+    </extends>
+    <constraint>
+      <description>DataAxis.dependent = True</description>
+    </constraint>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>ImageAxis</vodml-id>
+    <name>ImageAxis</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>cube:DataAxis</vodml-ref>
+    </extends>
+    <constraint>
+      <description>DataAxis.dependent = False</description>
+    </constraint>
+  </objectType>
+
+  <objectType>
+    <vodml-id>VirtualMeasure</vodml-id>
+    <name>VirtualMeasure</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>meas:Measure</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>VirtualMeasure.result_type</vodml-id>
+      <name>result_type</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:string</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <reference>
+      <vodml-id>VirtualMeasure.source</vodml-id>
+      <name>source</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>meas:Measure</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>-1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>VirtualMeasure.transform</vodml-id>
+      <name>transform</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>cube:Transform</vodml-ref>
       </datatype>
       <multiplicity>
         <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>VirtualMeasure.result_frame</vodml-id>
+      <name>result_frame</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>coords:CoordFrame</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType>
+    <vodml-id>VirtualImageAxis</vodml-id>
+    <name>VirtualImageAxis</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>cube:ImageAxis</vodml-ref>
+    </extends>
+    <attribute>
+      <vodml-id>VirtualImageAxis.result_type</vodml-id>
+      <name>result_type</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>ivoa:string</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </attribute>
+    <reference>
+      <vodml-id>VirtualImageAxis.source</vodml-id>
+      <name>source</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>cube:ImageAxis</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>1</minOccurs>
         <maxOccurs>-1</maxOccurs>
       </multiplicity>
-    </composition>
+    </reference>
+    <reference>
+      <vodml-id>VirtualImageAxis.transform</vodml-id>
+      <name>transform</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>cube:Transform</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+    <reference>
+      <vodml-id>VirtualImageAxis.result_frame</vodml-id>
+      <name>result_frame</name>
+      <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+      <datatype>
+        <vodml-ref>coords:CoordFrame</vodml-ref>
+      </datatype>
+      <multiplicity>
+        <minOccurs>0</minOccurs>
+        <maxOccurs>1</maxOccurs>
+      </multiplicity>
+    </reference>
+  </objectType>
+
+  <objectType abstract="true">
+    <vodml-id>Transform</vodml-id>
+    <name>Transform</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
   </objectType>
 
 </vo-dml:model>
