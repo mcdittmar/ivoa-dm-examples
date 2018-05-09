@@ -11,7 +11,7 @@ dmInstance {
     model(vodmlURL: ivoaLocation)
 
     instance(type: "meas:StdTimeMeasure") {
-        instance (role: "coord", type: "coords:domain.time.MET") {
+        instance (role: "coord", type: "coords:domain.time.TimeOffset") {
             instance role: "time", value: 1234.5
             instance(role: "time0", type: "coords:domain.time.JD") {
                 instance role: "date", value: 2451234.02

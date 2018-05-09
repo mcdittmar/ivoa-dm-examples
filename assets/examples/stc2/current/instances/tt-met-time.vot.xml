@@ -15,11 +15,11 @@
     <GLOBALS>
       <INSTANCE dmtype="meas:StdTimeMeasure">
         <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
-          <INSTANCE dmtype="coords:domain.time.MET">
-            <ATTRIBUTE dmrole="coords:domain.time.MET.time">
+          <INSTANCE dmtype="coords:domain.time.TimeOffset">
+            <ATTRIBUTE dmrole="coords:domain.time.TimeOffset.time">
               <LITERAL value="1234.5" dmtype="ivoa:RealQuantity"/>
             </ATTRIBUTE>
-            <ATTRIBUTE dmrole="coords:domain.time.MET.time0">
+            <ATTRIBUTE dmrole="coords:domain.time.TimeOffset.time0">
               <INSTANCE dmtype="coords:domain.time.JD">
                 <ATTRIBUTE dmrole="coords:domain.time.JD.date">
                   <LITERAL value="2451234.02" dmtype="ivoa:real"/>

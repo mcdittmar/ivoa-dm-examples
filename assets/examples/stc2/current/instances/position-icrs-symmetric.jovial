@@ -10,8 +10,7 @@ dmInstance {
     model(vodmlURL: measLocation)
     model(vodmlURL: ivoaLocation)
 
-    instance(type: "meas:SkyPosition") {
-
+    instance(type: "meas:StdPosition") {
         instance (role: "coord", type: "coords:domain.space.EquatorialCoord") {
             instance(role: "ra", value: 12.9768538031, unit: "deg")
             instance(role: "dec", value: -72.9580158133, unit:"deg")

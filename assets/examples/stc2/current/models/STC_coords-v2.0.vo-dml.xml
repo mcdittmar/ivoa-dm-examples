@@ -10,7 +10,7 @@
   <author>Arnold Rots, Mark Cresitello-Dittmar, Omar Laurino</author>
   <version>2.0</version>
   <previousVersion>0.x</previousVersion>
-  <lastModified>2018-02-23T17:34:12</lastModified>
+  <lastModified>2018-04-26T15:17:50</lastModified>
   <import>
     <name>ivoa</name>
     <url>http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</url>
@@ -110,7 +110,7 @@
     </attribute>
   </dataType>
 
-  <dataType abstract="true">
+  <dataType>
     <vodml-id>PhysicalCoordValue</vodml-id>
     <name>PhysicalCoordValue</name>
     <description>
@@ -143,7 +143,7 @@
     </attribute>
   </dataType>
 
-  <dataType abstract="true">
+  <dataType>
     <vodml-id>BinnedCoordValue</vodml-id>
     <name>BinnedCoordValue</name>
     <description>
@@ -177,14 +177,45 @@
   </dataType>
 
   <dataType>
-    <vodml-id>GenericCoordValue</vodml-id>
-    <name>GenericCoordValue</name>
+    <vodml-id>CompositeCoord1D</vodml-id>
+    <name>CompositeCoord1D</name>
     <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
     <extends>
-      <vodml-ref>coords:PhysicalCoordValue</vodml-ref>
+      <vodml-ref>coords:CompositeCoordinate</vodml-ref>
     </extends>
+    <constraint>
+      <description>cmpt:CoordValue[1]</description>
+    </constraint>
+  </dataType>
+
+  <dataType>
+    <vodml-id>CompositeCoord2D</vodml-id>
+    <name>CompositeCoord2D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>coords:CompositeCoordinate</vodml-ref>
+    </extends>
+    <constraint>
+      <description>cmpt:CoordValue[2]</description>
+    </constraint>
+  </dataType>
+
+  <dataType>
+    <vodml-id>CompositeCoord3D</vodml-id>
+    <name>CompositeCoord3D</name>
+    <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+    <extends>
+      <vodml-ref>coords:CompositeCoordinate</vodml-ref>
+    </extends>
+    <constraint>
+      <description>cmpt:CoordValue[3]</description>
+    </constraint>
   </dataType>
 
   <objectType abstract="true">
@@ -947,24 +978,6 @@ This domain is relatively complex each property of the pattern ( origin, orienta
         </literal>
       </enumeration>
 
-      <dataType>
-        <vodml-id>domain.space.SpatialCoordValue</vodml-id>
-        <name>SpatialCoordValue</name>
-        <description>An instance of a point along the associated axis.
-NOTE: This represents an absolute point in the coordinate space and not a 'measured' value, which is defined in the coords model.</description>
-        <extends>
-          <vodml-ref>coords:PhysicalCoordValue</vodml-ref>
-        </extends>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:Coordinate.frame</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:domain.space.SpaceFrame</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
       <dataType abstract="true">
         <vodml-id>domain.space.RefLocation</vodml-id>
         <name>RefLocation</name>
@@ -1027,7 +1040,7 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
           TODO : Missing description : please, update your UML model asap.
         </description>
           <datatype>
-            <vodml-ref>coords:domain.space.SpatialCoord</vodml-ref>
+            <vodml-ref>coords:CompositeCoordinate</vodml-ref>
           </datatype>
           <multiplicity>
             <minOccurs>1</minOccurs>
@@ -1041,117 +1054,13 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
           TODO : Missing description : please, update your UML model asap.
         </description>
           <datatype>
-            <vodml-ref>coords:domain.space.SpatialCoord</vodml-ref>
+            <vodml-ref>coords:CompositeCoordinate</vodml-ref>
           </datatype>
           <multiplicity>
             <minOccurs>0</minOccurs>
             <maxOccurs>1</maxOccurs>
           </multiplicity>
         </attribute>
-      </dataType>
-
-      <dataType abstract="true">
-        <vodml-id>domain.space.SpatialCoord</vodml-id>
-        <name>SpatialCoord</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:CompositeCoordinate</vodml-ref>
-        </extends>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:Coordinate.frame</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:domain.space.SpaceFrame</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.space.SpatialCoord1D</vodml-id>
-        <name>SpatialCoord1D</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.space.SpatialCoord</vodml-ref>
-        </extends>
-        <constraint>
-          <description>cmpt:SpatialCoordValue[1]</description>
-        </constraint>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:CompositeCoordinate.cmpt</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:domain.space.SpatialCoordValue</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.space.SpatialCoord2D</vodml-id>
-        <name>SpatialCoord2D</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.space.SpatialCoord</vodml-ref>
-        </extends>
-        <constraint>
-          <description>cmpt:SpatialCoordValue[2]</description>
-        </constraint>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:CompositeCoordinate.cmpt</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:domain.space.SpatialCoordValue</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.space.SpatialCoord3D</vodml-id>
-        <name>SpatialCoord3D</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.space.SpatialCoord</vodml-ref>
-        </extends>
-        <constraint>
-          <description>cmpt:SpatialCoordValue[3]</description>
-        </constraint>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:CompositeCoordinate.cmpt</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:domain.space.SpatialCoordValue</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
-      <dataType abstract="true">
-        <vodml-id>domain.space.SkyCoord</vodml-id>
-        <name>SkyCoord</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:Coordinate</vodml-ref>
-        </extends>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:Coordinate.frame</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:domain.space.SpaceFrame</vodml-ref>
-          </datatype>
-        </constraint>
       </dataType>
 
       <dataType>
@@ -1161,7 +1070,7 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
           TODO : Missing description : please, update your UML model asap.
         </description>
         <extends>
-          <vodml-ref>coords:domain.space.SkyCoord</vodml-ref>
+          <vodml-ref>coords:domain.space.SpaceCoord</vodml-ref>
         </extends>
         <attribute>
           <vodml-id>domain.space.EquatorialCoord.ra</vodml-id>
@@ -1207,110 +1116,15 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
         </attribute>
       </dataType>
 
-      <dataType>
-        <vodml-id>domain.space.GalacticCoord</vodml-id>
-        <name>GalacticCoord</name>
+      <dataType abstract="true">
+        <vodml-id>domain.space.SpaceCoord</vodml-id>
+        <name>SpaceCoord</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
         <extends>
-          <vodml-ref>coords:domain.space.SkyCoord</vodml-ref>
+          <vodml-ref>coords:Coordinate</vodml-ref>
         </extends>
-        <attribute>
-          <vodml-id>domain.space.GalacticCoord.l</vodml-id>
-          <name>l</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>ivoa:RealQuantity</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>domain.space.GalacticCoord.b</vodml-id>
-          <name>b</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>ivoa:RealQuantity</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>domain.space.GalacticCoord.r</vodml-id>
-          <name>r</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>ivoa:RealQuantity</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.space.EclipticCoord</vodml-id>
-        <name>EclipticCoord</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.space.SkyCoord</vodml-ref>
-        </extends>
-        <attribute>
-          <vodml-id>domain.space.EclipticCoord.elong</vodml-id>
-          <name>elong</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>ivoa:RealQuantity</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>domain.space.EclipticCoord.elat</vodml-id>
-          <name>elat</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>ivoa:RealQuantity</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-        <attribute>
-          <vodml-id>domain.space.EclipticCoord.r</vodml-id>
-          <name>r</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>ivoa:RealQuantity</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
       </dataType>
 
       <dataType>
@@ -1320,7 +1134,7 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
           TODO : Missing description : please, update your UML model asap.
         </description>
         <extends>
-          <vodml-ref>coords:domain.space.SkyCoord</vodml-ref>
+          <vodml-ref>coords:domain.space.SpaceCoord</vodml-ref>
         </extends>
         <attribute>
           <vodml-id>domain.space.CartesianCoord.x</vodml-id>
@@ -1373,7 +1187,7 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
           TODO : Missing description : please, update your UML model asap.
         </description>
         <extends>
-          <vodml-ref>coords:domain.space.SkyCoord</vodml-ref>
+          <vodml-ref>coords:domain.space.SpaceCoord</vodml-ref>
         </extends>
         <attribute>
           <vodml-id>domain.space.LongLatCoord.long</vodml-id>
@@ -1420,17 +1234,17 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
       </dataType>
 
       <dataType>
-        <vodml-id>domain.space.UnitSphereCoord</vodml-id>
-        <name>UnitSphereCoord</name>
+        <vodml-id>domain.space.GalacticCoord</vodml-id>
+        <name>GalacticCoord</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
         <extends>
-          <vodml-ref>coords:domain.space.SkyCoord</vodml-ref>
+          <vodml-ref>coords:domain.space.SpaceCoord</vodml-ref>
         </extends>
         <attribute>
-          <vodml-id>domain.space.UnitSphereCoord.dircosx</vodml-id>
-          <name>dircosx</name>
+          <vodml-id>domain.space.GalacticCoord.l</vodml-id>
+          <name>l</name>
           <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
@@ -1443,8 +1257,8 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
           </multiplicity>
         </attribute>
         <attribute>
-          <vodml-id>domain.space.UnitSphereCoord.dircosy</vodml-id>
-          <name>dircosy</name>
+          <vodml-id>domain.space.GalacticCoord.b</vodml-id>
+          <name>b</name>
           <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
@@ -1457,8 +1271,61 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
           </multiplicity>
         </attribute>
         <attribute>
-          <vodml-id>domain.space.UnitSphereCoord.dircosz</vodml-id>
-          <name>dircosz</name>
+          <vodml-id>domain.space.GalacticCoord.r</vodml-id>
+          <name>r</name>
+          <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+          <datatype>
+            <vodml-ref>ivoa:RealQuantity</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+      </dataType>
+
+      <dataType>
+        <vodml-id>domain.space.EclipticCoord</vodml-id>
+        <name>EclipticCoord</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <extends>
+          <vodml-ref>coords:domain.space.SpaceCoord</vodml-ref>
+        </extends>
+        <attribute>
+          <vodml-id>domain.space.EclipticCoord.elong</vodml-id>
+          <name>elong</name>
+          <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+          <datatype>
+            <vodml-ref>ivoa:RealQuantity</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>domain.space.EclipticCoord.elat</vodml-id>
+          <name>elat</name>
+          <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+          <datatype>
+            <vodml-ref>ivoa:RealQuantity</vodml-ref>
+          </datatype>
+          <multiplicity>
+            <minOccurs>0</minOccurs>
+            <maxOccurs>1</maxOccurs>
+          </multiplicity>
+        </attribute>
+        <attribute>
+          <vodml-id>domain.space.EclipticCoord.r</vodml-id>
+          <name>r</name>
           <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
@@ -1544,67 +1411,6 @@ NOTE: This represents an absolute point in the coordinate space and not a 'measu
 
 
     <package>
-      <vodml-id>domain.spectral</vodml-id>
-      <name>spectral</name>
-      <description>Implementation of the Coordinate Frame pattern for the Spectral domain.
-This is a basic 1-Dimensional coordinate space.</description>
-      <dataType abstract="true">
-        <vodml-id>domain.spectral.SpectralValue</vodml-id>
-        <name>SpectralValue</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:PhysicalCoordValue</vodml-ref>
-        </extends>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:Coordinate.frame</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:GenericCoordFrame</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.spectral.Wavelength</vodml-id>
-        <name>Wavelength</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.spectral.SpectralValue</vodml-ref>
-        </extends>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.spectral.Frequency</vodml-id>
-        <name>Frequency</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.spectral.SpectralValue</vodml-ref>
-        </extends>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.spectral.Energy</vodml-id>
-        <name>Energy</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.spectral.SpectralValue</vodml-ref>
-        </extends>
-      </dataType>
-
-    </package>
-
-
-
-    <package>
       <vodml-id>domain.time</vodml-id>
       <name>time</name>
       <description>Implementation of the Coordinate Frame pattern for the Time domain.
@@ -1681,28 +1487,11 @@ This is a basic 1-Dimensional coordinate space.</description>
       </enumeration>
 
       <dataType>
-        <vodml-id>domain.time.TimeOffset</vodml-id>
-        <name>TimeOffset</name>
-        <description>The time coordinate is represented as an offset from the origin.</description>
-        <extends>
-          <vodml-ref>coords:PhysicalCoordValue</vodml-ref>
-        </extends>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:Coordinate.frame</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:domain.time.TimeFrame</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
-      <dataType>
         <vodml-id>domain.time.ISOTime</vodml-id>
         <name>ISOTime</name>
         <description>The time is represented as a particular instant.  While interchangable with the TimeOffset, this form typically has a defined structure in representation.</description>
         <extends>
-          <vodml-ref>coords:domain.time.TimeStamp</vodml-ref>
+          <vodml-ref>coords:domain.time.TimeInstant</vodml-ref>
         </extends>
         <attribute>
           <vodml-id>domain.time.ISOTime.date</vodml-id>
@@ -1746,7 +1535,7 @@ This is a basic 1-Dimensional coordinate space.</description>
           TODO : Missing description : please, update your UML model asap.
         </description>
         <extends>
-          <vodml-ref>coords:domain.time.TimeStamp</vodml-ref>
+          <vodml-ref>coords:domain.time.TimeInstant</vodml-ref>
         </extends>
         <attribute>
           <vodml-id>domain.time.JD.date</vodml-id>
@@ -1771,7 +1560,7 @@ This is a basic 1-Dimensional coordinate space.</description>
           TODO : Missing description : please, update your UML model asap.
         </description>
         <extends>
-          <vodml-ref>coords:domain.time.TimeStamp</vodml-ref>
+          <vodml-ref>coords:domain.time.TimeInstant</vodml-ref>
         </extends>
         <attribute>
           <vodml-id>domain.time.MJD.date</vodml-id>
@@ -1790,8 +1579,8 @@ This is a basic 1-Dimensional coordinate space.</description>
       </dataType>
 
       <dataType>
-        <vodml-id>domain.time.MET</vodml-id>
-        <name>MET</name>
+        <vodml-id>domain.time.TimeOffset</vodml-id>
+        <name>TimeOffset</name>
         <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
@@ -1799,7 +1588,7 @@ This is a basic 1-Dimensional coordinate space.</description>
           <vodml-ref>coords:domain.time.TimeStamp</vodml-ref>
         </extends>
         <attribute>
-          <vodml-id>domain.time.MET.time</vodml-id>
+          <vodml-id>domain.time.TimeOffset.time</vodml-id>
           <name>time</name>
           <description>
           TODO : Missing description : please, update your UML model asap.
@@ -1813,19 +1602,30 @@ This is a basic 1-Dimensional coordinate space.</description>
           </multiplicity>
         </attribute>
         <attribute>
-          <vodml-id>domain.time.MET.time0</vodml-id>
+          <vodml-id>domain.time.TimeOffset.time0</vodml-id>
           <name>time0</name>
           <description>
           TODO : Missing description : please, update your UML model asap.
         </description>
           <datatype>
-            <vodml-ref>coords:domain.time.TimeStamp</vodml-ref>
+            <vodml-ref>coords:domain.time.TimeInstant</vodml-ref>
           </datatype>
           <multiplicity>
             <minOccurs>1</minOccurs>
             <maxOccurs>1</maxOccurs>
           </multiplicity>
         </attribute>
+      </dataType>
+
+      <dataType abstract="true">
+        <vodml-id>domain.time.TimeInstant</vodml-id>
+        <name>TimeInstant</name>
+        <description>
+          TODO : Missing description : please, update your UML model asap.
+        </description>
+        <extends>
+          <vodml-ref>coords:domain.time.TimeStamp</vodml-ref>
+        </extends>
       </dataType>
 
       <objectType>
@@ -1880,114 +1680,7 @@ orientation: n/a
             <maxOccurs>1</maxOccurs>
           </multiplicity>
         </attribute>
-        <attribute>
-          <vodml-id>domain.time.TimeFrame.time0</vodml-id>
-          <name>time0</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>coords:domain.time.TimeStamp</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>0</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
       </objectType>
-
-    </package>
-
-
-
-    <package>
-      <vodml-id>domain.redshift</vodml-id>
-      <name>redshift</name>
-      <description>Implementation of the Coordinate Frame pattern for the Redshift domain.
-This is a basic 1-Dimensional coordinate space.</description>
-      <enumeration>
-        <vodml-id>domain.redshift.DopplerDefinition</vodml-id>
-        <name>DopplerDefinition</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <literal>
-          <vodml-id>domain.redshift.DopplerDefinition.optical</vodml-id>
-          <name>optical</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        </literal>
-        <literal>
-          <vodml-id>domain.redshift.DopplerDefinition.radio</vodml-id>
-          <name>radio</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        </literal>
-        <literal>
-          <vodml-id>domain.redshift.DopplerDefinition.relativistic</vodml-id>
-          <name>relativistic</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        </literal>
-      </enumeration>
-
-      <dataType abstract="true">
-        <vodml-id>domain.redshift.RedshiftValue</vodml-id>
-        <name>RedshiftValue</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:PhysicalCoordValue</vodml-ref>
-        </extends>
-        <constraint xsi:type="vo-dml:SubsettedRole">
-          <role>
-            <vodml-ref>coords:Coordinate.frame</vodml-ref>
-          </role>
-          <datatype>
-            <vodml-ref>coords:GenericCoordFrame</vodml-ref>
-          </datatype>
-        </constraint>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.redshift.Redshift</vodml-id>
-        <name>Redshift</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.redshift.RedshiftValue</vodml-ref>
-        </extends>
-      </dataType>
-
-      <dataType>
-        <vodml-id>domain.redshift.DopplerVelocity</vodml-id>
-        <name>DopplerVelocity</name>
-        <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-        <extends>
-          <vodml-ref>coords:domain.redshift.RedshiftValue</vodml-ref>
-        </extends>
-        <attribute>
-          <vodml-id>domain.redshift.DopplerVelocity.dopplerDefinition</vodml-id>
-          <name>dopplerDefinition</name>
-          <description>
-          TODO : Missing description : please, update your UML model asap.
-        </description>
-          <datatype>
-            <vodml-ref>coords:domain.redshift.DopplerDefinition</vodml-ref>
-          </datatype>
-          <multiplicity>
-            <minOccurs>1</minOccurs>
-            <maxOccurs>1</maxOccurs>
-          </multiplicity>
-        </attribute>
-      </dataType>
 
     </package>
 
