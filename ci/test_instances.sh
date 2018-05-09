@@ -2,7 +2,6 @@
 
 test_instance () {
     local status=0
-    echo $(pwd)
 
     input=$1.jovial
     output=$1.vot.xml
