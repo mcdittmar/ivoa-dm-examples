@@ -9,7 +9,6 @@
   <title>IVOA Dataset Metadata Model</title>
   <author>Mark Cresitello-Dittmar, Francois Bonnarel, Omar Laurino, Gerard Lemson, Mireille Louys, Arnold Rots, Doug Tody, and the IVOA Data Model Working Group.</author>
   <version>1.0</version>
-  <previousVersion>0.x</previousVersion>
   <lastModified>2018-02-23T17:22:46</lastModified>
   <import>
     <name>ivoa</name>
