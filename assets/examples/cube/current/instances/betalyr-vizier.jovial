@@ -78,8 +78,8 @@ dmInstance {
 
                 instance(role: "measure", type: "meas:StdPosition") {
                     instance (role: "coord", type: "coords:domain.space.EquatorialCoord") {
-                        instance role: "ra", value: ra
-                        instance role: "dec", value: dec
+                        instance role: "ra", value: ra, unit: 'deg'
+                        instance role: "dec", value: dec, unit: 'deg'
                         reference(role: "frame") {
                             idref "_ICRS_FRAME"
                         }

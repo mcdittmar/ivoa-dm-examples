@@ -113,10 +113,10 @@
                 <ATTRIBUTE dmrole="meas:CoordMeasure.coord">
                   <INSTANCE dmtype="coords:domain.space.EquatorialCoord">
                     <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.ra">
-                      <LITERAL value="282.51998020" dmtype="ivoa:RealQuantity"/>
+                      <LITERAL value="282.51998020" dmtype="ivoa:RealQuantity" unit="deg"/>
                     </ATTRIBUTE>
                     <ATTRIBUTE dmrole="coords:domain.space.EquatorialCoord.dec">
-                      <LITERAL value="33.36266944" dmtype="ivoa:RealQuantity"/>
+                      <LITERAL value="33.36266944" dmtype="ivoa:RealQuantity" unit="deg"/>
                     </ATTRIBUTE>
                     <REFERENCE dmrole="coords:Coordinate.frame">
                       <IDREF>_ICRS_FRAME</IDREF>

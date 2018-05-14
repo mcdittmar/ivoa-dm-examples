@@ -15,7 +15,9 @@ before_script:
 instances:
   stage: test
   script:
-    - conda install -y -q maven libxml2
+    - main_dir=$(pwd)
+    - conda install -y -q maven libxml2 pandas nbconvert nbformat matplotlib
+    - pip install beautifulsoup4
     - cd jovial
     - mvn -q package -DskipTests
     - cd ..
@@ -27,6 +29,11 @@ instances:
     - ${test}
     - cd ../../../stc2/current/instances
     - ${test}
+    - cd ${main_dir}
+    - cd rama
+    - python setup.py develop
+    - cd ..
+    - python ci/test_notebooks.py
 
 jekyll:
   stage: test
