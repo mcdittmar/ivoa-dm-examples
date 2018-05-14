@@ -42,3 +42,7 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+# pytest
+.pytest_cache/
+ci/__pycache__/

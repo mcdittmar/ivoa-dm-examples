@@ -2,11 +2,17 @@ import glob
 import os
 import subprocess
 import tempfile
-import sys
 
 import nbformat
+import pytest
 
 
+def find_notebooks():
+    os.chdir("notebooks")
+    return glob.glob(os.path.join('*.ipynb'))
+
+
+# From https://blog.thedataincubator.com/2016/06/testing-jupyter-notebooks/
 def _notebook_run(filename):
     """Execute a notebook via nbconvert and collect output.
        :returns (parsed nb object, execution errors)
@@ -28,19 +34,7 @@ def _notebook_run(filename):
     return nb, errors
 
 
-def test_ipynb():
-    os.chdir("notebooks")
-    notebooks = glob.glob(os.path.join('*.ipynb'))
-    ok = True
-    for notebook in notebooks:
-        _, errors = _notebook_run(notebook)
-        ok = ok and not errors
-        if errors:
-            print(f"Errors in notebook: {notebook}")
-
-    status = 0 if ok else 1
-    sys.exit(status)
-
-
-if __name__ == '__main__':
-    test_ipynb()
+@pytest.mark.parametrize('notebook', find_notebooks())
+def test_ipynb(notebook):
+    _, errors = _notebook_run(notebook)
+    assert errors == []
