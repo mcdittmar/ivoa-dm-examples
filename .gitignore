@@ -2,7 +2,7 @@ _site
 .sass-cache
 .jekyll-metadata
 notebooks/.ipynb_checkpoints
-
+.cache/
 
 ### Jekyll template
 .jekyll-cache/
