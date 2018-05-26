@@ -28,8 +28,12 @@ github_username:  olaurino
 markdown: kramdown
 theme: minima
 
-gems:
+plugins:
    - jekyll-jupyter-notebook
+   - jekyll-mermaid
+
+mermaid:
+  src: '/ivoa-dm-examples/js/mermaid/mermaid.min.js'
 
 #plugins:
 #  - jekyll-feed
