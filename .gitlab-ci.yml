@@ -16,7 +16,7 @@ instances:
   stage: test
   script:
     - main_dir=$(pwd)
-    - conda install -y -q maven libxml2 pandas nbconvert nbformat matplotlib pytest
+    - conda install -y -q maven libxml2 pandas nbconvert nbformat matplotlib pyyaml pytest
     - pip install beautifulsoup4
     - cd jovial
     - mvn -q package -DskipTests
