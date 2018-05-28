@@ -74,10 +74,10 @@ $ cd rama
 $ python setup.py install
 ```
 
-## Pip
+### Pip
 If you have Python 3.6 you can also use `pip install rama`. Pip cannot be used to install JAVA packages.
 
-## SciServer
+### SciServer
 If you are familiar with Jupyter notebooks and you have an account on
 [SciServer](https://alpha02.sciserver.org/compute/), sign into your account and create a new Python container. Start the
 container and then, using the *New* menu, start a new terminal.
