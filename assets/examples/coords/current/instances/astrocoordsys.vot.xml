@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:AstroCoordSystem">
+        <COMPOSITION dmrole="coords:AstroCoordSystem.coordSys">
+          <INSTANCE dmtype="coords:SpaceSys" ID="_SPACESYS_ICRS">
+            <COMPOSITION dmrole="coords:PhysicalCoordSys.frame">
+              <INSTANCE dmtype="coords:SpaceFrame">
+                <ATTRIBUTE dmrole="coords:SpaceFrame.refPosition">
+                  <INSTANCE dmtype="coords:StdRefLocation">
+                    <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+                      <LITERAL value="TOPOCENTER" dmtype="ivoa:string"/>
+                    </ATTRIBUTE>
+                  </INSTANCE>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame">
+                  <LITERAL value="ICRS" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:SpaceFrame.planetaryEphem">
+                  <LITERAL value="DE432" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+          <INSTANCE dmtype="coords:TimeSys" ID="_TIMESYS_TT">
+            <COMPOSITION dmrole="coords:PhysicalCoordSys.frame">
+              <INSTANCE dmtype="coords:TimeFrame">
+                <ATTRIBUTE dmrole="coords:TimeFrame.refPosition">
+                  <INSTANCE dmtype="coords:StdRefLocation">
+                    <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+                      <LITERAL value="TOPOCENTER" dmtype="ivoa:string"/>
+                    </ATTRIBUTE>
+                  </INSTANCE>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:TimeFrame.timescale">
+                  <LITERAL value="TT" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:TimeFrame.refDirection">
+                  <INSTANCE dmtype="coords:CustomRefLocation">
+                    <ATTRIBUTE dmrole="coords:CustomRefLocation.epoch">
+                      <LITERAL value="J2014.25" dmtype="coords:Epoch"/>
+                    </ATTRIBUTE>
+                    <ATTRIBUTE dmrole="coords:CustomRefLocation.position">
+                      <INSTANCE dmtype="coords:Point">
+                        <ATTRIBUTE dmrole="coords:Point.axis1">
+                          <LITERAL value="6.752477" dmtype="ivoa:RealQuantity" unit="deg"/>
+                        </ATTRIBUTE>
+                        <ATTRIBUTE dmrole="coords:Point.axis2">
+                          <LITERAL value="-16.716116" dmtype="ivoa:RealQuantity" unit="deg"/>
+                        </ATTRIBUTE>
+                        <ATTRIBUTE dmrole="coords:Point.axis3">
+                          <LITERAL value="8.6" dmtype="ivoa:RealQuantity" unit="ly"/>
+                        </ATTRIBUTE>
+                        <REFERENCE dmrole="coords:Coordinate.coordSys">
+                          <IDREF>_SPACESYS_ICRS</IDREF>
+                        </REFERENCE>
+                      </INSTANCE>
+                    </ATTRIBUTE>
+                  </INSTANCE>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+          <INSTANCE dmtype="coords:GenericSys" ID="_SPECSYS">
+            <COMPOSITION dmrole="coords:PhysicalCoordSys.frame">
+              <INSTANCE dmtype="coords:GenericFrame">
+                <ATTRIBUTE dmrole="coords:GenericFrame.refPosition">
+                  <INSTANCE dmtype="coords:StdRefLocation">
+                    <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+                      <LITERAL value="TOPOCENTER" dmtype="ivoa:string"/>
+                    </ATTRIBUTE>
+                  </INSTANCE>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:GenericFrame.planetaryEphem">
+                  <LITERAL value="DE432" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

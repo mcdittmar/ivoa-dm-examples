@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:SpaceSys" ID="_SPACESYS_FK4">
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.frame">
+          <INSTANCE dmtype="coords:SpaceFrame">
+            <ATTRIBUTE dmrole="coords:SpaceFrame.refPosition">
+              <INSTANCE dmtype="coords:StdRefLocation">
+                <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+                  <LITERAL value="TOPOCENTER" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame">
+              <LITERAL value="FK4" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:SpaceFrame.equinox">
+              <LITERAL value="B1950" dmtype="coords:Epoch"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:Point">
+        <ATTRIBUTE dmrole="coords:Point.axis1">
+          <LITERAL value="12.976853803085" dmtype="ivoa:RealQuantity" unit="deg"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="coords:Point.axis2">
+          <LITERAL value="-72.958015813264" dmtype="ivoa:RealQuantity" unit="deg"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="coords:Coordinate.coordSys">
+          <IDREF>_SPACESYS_FK4</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

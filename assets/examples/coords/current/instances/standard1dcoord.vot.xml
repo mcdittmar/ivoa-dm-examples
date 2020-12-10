@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:GenericSys" ID="_COORDSYS_STD1D"/>
+      <INSTANCE dmtype="coords:PhysicalCoordinate">
+        <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval">
+          <LITERAL value="-0.280" dmtype="ivoa:RealQuantity" unit="mag"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="coords:Coordinate.coordSys">
+          <IDREF>_COORDSYS_STD1D</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

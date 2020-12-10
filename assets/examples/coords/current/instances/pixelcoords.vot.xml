@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:PixelCoordSystem" ID="_COORDSYS_PIXEL">
+        <COMPOSITION dmrole="coords:PixelCoordSystem.pixelSpace">
+          <INSTANCE dmtype="coords:PixelSpace">
+            <ATTRIBUTE dmrole="coords:PixelSpace.handedness">
+              <LITERAL value="right" dmtype="coords:Handedness"/>
+            </ATTRIBUTE>
+            <COMPOSITION dmrole="coords:CoordSpace.axis">
+              <INSTANCE dmtype="coords:BinnedAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="#1" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:BinnedAxis.length">
+                  <LITERAL value="512" dmtype="ivoa:nonnegativeInteger"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="coords:BinnedAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="#2" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:BinnedAxis.length">
+                  <LITERAL value="512" dmtype="ivoa:nonnegativeInteger"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="coords:BinnedAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="#3" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:BinnedAxis.length">
+                  <LITERAL value="26" dmtype="ivoa:nonnegativeInteger"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="coords:BinnedAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="#4" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:BinnedAxis.length">
+                  <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:PixelIndex">
+        <ATTRIBUTE dmrole="coords:BinnedCoordinate.cval">
+          <LITERAL value="100" dmtype="ivoa:integer"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="coords:Coordinate.coordSys">
+          <IDREF>_COORDSYS_PIXEL</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:PixelIndex">
+        <ATTRIBUTE dmrole="coords:BinnedCoordinate.cval">
+          <LITERAL value="75" dmtype="ivoa:integer"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="coords:Coordinate.coordSys">
+          <IDREF>_COORDSYS_PIXEL</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:PixelIndex">
+        <ATTRIBUTE dmrole="coords:BinnedCoordinate.cval">
+          <LITERAL value="12" dmtype="ivoa:integer"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="coords:Coordinate.coordSys">
+          <IDREF>_COORDSYS_PIXEL</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:PixelIndex">
+        <ATTRIBUTE dmrole="coords:BinnedCoordinate.cval">
+          <LITERAL value="0" dmtype="ivoa:integer"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="coords:Coordinate.coordSys">
+          <IDREF>_COORDSYS_PIXEL</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

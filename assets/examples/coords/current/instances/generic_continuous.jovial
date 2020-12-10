@@ -1,0 +1,32 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_GENSYS_ENERGY", type: "coords:GenericSys")
+    {
+	instance(role: "coordSpace", type: "coords:GenericCoordSpace")
+	{
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "energy")
+	        instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.0, unit: "eV")
+	        instance(role: "domainMax", type: "ivoa:RealQuantity", value: 1000000.0, unit: "eV")
+	        instance(role: "cyclic", type: "ivoa:boolean", value: "FALSE")
+	    }
+	}
+    }
+    instance(type: "coords:PhysicalCoordinate")
+    {
+        instance(role: "cval", type: "ivoa:RealQuantity", value: 13950.9433593750, unit: "eV")
+        reference(role: "coordSys") {
+           idref "_GENSYS_ENERGY"
+        }
+    }
+}

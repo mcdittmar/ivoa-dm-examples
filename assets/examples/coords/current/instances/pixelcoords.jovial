@@ -1,0 +1,67 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_COORDSYS_PIXEL", type: "coords:PixelCoordSystem")
+    {
+	instance(role: "pixelSpace", type: "coords:PixelSpace")
+	{
+	    instance(role: "handedness", type: "coords:Handedness", value: "right")
+	    instance(role: "axis", type: "coords:BinnedAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "#1")
+		instance(role: "length", type: "ivoa:nonnegativeInteger", value: 512)
+	    }
+	    instance(role: "axis", type: "coords:BinnedAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "#2")
+		instance(role: "length", type: "ivoa:nonnegativeInteger", value: 512)
+	    }
+	    instance(role: "axis", type: "coords:BinnedAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "#3")
+		instance(role: "length", type: "ivoa:nonnegativeInteger", value: 26)
+	    }
+	    instance(role: "axis", type: "coords:BinnedAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "#4")
+		instance(role: "length", type: "ivoa:nonnegativeInteger", value: 1)
+	    }
+	}
+    }
+    instance(type: "coords:PixelIndex")
+    {
+        instance(role: "cval", type: "ivoa:integer", value: 100)
+        reference(role: "coordSys") {
+           idref "_COORDSYS_PIXEL"
+        }
+    }
+    instance(type: "coords:PixelIndex")
+    {
+        instance(role: "cval", type: "ivoa:integer", value: 75)
+        reference(role: "coordSys") {
+           idref "_COORDSYS_PIXEL"
+        }
+    }
+    instance(type: "coords:PixelIndex")
+    {
+        instance(role: "cval", type: "ivoa:integer", value: 12)
+        reference(role: "coordSys") {
+           idref "_COORDSYS_PIXEL"
+        }
+    }
+    instance(type: "coords:PixelIndex")
+    {
+        instance(role: "cval", type: "ivoa:integer", value: 0)
+        reference(role: "coordSys") {
+           idref "_COORDSYS_PIXEL"
+        }
+    }
+}

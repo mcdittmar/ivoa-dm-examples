@@ -1,0 +1,63 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "coords:AstroCoordSystem")
+    {
+        instance(id: "_SPACESYS_ICRS", role: "coordSys", type: "coords:SpaceSys")
+    	{
+	    instance(role: "frame", type: "coords:SpaceFrame")
+	    {
+	        instance(role: "refPosition", type: "coords:StdRefLocation")
+	    	{
+		    instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    	}
+	        instance(role: "spaceRefFrame", type: "ivoa:string", value: "ICRS")
+	        instance(role: "planetaryEphem", type: "ivoa:string", value: "DE432")
+	    }
+        }
+        instance(id: "_TIMESYS_TT", role: "coordSys", type: "coords:TimeSys")
+    	{
+            instance(role: "frame", type: "coords:TimeFrame")
+	    {
+	        instance(role: "refPosition", type: "coords:StdRefLocation")
+	    	{
+		    instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    	}
+	    	instance(role: "timescale", type: "ivoa:string", value: "TT")
+		instance(role: "refDirection", type: "coords:CustomRefLocation")
+		{
+		    instance(role: "epoch", type: "coords:Epoch", value: "J2014.25")
+		    instance(role: "position", type: "coords:Point")
+		    {
+			instance(role: "axis1", type: "ivoa:RealQuantity", value: 6.752477, unit: "deg")
+			instance(role: "axis2", type: "ivoa:RealQuantity", value: -16.716116, unit: "deg")
+			instance(role: "axis3", type: "ivoa:RealQuantity", value: 8.6, unit: "ly")
+			reference(role: "coordSys")
+			{
+			    idref "_SPACESYS_ICRS"
+			}
+		    }
+		}
+	    }
+        }
+        instance(id: "_SPECSYS", role: "coordSys", type: "coords:GenericSys")
+        {
+	    instance(role: "frame", type: "coords:GenericFrame")
+	    {
+	        instance(role: "refPosition", type: "coords:StdRefLocation")
+	    	{
+		    instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    	}
+	        instance(role: "planetaryEphem", type: "ivoa:string", value: "DE432")
+	    }
+	}
+    }
+}

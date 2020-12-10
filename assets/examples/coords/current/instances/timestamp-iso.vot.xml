@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:TimeSys" ID="_TIMESYS_TT">
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.frame">
+          <INSTANCE dmtype="coords:TimeFrame">
+            <ATTRIBUTE dmrole="coords:TimeFrame.refPosition">
+              <INSTANCE dmtype="coords:StdRefLocation">
+                <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+                  <LITERAL value="TOPOCENTER" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:TimeFrame.timescale">
+              <LITERAL value="TT" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:ISOTime">
+        <ATTRIBUTE dmrole="coords:ISOTime.date">
+          <LITERAL value="2000-09-02T01:10:14" dmtype="ivoa:datetime"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="coords:Coordinate.coordSys">
+          <IDREF>_TIMESYS_TT</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

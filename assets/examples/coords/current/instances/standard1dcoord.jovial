@@ -1,0 +1,20 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_COORDSYS_STD1D", type: "coords:GenericSys")
+    instance(type: "coords:PhysicalCoordinate")
+    {
+        instance(role: "cval", type: "ivoa:RealQuantity", value: -2.80E-01, unit: "mag")
+        reference(role: "coordSys") {
+           idref "_COORDSYS_STD1D"
+        }
+    }
+}

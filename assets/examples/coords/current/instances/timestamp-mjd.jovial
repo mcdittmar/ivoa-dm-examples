@@ -1,0 +1,30 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_TIMESYS_TT", type: "coords:TimeSys")
+    {
+        instance(role: "frame", type: "coords:TimeFrame")
+	{
+	    instance(role: "refPosition", type: "coords:StdRefLocation")
+	    {
+		instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    }
+	    instance(role: "timescale", type: "ivoa:string", value: "TT")
+	}
+    }
+    instance(type: "coords:MJD")
+    {
+        instance(role: "date", type: "ivoa:real", value: 50814.52)
+        reference(role: "coordSys") {
+           idref "_TIMESYS_TT"
+        }
+    }
+}

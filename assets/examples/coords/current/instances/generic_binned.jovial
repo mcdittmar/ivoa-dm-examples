@@ -1,0 +1,30 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_GENSYS_PHA", type: "coords:GenericSys")
+    {
+	instance(role: "coordSpace", type: "coords:GenericCoordSpace")
+	{
+	    instance(role: "axis", type: "coords:BinnedAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "pha")
+	        instance(role: "length", type: "ivoa:nonnegativeInteger", value: 36855)
+	    }
+	}
+    }
+    instance(type: "coords:BinnedCoordinate")
+    {
+        instance(role: "cval", type: "ivoa:IntegerQuantity", value: 3572, unit: "chan")
+        reference(role: "coordSys") {
+           idref "_GENSYS_PHA"
+        }
+    }
+}
