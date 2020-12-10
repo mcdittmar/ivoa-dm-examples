@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>https://www.ivoa.net/xml/Meas/20200908/Meas-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:SpaceSys" ID="_SPACESYS_CUSTOM">
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.coordSpace">
+          <INSTANCE dmtype="coords:CartesianCoordSpace">
+            <COMPOSITION dmrole="coords:CoordSpace.axis">
+              <INSTANCE dmtype="coords:ContinuousAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="detx" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
+                  <LITERAL value="0.5" dmtype="ivoa:RealQuantity" unit="pixel"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
+                  <LITERAL value="8192.5" dmtype="ivoa:RealQuantity" unit="pixel"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="coords:ContinuousAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="dety" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
+                  <LITERAL value="0.5" dmtype="ivoa:RealQuantity" unit="pixel"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
+                  <LITERAL value="8192.5" dmtype="ivoa:RealQuantity" unit="pixel"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="coords:ContinuousAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="detz" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
+                  <LITERAL value="0.0" dmtype="ivoa:RealQuantity" unit="mm"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
+                  <LITERAL value="100.0" dmtype="ivoa:RealQuantity" unit="mm"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.frame">
+          <INSTANCE dmtype="coords:SpaceFrame">
+            <ATTRIBUTE dmrole="coords:SpaceFrame.refPosition">
+              <INSTANCE dmtype="coords:StdRefLocation">
+                <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+                  <LITERAL value="TOPOCENTER" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame">
+              <LITERAL value="CUSTOM" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="meas:Position">
+        <ATTRIBUTE dmrole="meas:Position.coord">
+          <INSTANCE dmtype="coords:Point">
+            <ATTRIBUTE dmrole="coords:Point.axis1">
+              <LITERAL value="3156" dmtype="ivoa:RealQuantity" unit="pixel"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:Point.axis2">
+              <LITERAL value="4497" dmtype="ivoa:RealQuantity" unit="pixel"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:Point.axis3">
+              <LITERAL value="17.332" dmtype="ivoa:RealQuantity" unit="mm"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="coords:Coordinate.coordSys">
+              <IDREF>_SPACESYS_CUSTOM</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="meas:Measure.error">
+          <INSTANCE dmtype="meas:Error">
+            <ATTRIBUTE dmrole="meas:Error.sysError">
+              <INSTANCE dmtype="meas:Ellipsoid">
+                <ATTRIBUTE dmrole="meas:Ellipsoid.semiAxis">
+                  <LITERAL value="10.025" dmtype="ivoa:RealQuantity" unit="pixel"/>
+                  <LITERAL value="8.500" dmtype="ivoa:RealQuantity" unit="pixel"/>
+                  <LITERAL value="0.100" dmtype="ivoa:RealQuantity" unit="mm"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="meas:Ellipsoid.posAngle">
+                  <LITERAL value="0.000" dmtype="ivoa:RealQuantity" unit="deg"/>
+                  <LITERAL value="17.000" dmtype="ivoa:RealQuantity" unit="deg"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

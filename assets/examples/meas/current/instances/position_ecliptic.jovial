@@ -1,0 +1,43 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def measLocation   = new URL("$ivoaBase/Meas/20200908/Meas-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: measLocation)
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_SPACESYS_ECLIPTIC", type: "coords:SpaceSys")
+    {
+	instance(role: "frame", type: "coords:SpaceFrame")
+	{
+	    instance(role: "refPosition", type: "coords:StdRefLocation")
+	    {
+		instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    }
+	    instance(role: "spaceRefFrame", type: "ivoa:string", value: "ECLIPTIC")
+	}
+    }
+    instance(type: "meas:Position")
+    {
+        instance(role: "coord", type: "coords:Point")
+    	{
+	    instance(role: "axis1", type: "ivoa:RealQuantity", value: -10.3713407, unit: "deg")
+	    instance(role: "axis2", type: "ivoa:RealQuantity", value: 303.7157016, unit: "deg")
+            reference(role: "coordSys") {
+                idref "_SPACESYS_ECLIPTIC"
+            }
+    	}
+	instance(role: "error", type: "meas:Error")
+	{
+	    instance(role: "sysError", type: "meas:Symmetrical")
+	    {
+		instance( role: "radius", type: "ivoa:RealQuantity", value: 2.7400E-04, unit: "deg")
+	    }
+	}
+    }
+}

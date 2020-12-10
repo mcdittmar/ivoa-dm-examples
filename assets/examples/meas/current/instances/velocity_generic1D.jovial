@@ -1,0 +1,65 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def measLocation   = new URL("$ivoaBase/Meas/20200908/Meas-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: measLocation)
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_SPACESYS_VEL", type: "coords:SpaceSys")
+    {
+	instance(role: "coordSpace", type: "coords:CartesianCoordSpace")
+	{
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "dr/dt")
+		instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.0, unit: "m/s")
+		instance(role: "domainMax", type: "ivoa:RealQuantity", value: "+Inf", unit: "m/s")
+	    }
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "dtheta/dt")
+		instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.0, unit: "deg/s")
+		instance(role: "domainMax", type: "ivoa:RealQuantity", value: "+Inf", unit: "deg/s")
+	    }
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "phi")
+		instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.0, unit: "deg/s")
+		instance(role: "domainMax", type: "ivoa:RealQuantity", value: "+Inf", unit: "deg/s")
+	    }
+	}
+	instance(role: "frame", type: "coords:SpaceFrame")
+	{
+	    instance(role: "refPosition", type: "coords:StdRefLocation")
+	    {
+		instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    }
+	    instance(role: "spaceRefFrame", type: "ivoa:string", value: "CUSTOM")
+	    instance(role: "planetaryEphem", type: "ivoa:string", value: "DE432")
+	}
+    }
+    instance(type: "meas:Velocity")
+    {
+        instance(role: "coord", type: "coords:Point")
+    	{
+	    instance(role: "axis1", type: "ivoa:RealQuantity", value: 0.00078, unit: "km/yr")
+            reference(role: "coordSys") {
+                idref "_SPACESYS_VEL"
+            }
+    	}
+	instance(role: "error", type: "meas:Error")
+	{
+	    instance(role: "sysError", type: "meas:Bounds1D")
+	    {
+		instance( role: "loLimit", type: "ivoa:RealQuantity", value: 0.000723, unit: "km/yr")
+		instance( role: "hiLimit", type: "ivoa:RealQuantity", value: 0.000879, unit: "km/s")
+	    }
+	}
+    }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>https://www.ivoa.net/xml/Meas/20200908/Meas-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:GenericSys" ID="_GENSYS_POL">
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.coordSpace">
+          <INSTANCE dmtype="coords:GenericCoordSpace">
+            <COMPOSITION dmrole="coords:CoordSpace.axis">
+              <INSTANCE dmtype="coords:DiscreteSetAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="polarization" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="meas:Polarization">
+        <ATTRIBUTE dmrole="meas:Polarization.coord">
+          <INSTANCE dmtype="coords:PolState">
+            <ATTRIBUTE dmrole="coords:PolState.cval">
+              <LITERAL value="Q" dmtype="coords:PolStateEnum"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="coords:Coordinate.coordSys">
+              <IDREF>_GENSYS_POL</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

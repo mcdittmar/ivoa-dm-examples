@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>https://www.ivoa.net/xml/Meas/20200908/Meas-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="coords:SpaceSys" ID="_SPACESYS_VEL">
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.coordSpace">
+          <INSTANCE dmtype="coords:CartesianCoordSpace">
+            <COMPOSITION dmrole="coords:CoordSpace.axis">
+              <INSTANCE dmtype="coords:ContinuousAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="dr/dt" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
+                  <LITERAL value="0.0" dmtype="ivoa:RealQuantity" unit="m/s"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
+                  <LITERAL value="+Inf" dmtype="ivoa:RealQuantity" unit="m/s"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="coords:ContinuousAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="dtheta/dt" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
+                  <LITERAL value="0.0" dmtype="ivoa:RealQuantity" unit="deg/s"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
+                  <LITERAL value="+Inf" dmtype="ivoa:RealQuantity" unit="deg/s"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+              <INSTANCE dmtype="coords:ContinuousAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="phi" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
+                  <LITERAL value="0.0" dmtype="ivoa:RealQuantity" unit="deg/s"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
+                  <LITERAL value="+Inf" dmtype="ivoa:RealQuantity" unit="deg/s"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.frame">
+          <INSTANCE dmtype="coords:SpaceFrame">
+            <ATTRIBUTE dmrole="coords:SpaceFrame.refPosition">
+              <INSTANCE dmtype="coords:StdRefLocation">
+                <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+                  <LITERAL value="TOPOCENTER" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame">
+              <LITERAL value="CUSTOM" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:SpaceFrame.planetaryEphem">
+              <LITERAL value="DE432" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="meas:Velocity">
+        <ATTRIBUTE dmrole="meas:Velocity.coord">
+          <INSTANCE dmtype="coords:Point">
+            <ATTRIBUTE dmrole="coords:Point.axis1">
+              <LITERAL value="0.00078" dmtype="ivoa:RealQuantity" unit="km/yr"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:Point.axis2">
+              <LITERAL value="3.44E-7" dmtype="ivoa:RealQuantity" unit="arcmin/s"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="coords:Point.axis3">
+              <LITERAL value="8.43E-19" dmtype="ivoa:RealQuantity" unit="arcmin/s"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="coords:Coordinate.coordSys">
+              <IDREF>_SPACESYS_VEL</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="meas:Measure.error">
+          <INSTANCE dmtype="meas:Error">
+            <ATTRIBUTE dmrole="meas:Error.sysError">
+              <INSTANCE dmtype="meas:Bounds3D">
+                <ATTRIBUTE dmrole="meas:Bounds3D.loLimit">
+                  <LITERAL value="0.000723" dmtype="ivoa:RealQuantity" unit="km/yr"/>
+                  <LITERAL value="3.41E-7" dmtype="ivoa:RealQuantity" unit="arcmin/s"/>
+                  <LITERAL value="8.21E-19" dmtype="ivoa:RealQuantity" unit="arcmin/s"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="meas:Bounds3D.hiLimit">
+                  <LITERAL value="0.000879" dmtype="ivoa:RealQuantity" unit="km/s"/>
+                  <LITERAL value="3.55E-7" dmtype="ivoa:RealQuantity" unit="arcmin/s"/>
+                  <LITERAL value="9.23E-19" dmtype="ivoa:RealQuantity" unit="arcmin/s"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

@@ -1,0 +1,69 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def measLocation   = new URL("$ivoaBase/Meas/20200908/Meas-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: measLocation)
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_SPACESYS_CUSTOM", type: "coords:SpaceSys")
+    {
+	instance(role: "coordSpace", type: "coords:CartesianCoordSpace")
+	{
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "detx")
+		instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.5, unit: "pixel")
+		instance(role: "domainMax", type: "ivoa:RealQuantity", value: 8192.5, unit: "pixel")
+	    }
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "dety")
+		instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.5, unit: "pixel")
+		instance(role: "domainMax", type: "ivoa:RealQuantity", value: 8192.5, unit: "pixel")
+	    }
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "detz")
+		instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.0, unit: "mm")
+		instance(role: "domainMax", type: "ivoa:RealQuantity", value: 100.0, unit: "mm")
+	    }
+	}
+	instance(role: "frame", type: "coords:SpaceFrame")
+	{
+	    instance(role: "refPosition", type: "coords:StdRefLocation")
+	    {
+		instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    }
+	    instance(role: "spaceRefFrame", type: "ivoa:string", value: "CUSTOM")
+	}
+    }
+    instance(type: "meas:Position")
+    {
+        instance(role: "coord", type: "coords:Point")
+    	{
+	    instance(role: "axis1", type: "ivoa:RealQuantity", value: 3156, unit: "pixel")
+	    instance(role: "axis2", type: "ivoa:RealQuantity", value: 4497, unit: "pixel")
+            instance(role: "axis3", type: "ivoa:RealQuantity", value: 17.332, unit: "mm")
+            reference(role: "coordSys") {
+                idref "_SPACESYS_CUSTOM"
+            }
+    	}
+	instance(role: "error", type: "meas:Error")
+	{
+	    instance(role: "sysError", type: "meas:Ellipsoid")
+	    {
+		instance( role: "semiAxis", type: "ivoa:RealQuantity", value: 10.025, unit: "pixel")
+		instance( role: "semiAxis", type: "ivoa:RealQuantity", value:  8.500, unit: "pixel")
+		instance( role: "semiAxis", type: "ivoa:RealQuantity", value:  0.100, unit: "mm")
+		instance( role: "posAngle", type: "ivoa:RealQuantity", value:  0.000, unit: "deg")
+		instance( role: "posAngle", type: "ivoa:RealQuantity", value: 17.000, unit: "deg")
+	    }
+	}
+    }
+}

@@ -1,0 +1,34 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def measLocation   = new URL("$ivoaBase/Meas/20200908/Meas-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: measLocation)
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_GENSYS_POL", type: "coords:GenericSys")
+    {
+	instance(role: "coordSpace", type: "coords:GenericCoordSpace")
+	{
+	    instance(role: "axis", type: "coords:DiscreteSetAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "polarization")
+	    }
+	}
+    }
+    instance(type: "meas:Polarization")
+    {
+        instance(role: "coord", type: "coords:PolState")
+    	{
+	    instance(role: "cval", type: "coords:PolStateEnum", value: "Q")
+            reference(role: "coordSys") {
+                idref "_GENSYS_POL"
+            }
+    	}
+    }
+}

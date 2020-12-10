@@ -1,0 +1,42 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def measLocation   = new URL("$ivoaBase/Meas/20200908/Meas-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: measLocation)
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(id: "_SPACESYS_ICRS", type: "coords:SpaceSys")
+    {
+	instance(role: "frame", type: "coords:SpaceFrame")
+	{
+	    instance(role: "refPosition", type: "coords:StdRefLocation")
+	    {
+		instance(role: "position", type: "ivoa:string", value: "TOPOCENTER")
+	    }
+	    instance(role: "spaceRefFrame", type: "ivoa:string", value: "ICRS")
+	}
+    }
+    instance(type: "meas:ProperMotion")
+    {
+        instance(role: "lon", type: "coords:PhysicalCoordinate")
+    	{
+	    instance(role: "cval", type: "ivoa:RealQuantity", value: -356.01, unit: "mas/yr")
+            reference(role: "coordSys") {
+                idref "_SPACESYS_ICRS"
+            }
+    	}
+        instance(role: "lat", type: "coords:PhysicalCoordinate")
+    	{
+	    instance(role: "cval", type: "ivoa:RealQuantity", value: 1742.47, unit: "mas/yr")
+            reference(role: "coordSys") {
+                idref "_SPACESYS_ICRS"
+            }
+    	}
+    }
+}
