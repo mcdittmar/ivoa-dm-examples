@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:SpectralProjection">
+        <ATTRIBUTE dmrole="trans:SpectralProjection.referenceValue">
+          <LITERAL value="2.1116E+7" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="trans:SpectralProjection.algorithm">
+          <LITERAL value="W2V" dmtype="trans:SpectralProjectionType"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="trans:SpectralProjection.coordType">
+          <LITERAL value="VELO" dmtype="trans:SpectralCoordType"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Projection.param">
+          <INSTANCE dmtype="trans:ProjectionParam">
+            <ATTRIBUTE dmrole="trans:ProjectionParam.name">
+              <LITERAL value="RESTFRQ" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:ProjectionParam.value">
+              <LITERAL value="110201363000.0" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:ProjectionParam">
+            <ATTRIBUTE dmrole="trans:ProjectionParam.name">
+              <LITERAL value="RESTWAV" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:ProjectionParam.value">
+              <LITERAL value="0.00272040633" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

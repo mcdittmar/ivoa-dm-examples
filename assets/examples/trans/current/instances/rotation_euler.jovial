@@ -1,0 +1,36 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:EulerRotation")
+    {
+        instance(role: "eulerAngle", type: "trans:EulerAngle")
+	{
+	    instance(role: "rotationAxis", type: "ivoa:string", value: "x")
+	    instance(role: "angle", type: "ivoa:real", value: 10.0)
+	}
+        instance(role: "eulerAngle", type: "trans:EulerAngle")
+	{
+	    instance(role: "rotationAxis", type: "ivoa:string", value: "y")
+	    instance(role: "angle", type: "ivoa:real", value: 14.32)
+	}
+        instance(role: "eulerAngle", type: "trans:EulerAngle")
+	{
+	    instance(role: "rotationAxis", type: "ivoa:string", value: "z")
+	    instance(role: "angle", type: "ivoa:real", value: 77.43)
+	}
+        instance(role: "eulerAngle", type: "trans:EulerAngle")
+	{
+	    instance(role: "rotationAxis", type: "ivoa:string", value: "x")
+	    instance(role: "angle", type: "ivoa:real", value: 120.80)
+	}
+    }
+}

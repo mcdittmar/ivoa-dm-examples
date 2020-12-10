@@ -1,0 +1,77 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:Lookup")
+    {
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: 1)
+	    instance(role: "targetValue", type: "ivoa:string", value: "I")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: 2)
+	    instance(role: "targetValue", type: "ivoa:string", value: "Q")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: 3)
+	    instance(role: "targetValue", type: "ivoa:string", value: "U")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: 4)
+	    instance(role: "targetValue", type: "ivoa:string", value: "V")
+	}
+        instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -1)
+	    instance(role: "targetValue", type: "ivoa:string", value: "RR")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -2)
+	    instance(role: "targetValue", type: "ivoa:string", value: "LL")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -3)
+	    instance(role: "targetValue", type: "ivoa:string", value: "RL")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -4)
+	    instance(role: "targetValue", type: "ivoa:string", value: "LR")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -5)
+	    instance(role: "targetValue", type: "ivoa:string", value: "XX")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -6)
+	    instance(role: "targetValue", type: "ivoa:string", value: "YY")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -7)
+	    instance(role: "targetValue", type: "ivoa:string", value: "XY")
+	}
+	instance(role: "entry", type: "trans:StringEntry")
+	{
+	    instance(role: "nativeValue", type: "ivoa:integer", value: -8)
+	    instance(role: "targetValue", type: "ivoa:string", value: "YX")
+	}
+    }
+}
+	    

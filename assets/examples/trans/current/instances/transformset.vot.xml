@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:TransformSet">
+        <COMPOSITION dmrole="trans:TransformSet.node">
+          <INSTANCE dmtype="trans:TransNode" ID="_BASE_NODE">
+            <REFERENCE dmrole="trans:TransNode.target">
+              <IDREF>_COORDSYS_PIXEL</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:TransNode">
+            <REFERENCE dmrole="trans:TransNode.parent">
+              <IDREF>_BASE_NODE</IDREF>
+            </REFERENCE>
+            <REFERENCE dmrole="trans:TransNode.target">
+              <IDREF>_GENSYS_ENERGY</IDREF>
+            </REFERENCE>
+            <REFERENCE dmrole="trans:TransNode.mapping">
+              <IDREF>_MAPPING</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:PixelCoordSystem" ID="_COORDSYS_PIXEL">
+        <COMPOSITION dmrole="coords:PixelCoordSystem.pixelSpace">
+          <INSTANCE dmtype="coords:PixelSpace">
+            <COMPOSITION dmrole="coords:CoordSpace.axis">
+              <INSTANCE dmtype="coords:BinnedAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="#1" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:BinnedAxis.length">
+                  <LITERAL value="512" dmtype="ivoa:nonnegativeInteger"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="coords:GenericSys" ID="_GENSYS_ENERGY">
+        <COMPOSITION dmrole="coords:PhysicalCoordSys.coordSpace">
+          <INSTANCE dmtype="coords:GenericCoordSpace">
+            <COMPOSITION dmrole="coords:CoordSpace.axis">
+              <INSTANCE dmtype="coords:ContinuousAxis">
+                <ATTRIBUTE dmrole="coords:Axis.name">
+                  <LITERAL value="energy" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMin">
+                  <LITERAL value="0.0" dmtype="ivoa:RealQuantity" unit="eV"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.domainMax">
+                  <LITERAL value="1000000.0" dmtype="ivoa:RealQuantity" unit="eV"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="coords:ContinuousAxis.cyclic">
+                  <LITERAL value="FALSE" dmtype="ivoa:boolean"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Polynomial1D" ID="_MAPPING">
+        <ATTRIBUTE dmrole="trans:Polynomial.order">
+          <LITERAL value="3" dmtype="ivoa:nonnegativeInteger"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Polynomial1D.term">
+          <INSTANCE dmtype="trans:PolyCoeff1D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.coeff">
+              <LITERAL value="-3" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.power">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff1D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.coeff">
+              <LITERAL value="2.5" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.power">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff1D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.coeff">
+              <LITERAL value="-0.2" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.power">
+              <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff1D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.coeff">
+              <LITERAL value="0.0013" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff1D.power">
+              <LITERAL value="3" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

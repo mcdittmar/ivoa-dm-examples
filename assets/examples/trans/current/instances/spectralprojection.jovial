@@ -1,0 +1,30 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:SpectralProjection")
+    {
+	instance(role: "referenceValue", type: "ivoa:real", value: 2.1116E+07)
+	instance(role: "algorithm", type: "trans:SpectralProjectionType", value: "W2V")
+	instance(role: "coordType", type: "trans:SpectralCoordType", value: "VELO")
+
+	instance(role: "param", type: "trans:ProjectionParam")
+	{
+	    instance(role: "name", type: "ivoa:string", value: "RESTFRQ")
+	    instance(role: "value", type: "ivoa:real", value: 110201363000.0)
+	}
+	instance(role: "param", type: "trans:ProjectionParam")
+	{
+	    instance(role: "name", type: "ivoa:string", value: "RESTWAV")
+	    instance(role: "value", type: "ivoa:real", value: 0.00272040633)
+	}
+    }
+}

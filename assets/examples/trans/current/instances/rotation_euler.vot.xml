@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:EulerRotation">
+        <COMPOSITION dmrole="trans:EulerRotation.eulerAngle">
+          <INSTANCE dmtype="trans:EulerAngle">
+            <ATTRIBUTE dmrole="trans:EulerAngle.rotationAxis">
+              <LITERAL value="x" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:EulerAngle.angle">
+              <LITERAL value="10.0" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:EulerAngle">
+            <ATTRIBUTE dmrole="trans:EulerAngle.rotationAxis">
+              <LITERAL value="y" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:EulerAngle.angle">
+              <LITERAL value="14.32" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:EulerAngle">
+            <ATTRIBUTE dmrole="trans:EulerAngle.rotationAxis">
+              <LITERAL value="z" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:EulerAngle.angle">
+              <LITERAL value="77.43" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:EulerAngle">
+            <ATTRIBUTE dmrole="trans:EulerAngle.rotationAxis">
+              <LITERAL value="x" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:EulerAngle.angle">
+              <LITERAL value="120.80" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

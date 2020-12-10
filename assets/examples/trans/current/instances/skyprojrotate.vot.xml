@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:SkyProjRotate">
+        <ATTRIBUTE dmrole="trans:SkyProjection.algorithm">
+          <LITERAL value="TAN" dmtype="trans:SkyProjectionType"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="trans:SkyProjRotate.referenceValue">
+          <LITERAL value="4096.5" dmtype="ivoa:real"/>
+          <LITERAL value="4096.5" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Projection.param">
+          <INSTANCE dmtype="trans:ProjectionParam">
+            <ATTRIBUTE dmrole="trans:ProjectionParam.name">
+              <LITERAL value="LONPOLE" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:ProjectionParam.value">
+              <LITERAL value="180.0" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:ProjectionParam">
+            <ATTRIBUTE dmrole="trans:ProjectionParam.name">
+              <LITERAL value="LATPOLE" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:ProjectionParam.value">
+              <LITERAL value="-90.0" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

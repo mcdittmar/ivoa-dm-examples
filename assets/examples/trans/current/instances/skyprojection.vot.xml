@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:SkyProjection">
+        <ATTRIBUTE dmrole="trans:SkyProjection.algorithm">
+          <LITERAL value="SIN" dmtype="trans:SkyProjectionType"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Projection.param">
+          <INSTANCE dmtype="trans:ProjectionParam">
+            <ATTRIBUTE dmrole="trans:ProjectionParam.name">
+              <LITERAL value="PV2_1" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:ProjectionParam.value">
+              <LITERAL value="-0.408" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:ProjectionParam">
+            <ATTRIBUTE dmrole="trans:ProjectionParam.name">
+              <LITERAL value="PV2_2" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:ProjectionParam.value">
+              <LITERAL value="0.408" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

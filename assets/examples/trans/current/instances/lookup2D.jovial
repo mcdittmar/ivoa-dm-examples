@@ -1,0 +1,39 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:Lookup")
+    {
+        instance(role: "interpolation", type: "trans:InterpolationMethod", value: "None")
+	instance(role: "bounds_error", type: "ivoa:boolean", value: "TRUE")
+	instance(role: "entry", type: "trans:NumericEntry2D")
+	{
+	    instance(role: "nativeValue", type: "ivoa:real", value: 1)
+	    instance(role: "nativeValue", type: "ivoa:real", value: 1)
+	    instance(role: "targetValue", type: "ivoa:real", value: 14.3329)
+	    instance(role: "targetValue", type: "ivoa:real", value: -10.3340)
+	}
+	instance(role: "entry", type: "trans:NumericEntry2D")
+	{
+	    instance(role: "nativeValue", type: "ivoa:real", value: 5)
+	    instance(role: "nativeValue", type: "ivoa:real", value: 5)
+	    instance(role: "targetValue", type: "ivoa:real", value: 129.423)
+	    instance(role: "targetValue", type: "ivoa:real", value: -103.489)
+	}
+	instance(role: "entry", type: "trans:NumericEntry2D")
+	{
+	    instance(role: "nativeValue", type: "ivoa:real", value: 10)
+	    instance(role: "nativeValue", type: "ivoa:real", value: 10)
+	    instance(role: "targetValue", type: "ivoa:real", value: 205.329)
+	    instance(role: "targetValue", type: "ivoa:real", value: -402.666)
+	}
+    }
+}

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:Lookup">
+        <COMPOSITION dmrole="trans:Lookup.entry">
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="1" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="I" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="2" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="Q" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="3" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="U" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="4" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="V" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-1" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="RR" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-2" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="LL" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-3" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="RL" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-4" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="LR" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-5" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="XX" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-6" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="YY" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-7" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="XY" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:StringEntry">
+            <ATTRIBUTE dmrole="trans:StringEntry.nativeValue">
+              <LITERAL value="-8" dmtype="ivoa:integer"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:StringEntry.targetValue">
+              <LITERAL value="YX" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

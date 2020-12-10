@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:ComposeMap">
+        <COMPOSITION dmrole="trans:CompoundMap.cptMap">
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_STEP1</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_STEP2</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Permute" ID="_STEP1">
+        <ATTRIBUTE dmrole="trans:Permute.numSourceAxes">
+          <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Permute.axismap">
+          <INSTANCE dmtype="trans:PermuteAxis">
+            <ATTRIBUTE dmrole="trans:PermuteAxis.sourceAxis">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PermuteAxis">
+            <ATTRIBUTE dmrole="trans:PermuteAxis.sourceAxis">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PermuteAxis.seedValue">
+              <LITERAL value="1024.0" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PermuteAxis">
+            <ATTRIBUTE dmrole="trans:PermuteAxis.sourceAxis">
+              <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:ConcatenateMap" ID="_STEP2">
+        <COMPOSITION dmrole="trans:CompoundMap.cptMap">
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_ROTATE_XY</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_PASS_Z</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Rotate2D" ID="_ROTATE_XY">
+        <ATTRIBUTE dmrole="trans:Rotate2D.angle">
+          <LITERAL value="180.0" dmtype="ivao:real"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Unit" ID="_PASS_Z"/>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

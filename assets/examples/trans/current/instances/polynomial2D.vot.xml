@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:Polynomial2D">
+        <ATTRIBUTE dmrole="trans:Polynomial.order">
+          <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Polynomial2D.term">
+          <INSTANCE dmtype="trans:PolyCoeff2D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.coeff">
+              <LITERAL value="0.077351" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.power">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff2D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.coeff">
+              <LITERAL value="0.000002286" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.power">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff2D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.coeff">
+              <LITERAL value="-0.0013876" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.power">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff2D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.coeff">
+              <LITERAL value="-3.83339E-10" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.power">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+              <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff2D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.coeff">
+              <LITERAL value="-3.05423E-10" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.power">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:PolyCoeff2D">
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.coeff">
+              <LITERAL value="-1.7246E-9" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:PolyCoeff2D.power">
+              <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

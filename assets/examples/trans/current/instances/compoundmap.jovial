@@ -1,0 +1,70 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:ComposeMap")
+    {
+	instance(role: "cptMap", type: "trans:MapRef")
+	{
+	    reference(role: "ref"){idref "_SHIFT"}
+	}
+	instance(role: "cptMap", type: "trans:MapRef")
+	{
+	    reference(role: "ref"){idref "_SCALE"}
+	}
+	instance(role: "cptMap", type: "trans:MapRef")
+	{
+	    reference(role: "ref"){idref "_ROTATE"}
+	}
+    }
+    instance(id: "_SHIFT", type: "trans:ConcatenateMap")
+    {
+	instance(role: "cptMap", type: "trans:MapRef")
+	{
+	    reference(role: "ref"){idref "_SHIFT_X"}
+	}
+	instance(role: "cptMap", type: "trans:MapRef")
+	{
+	    reference(role: "ref"){idref "_SHIFT_Y"}
+	}
+    }
+    instance(id: "_SCALE", type: "trans:ConcatenateMap")
+    {
+	instance(role: "cptMap", type: "trans:MapRef")
+	{
+	    reference(role: "ref"){idref "_SCALE_X"}
+	}
+	instance(role: "cptMap", type: "trans:MapRef")
+	{
+	    reference(role: "ref"){idref "_SCALE_Y"}
+	}
+    }
+    instance(id: "_ROTATE", type: "trans:Rotate2D")
+    {
+	instance(role: "angle", type: "ivao:real", value: 30.0)
+    }
+    instance(id: "_SHIFT_X", type: "trans:Shift")
+    {
+        instance(role: "offset", type: "ivoa:real", value: -0.5)
+    }
+    instance(id: "_SHIFT_Y", type: "trans:Shift")
+    {
+        instance(role: "offset", type: "ivoa:real", value: -0.25)
+    }
+    instance(id: "_SCALE_X", type: "trans:Scale")
+    {
+	instance(role: "factor", type: "ivoa:real", value: 7.0)
+    }
+    instance(id: "_SCALE_Y", type: "trans:Scale")
+    {
+	instance(role: "factor", type: "ivoa:real", value: 3.5)
+    }
+}

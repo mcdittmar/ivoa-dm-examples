@@ -1,0 +1,53 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:Polynomial2D")
+    {
+	instance(role: "order", type: "ivoa:nonnegativeInteger", value: 2)
+	instance(role: "term", type: "trans:PolyCoeff2D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: 0.077351)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 0)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 0)
+	}
+	instance(role: "term", type: "trans:PolyCoeff2D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: 2.286E-06)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 0)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 1)
+	}
+	instance(role: "term", type: "trans:PolyCoeff2D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: -0.0013876)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 1)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 0)
+	}
+	instance(role: "term", type: "trans:PolyCoeff2D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: -3.83339E-10)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 0)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 2)
+	}
+	instance(role: "term", type: "trans:PolyCoeff2D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: -3.05423E-10)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 1)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 1)
+	}
+	instance(role: "term", type: "trans:PolyCoeff2D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: -1.7246E-09)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 2)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 0)
+	}
+    }
+}

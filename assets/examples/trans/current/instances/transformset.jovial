@@ -1,0 +1,75 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: coordsLocation)
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:TransformSet")
+    {
+	instance(id: "_BASE_NODE", role: "node", type: "trans:TransNode")
+	{
+	    reference(role: "target"){ idref "_COORDSYS_PIXEL" }
+	}
+	instance(role: "node", type: "trans:TransNode")
+	{
+	    reference(role: "parent"){ idref "_BASE_NODE" }
+	    reference(role: "target"){ idref "_GENSYS_ENERGY" }
+	    reference(role: "mapping"){ idref "_MAPPING" }
+	}
+    }
+    instance(id: "_COORDSYS_PIXEL", type: "coords:PixelCoordSystem")
+    {
+	instance(role: "pixelSpace", type: "coords:PixelSpace")
+	{
+	    instance(role: "axis", type: "coords:BinnedAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "#1")
+		instance(role: "length", type: "ivoa:nonnegativeInteger", value: 512)
+	    }
+	}
+    }
+    instance(id: "_GENSYS_ENERGY", type: "coords:GenericSys")
+    {
+	instance(role: "coordSpace", type: "coords:GenericCoordSpace")
+	{
+	    instance(role: "axis", type: "coords:ContinuousAxis")
+	    {
+	        instance(role: "name", type: "ivoa:string", value: "energy")
+	        instance(role: "domainMin", type: "ivoa:RealQuantity", value: 0.0, unit: "eV")
+	        instance(role: "domainMax", type: "ivoa:RealQuantity", value: 1000000.0, unit: "eV")
+	        instance(role: "cyclic", type: "ivoa:boolean", value: "FALSE")
+	    }
+	}
+    }
+    instance(id: "_MAPPING", type: "trans:Polynomial1D")
+    {
+	instance(role: "order", type: "ivoa:nonnegativeInteger", value: 3)
+	instance(role: "term", type: "trans:PolyCoeff1D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: -3)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 0)
+	}
+	instance(role: "term", type: "trans:PolyCoeff1D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: 2.5)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 1)
+	}
+	instance(role: "term", type: "trans:PolyCoeff1D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: -0.2)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 2)
+	}
+	instance(role: "term", type: "trans:PolyCoeff1D")
+	{
+	    instance(role: "coeff", type: "ivoa:real", value: 1.3E-03)
+	    instance(role: "power", type: "ivoa:nonnegativeInteger", value: 3)
+	}
+    }
+}

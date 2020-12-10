@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:Matrix">
+        <ATTRIBUTE dmrole="trans:Matrix.M">
+          <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="trans:Matrix.N">
+          <LITERAL value="2" dmtype="ivoa:nonnegativeInteger"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Matrix.element">
+          <INSTANCE dmtype="trans:MatrixElement">
+            <ATTRIBUTE dmrole="trans:MatrixElement.m">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.n">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.value">
+              <LITERAL value="-0.00015114994737346996" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MatrixElement">
+            <ATTRIBUTE dmrole="trans:MatrixElement.m">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.n">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.value">
+              <LITERAL value="0.000087266462599716482" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MatrixElement">
+            <ATTRIBUTE dmrole="trans:MatrixElement.m">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.n">
+              <LITERAL value="0" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.value">
+              <LITERAL value="0.000087266462599716482" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MatrixElement">
+            <ATTRIBUTE dmrole="trans:MatrixElement.m">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.n">
+              <LITERAL value="1" dmtype="ivoa:nonnegativeInteger"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:MatrixElement.value">
+              <LITERAL value="0.00015114994737346996" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

@@ -1,0 +1,27 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:SkyProjection")
+    {
+	instance(role: "algorithm", type: "trans:SkyProjectionType", value:"SIN")
+	instance(role: "param", type: "trans:ProjectionParam")
+	{
+	    instance(role: "name", type: "ivoa:string", value: "PV2_1")
+	    instance(role: "value", type: "ivoa:real", value: -0.408)
+	}
+	instance(role: "param", type: "trans:ProjectionParam")
+	{
+	    instance(role: "name", type: "ivoa:string", value: "PV2_2")
+	    instance(role: "value", type: "ivoa:real", value: 0.408)
+	}
+    }
+}

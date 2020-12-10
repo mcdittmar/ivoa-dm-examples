@@ -1,0 +1,43 @@
+def localBase  = "file:../models"
+def voluteBase = "https://volute.g-vo.org/svn/trunk/projects/dm"
+def ivoaBase   = "https://www.ivoa.net/xml"
+
+def transLocation  = new URL("$ivoaBase/WCSTrans/20200908/Trans-v1.0.vo-dml.xml")
+def coordsLocation = new URL("$ivoaBase/STC/20200908/Coords-v1.0.vo-dml.xml")
+def ivoaLocation   = new URL("$ivoaBase/VODML/IVOA-v1.vo-dml.xml")
+
+dmInstance {
+    model(vodmlURL: transLocation)
+    model(vodmlURL: ivoaLocation)
+
+    instance(type: "trans:Matrix")
+    {
+	instance(role: "M", type: "ivoa:nonnegativeInteger", value: 2)
+	instance(role: "N", type: "ivoa:nonnegativeInteger", value: 2)
+	instance(role: "element", type: "trans:MatrixElement")
+	{
+	    instance(role: "m", type: "ivoa:nonnegativeInteger", value: 0)
+	    instance(role: "n", type: "ivoa:nonnegativeInteger", value: 0)
+	    instance(role: "value", type: "ivoa:real", value: -0.00015114994737346996)
+	}
+	instance(role: "element", type: "trans:MatrixElement")
+	{
+	    instance(role: "m", type: "ivoa:nonnegativeInteger", value: 0)
+	    instance(role: "n", type: "ivoa:nonnegativeInteger", value: 1)
+	    instance(role: "value", type: "ivoa:real", value: 8.7266462599716482E-05)
+	}
+	instance(role: "element", type: "trans:MatrixElement")
+	{
+	    instance(role: "m", type: "ivoa:nonnegativeInteger", value: 1)
+	    instance(role: "n", type: "ivoa:nonnegativeInteger", value: 0)
+	    instance(role: "value", type: "ivoa:real", value: 8.7266462599716482E-05)
+	}
+	instance(role: "element", type: "trans:MatrixElement")
+	{
+	    instance(role: "m", type: "ivoa:nonnegativeInteger", value: 1)
+	    instance(role: "n", type: "ivoa:nonnegativeInteger", value: 1)
+	    instance(role: "value", type: "ivoa:real", value: 0.00015114994737346996)
+	}
+    }
+}
+	    

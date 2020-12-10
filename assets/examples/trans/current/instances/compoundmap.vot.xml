@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:ComposeMap">
+        <COMPOSITION dmrole="trans:CompoundMap.cptMap">
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_SHIFT</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_SCALE</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_ROTATE</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:ConcatenateMap" ID="_SHIFT">
+        <COMPOSITION dmrole="trans:CompoundMap.cptMap">
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_SHIFT_X</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_SHIFT_Y</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:ConcatenateMap" ID="_SCALE">
+        <COMPOSITION dmrole="trans:CompoundMap.cptMap">
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_SCALE_X</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:MapRef">
+            <REFERENCE dmrole="trans:MapRef.ref">
+              <IDREF>_SCALE_Y</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Rotate2D" ID="_ROTATE">
+        <ATTRIBUTE dmrole="trans:Rotate2D.angle">
+          <LITERAL value="30.0" dmtype="ivao:real"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Shift" ID="_SHIFT_X">
+        <ATTRIBUTE dmrole="trans:Shift.offset">
+          <LITERAL value="-0.5" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Shift" ID="_SHIFT_Y">
+        <ATTRIBUTE dmrole="trans:Shift.offset">
+          <LITERAL value="-0.25" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Scale" ID="_SCALE_X">
+        <ATTRIBUTE dmrole="trans:Scale.factor">
+          <LITERAL value="7.0" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE dmtype="trans:Scale" ID="_SCALE_Y">
+        <ATTRIBUTE dmrole="trans:Scale.factor">
+          <LITERAL value="3.5" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>

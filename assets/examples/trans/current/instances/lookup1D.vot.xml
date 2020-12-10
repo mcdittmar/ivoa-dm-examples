@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <VODML>
+    <MODEL>
+      <NAME>trans</NAME>
+      <URL>https://www.ivoa.net/xml/WCSTrans/20200908/Trans-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE dmtype="trans:Lookup">
+        <ATTRIBUTE dmrole="trans:Lookup.interpolation">
+          <LITERAL value="Nearest" dmtype="trans:InterpolationMethod"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="trans:Lookup.bounds_error">
+          <LITERAL value="FALSE" dmtype="ivoa:boolean"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="trans:Lookup.entry">
+          <INSTANCE dmtype="trans:NumericEntry">
+            <ATTRIBUTE dmrole="trans:NumericEntry.nativeValue">
+              <LITERAL value="1" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:NumericEntry.targetValue">
+              <LITERAL value="14.3329" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:NumericEntry">
+            <ATTRIBUTE dmrole="trans:NumericEntry.nativeValue">
+              <LITERAL value="5" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:NumericEntry.targetValue">
+              <LITERAL value="129.423" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:NumericEntry">
+            <ATTRIBUTE dmrole="trans:NumericEntry.nativeValue">
+              <LITERAL value="10" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:NumericEntry.targetValue">
+              <LITERAL value="205.329" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+          <INSTANCE dmtype="trans:NumericEntry">
+            <ATTRIBUTE dmrole="trans:LookupEntry.fill">
+              <LITERAL value="TRUE" dmtype="ivoa:boolean"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:NumericEntry.nativeValue">
+              <LITERAL value="-1" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="trans:NumericEntry.targetValue">
+              <LITERAL value="-999" dmtype="ivoa:real"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE ID="EMPTY"/>
+</VOTABLE>
